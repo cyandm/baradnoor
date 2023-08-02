@@ -1,0 +1,19 @@
+.container {
+  max-width: 1440px;
+  margin-inline: auto;
+}
+
+.body-blur-bg {
+  position: fixed;
+  inset: 0;
+  background-color: $background-filter;
+  backdrop-filter: blur(37px);
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+}

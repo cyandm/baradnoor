@@ -1,0 +1,143 @@
+.site-footer {
+  display: flex;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 200;
+  line-height: 2.125rem;
+
+  .container-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 3rem 3.75rem;
+    flex: 1 1 auto;
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      list-style-type: disc;
+    }
+    a {
+      color: $white-color;
+    }
+    .footer-col-one {
+      ul.menu {
+        li {
+          &:hover {
+            &::marker,
+            a {
+              color: $orange-secondary;
+            }
+          }
+        }
+      }
+    }
+    .footer-col-two {
+      ul {
+        li {
+          &:hover {
+            &::marker,
+            a {
+              color: $orange-secondary;
+            }
+          }
+        }
+      }
+    }
+
+    .footer-col-three {
+      display: flex;
+      flex-direction: column;
+      ul {
+        li {
+          a {
+            &:hover {
+              color: $orange-secondary;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+      .location-container {
+        margin-bottom: 0.63rem;
+      }
+      address {
+        color: $primary-gray;
+        font-style: normal;
+        margin-bottom: 1.25rem;
+      }
+      .location {
+        height: 7rem;
+        border-radius: 1.25rem;
+      }
+    }
+  }
+  .footer-col-four {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    position: relative;
+    .img-light-footer {
+      position: absolute;
+      right: 0rem;
+      top: 0rem;
+      translate: 10%;
+      &::after {
+        content: "";
+        position: absolute;
+        width: 10.26081rem;
+        height: 10.60281rem;
+        top: 0rem;
+        right: 5rem;
+        z-index: 5;
+        background: $linear-light-image;
+      }
+    }
+
+    .social-network-footer {
+      display: flex;
+
+      gap: 0.75rem;
+      > div {
+        border-radius: 50%;
+        width: 2.5rem;
+        height: 2.5rem;
+        background-color: $orange-secondary;
+      }
+    }
+  }
+  @media (width < 1160px) {
+    display: flex;
+    flex-direction: column;
+
+    .container-footer {
+      display: flex;
+      flex-wrap: wrap;
+
+      .footer-col-one,
+      .footer-col-two {
+        margin-bottom: 3.19rem;
+        width: 50%;
+      }
+
+      .footer-col-three {
+        width: 100%;
+      }
+      .footer-col-four {
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+
+        .img-light-footer {
+          display: none;
+        }
+        .social-network-footer {
+          margin: 2rem;
+        }
+      }
+    }
+  }
+}
