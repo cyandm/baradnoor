@@ -12,44 +12,16 @@
         <section class="posts-content">
 
                 <?php 
-                    if($posts_in_home_page->have_posts()) :
+                    if($posts_in_home_page->have_posts()) {
 
-                        while($posts_in_home_page->have_posts()) :
+                        while($posts_in_home_page->have_posts()) {
 
                             $posts_in_home_page->the_post();
-                            ?>
+                           get_template_part('/templates/card/card' , 'blog');
 
-                                <div class="card-post">
-                                    <div class="image-post-card">
-                                        <?php the_post_thumbnail(); ?>
-                                    </div>
+                        }
 
-                                    <div class="title-post-card">
-                                        <?php the_title();?>
-                                    </div>
-                                    <div>
-                                        <div class="author-post-card">
-                                            <?php the_author(); ?>
-                                        </div>
-
-                                        <div class="date-post-card">
-                                            <?php the_date();?>
-                                        </div>
-
-                                        <div class="button-post-card">
-                                            <a>salam</a>
-                                        </div>
-                                    </div>
-                                    <br>
-                                </div>
-
-
-
-                            <?php 
-
-                        endwhile;
-
-                    endif;
+                    }
                 ?>
 
         </section>

@@ -1,0 +1,40 @@
+.posts-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  .card-post {
+    display: flex;
+    padding: 1.25rem;
+    flex-direction: column;
+    gap: 0.625rem;
+    flex: 1 0 0;
+    border: 0.1rem solid $accent-blue;
+    border-radius: 1.625rem;
+    background: $white-8percent;
+    backdrop-filter: blur(12px);
+
+    .image-post-card > img {
+      flex: 1 0 0;
+      align-self: stretch;
+      border-radius: 1.25rem;
+    }
+    .title-post-card {
+      font-size: 1.5rem;
+      font-weight: 300;
+    }
+    .author-date-button-postcard-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .author-post-card {
+        color: $primary-gray;
+      }
+      .date-post-card {
+        color: $primary-gray;
+      }
+      .button-post-card {
+      }
+    }
+  }
+}
