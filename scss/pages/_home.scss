@@ -1,40 +1,38 @@
 .posts-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
   .card-post {
-    display: flex;
-    padding: 1.25rem;
-    flex-direction: column;
-    gap: 0.625rem;
-    flex: 1 0 0;
-    border: 0.1rem solid $accent-blue;
-    border-radius: 1.625rem;
-    background: $white-8percent;
-    backdrop-filter: blur(12px);
+    @media (width >= 800px) {
+      &:first-child {
+        display: flex;
+        flex-direction: row;
+        flex-basis: 100%;
+        .image-post-card {
+          width: 50%;
+          flex-basis: 0;
+          > img {
+            height: 100%;
+          }
+        }
 
-    .image-post-card > img {
-      flex: 1 0 0;
-      align-self: stretch;
-      border-radius: 1.25rem;
+        p {
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+        }
+
+        .container-title-expert-author-date-button {
+          width: 50%;
+          .expert-post-card {
+            display: block;
+          }
+        }
+      }
     }
-    .title-post-card {
-      font-size: 1.5rem;
-      font-weight: 300;
-    }
-    .author-date-button-postcard-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      .author-post-card {
-        color: $primary-gray;
-      }
-      .date-post-card {
-        color: $primary-gray;
-      }
-      .button-post-card {
-      }
+
+    .expert-post-card {
+      padding: 1rem;
+      display: none;
+      color: $primary-gray;
     }
   }
 }

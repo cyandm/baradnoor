@@ -9,10 +9,16 @@ body {
   color: $white-color;
   font-size: 1rem;
   background-color: $primary-black;
+  overflow-x: hidden;
 }
 
 ul {
   list-style: none;
+  li {
+    a {
+      color: $white-color;
+    }
+  }
 }
 
 a {
@@ -22,4 +28,7 @@ a {
 img {
   width: 100%;
   height: auto;
+}
+p {
+  text-align: justify;
 }

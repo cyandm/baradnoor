@@ -1,0 +1,68 @@
+.posts-content {
+  display: flex;
+  padding: 2rem;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 1rem;
+  .card-post {
+    min-width: 25rem;
+    display: flex;
+    padding: 1.25rem;
+    flex-direction: column;
+    gap: 0.625rem;
+    flex: 1 0 0;
+    border-radius: 1.625rem;
+    background: $search-color;
+
+    @media (width<= 450px) {
+      min-width: 100%;
+    }
+
+    .image-post-card {
+      flex: 1;
+      flex-basis: 22%;
+      img {
+        border-radius: 1.25rem;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .container-title-expert-author-date-button {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .title-post-card {
+        font-size: 1.5rem;
+        font-weight: 300;
+        margin-bottom: 1rem;
+      }
+    }
+
+    .author-date-button-postcard-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      .author-date-sction {
+        display: flex;
+        margin-left: 1rem;
+        color: $primary-gray;
+        font-size: 0.75rem;
+        min-width: 50%;
+        .author-post-card {
+          margin-left: 1rem;
+        }
+        .date-post-card {
+          margin-left: 1rem;
+        }
+      }
+
+      .button-post-card-container {
+        flex: 1;
+        min-width: 10rem;
+      }
+    }
+  }
+}

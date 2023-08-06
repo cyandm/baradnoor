@@ -17,3 +17,24 @@
     pointer-events: all;
   }
 }
+
+.border-gradient {
+  isolation: isolate;
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: $linear-border;
+    z-index: -2;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    z-index: -1;
+    background-color: inherit;
+  }
+}
