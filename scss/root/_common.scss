@@ -38,3 +38,24 @@
     background-color: inherit;
   }
 }
+
+.border-gradient-orange {
+  isolation: isolate;
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: $linear-orange;
+    z-index: -2;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    z-index: -1;
+    background-color: inherit;
+  }
+}

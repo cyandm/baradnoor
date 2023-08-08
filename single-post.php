@@ -3,6 +3,10 @@
 <?php
 $author_name = get_the_author_meta('display_name', get_post_field('post_author', get_the_ID()));
 
+
+$post_id = get_queried_object_id();
+
+
 $current_post_cats_id = [];
 foreach (get_the_category() as $cat) {
     array_push($current_post_cats_id, $cat->term_id);
@@ -17,6 +21,8 @@ $favorite_blog = new WP_Query([
 
 ?>
 <main class="container">
+
+    <!-- desktop -->
     <div class="page-single-post">
         <div class="bread-crumb-single-blog">
             <span><a href="#">مقالات</a></span>
@@ -85,16 +91,94 @@ $favorite_blog = new WP_Query([
                     <?= get_the_content() ?>
                 </div>
                 <div class="count-of-comment-text-and-button-comment-single-post">
-                    <div class="count-of-comment-and-text">
-                        <div><span><?php echo get_comments_number() ?> دیدگاه </span></div>
-                        <span>شما هم توی این بحث شرکت کنید</span>
+
+                    <div class="blog-comments">
+                        <div class="single-comment-number">
+                            <h6><span> <?php echo get_comments_number($post_id); ?></span>دیدگاه </h6>
+                        </div>
+                        <?php comments_template(); ?>
                     </div>
-                    <div class="button-send-comment button-post-card"><a href="#"> ارسال دیدگاه</a></div>
-                </div>
-                <div>
-                    <!-- comment section -->
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- mobile -->
+    <div class="page-single-post-mobile">
+        <div class="bread-crumb-single-blog-mobile">
+            <span><a href="#">مقالات</a></span>
+            <span> > </span>
+            <span> <?php the_title() ?> </span>
+        </div>
+        <div class="single-post-content-mobile">
+            <div class="container-search-category-mobile">
+                <div class="category-blog-mobile  border-gradient">
+                    <select>
+                        <option>
+                            <?php wp_list_categories(
+                                [
+                                    'orderby' => 'id',
+                                    'hide_empty' => false,
+                                    'title_li' => "",
+                                    'current_category'    => 1
+                                ]
+                            ) ?>
+                        </option>
+                    </select>
+                </div>
+
+                <div class="search-in-single-post-mobile border-gradient">
+                    <input class="search-box-in-single-post-mobile" type="search" placeholder="جستجو در مقالات" />
+                </div>
+
+
+            </div>
+
+            <div class="container-image-text">
+                <div class="img-single-blog">
+                    <?= wp_get_attachment_image(get_post_thumbnail_id(), 'full', false, ['class' => 'feature-image']) ?>
+                </div>
+                <div class="content-of-title-author-date-single-post">
+                    <div class="title-single-blog"><?= get_the_title() ?></div>
+                    <div class="author-and-date-single-post">
+                        <div class="author-single-blog"><?= $author_name ?></div>
+                        <div class="date-single-blog"><?= get_the_date() ?></div>
+                    </div>
+                </div>
+                <div class="expert-single-blog">
+                    <?= get_the_content() ?>
+                </div>
+                <div class="count-of-comment-text-and-button-comment-single-post">
+
+                    <div class="blog-comments">
+                        <div class="single-comment-number">
+                            <h6><span> <?php echo get_comments_number($post_id); ?></span>دیدگاه </h6>
+                        </div>
+                        <?php comments_template(); ?>
+                    </div>
+                </div>
+            </div>
+            <?php
+            if ($favorite_blog->have_posts()) : ?>
+                <div class="favorite-blog">
+                    <span class="may-you-like">شاید بپسندید</span>
+                    <div class="posts-content">
+
+                        <?php
+                        while ($favorite_blog->have_posts()) {
+                            $favorite_blog->the_post();
+
+                            get_template_part('/templates/card/card', 'blog');
+                        }
+                        ?>
+                    </div>
+
+                    <?php wp_reset_postdata() ?>
+                </div>
+
+            <?php endif; ?>
+
+
         </div>
     </div>
 </main>

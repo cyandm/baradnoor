@@ -2,7 +2,7 @@
 
 /****************************** Required Files */
 require_once(__DIR__ . '/inc/classes/cyn-register.php');
-
+require_once(__DIR__ . '/inc/classes/cyn-general.php');
 
 /***************************** User Login / Logut */
 function cyn_logout_user()
@@ -60,3 +60,5 @@ add_action('init', 'cyn_theme_init');
 
 /***************************** Instance Classes */
 $cyn_register = new cyn_register();
+
+$cyn_general = new cyn_general();
