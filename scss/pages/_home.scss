@@ -1,38 +1,40 @@
-.posts-content {
-  .card-post {
-    @media (width >= 800px) {
-      &:first-child {
-        display: flex;
-        flex-direction: row;
-        flex-basis: 100%;
-        .image-post-card {
-          width: 50%;
-          flex-basis: 0;
-          > img {
-            height: 100%;
+main.home {
+  .posts-content {
+    .card-post {
+      @media (width >= 800px) {
+        &:first-child {
+          display: flex;
+          flex-direction: row;
+          flex-basis: 100%;
+          .image-post-card {
+            width: 50%;
+            flex-basis: 0;
+            > img {
+              height: 100%;
+            }
           }
-        }
 
-        p {
-          overflow: hidden;
-          display: -webkit-box;
-          -webkit-line-clamp: 3;
-          -webkit-box-orient: vertical;
-        }
+          p {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+          }
 
-        .container-title-expert-author-date-button {
-          width: 50%;
-          .expert-post-card {
-            display: block;
+          .container-title-expert-author-date-button {
+            width: 50%;
+            .expert-post-card {
+              display: block;
+            }
           }
         }
       }
-    }
 
-    .expert-post-card {
-      padding: 1rem;
-      display: none;
-      color: $primary-gray;
+      .expert-post-card {
+        padding: 1rem;
+        display: none;
+        color: $primary-gray;
+      }
     }
   }
 }

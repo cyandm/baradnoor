@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="button-post-card-container">
-                <a href="<?= get_the_permalink(); ?>" class="button-post-card">ادامه مقاله</a>
+                <a href="<?php the_permalink(); ?>" class="button-post-card">ادامه مقاله</a>
             </div>
         </div>
     </div>

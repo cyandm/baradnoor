@@ -1,5 +1,7 @@
 <?php
+
 /****************************** Required Files */
+require_once(__DIR__ . '/inc/classes/cyn-register.php');
 
 
 /***************************** User Login / Logut */
@@ -18,12 +20,12 @@ add_filter('login_errors', function () {
 
 function cyn_enqueue_files()
 {
-    wp_enqueue_style('cyn-scss-style' , get_stylesheet_directory_uri() . '/css/normal.css');
-    wp_enqueue_style('cyn-style' , get_stylesheet_directory_uri() . '/style.css');
+    wp_enqueue_style('cyn-scss-style', get_stylesheet_directory_uri() . '/css/normal.css');
+    wp_enqueue_style('cyn-style', get_stylesheet_directory_uri() . '/style.css');
     wp_dequeue_style('wp-block-library');
 
 
-    wp_enqueue_script('cyn-js' , get_stylesheet_directory_uri() . '/js/dist/scripts.bundle.min.js' , [] , false , true );
+    wp_enqueue_script('cyn-js', get_stylesheet_directory_uri() . '/js/dist/scripts.bundle.min.js', [], false, true);
     wp_dequeue_script('global-styles');
 }
 add_action('wp_enqueue_scripts', 'cyn_enqueue_files');
@@ -51,10 +53,10 @@ add_action('after_setup_theme', 'cyn_theme_setup');
 
 function cyn_theme_init()
 {
-
+    add_filter('use_block_editor_for_post', '__return_false');
 }
 add_action('init', 'cyn_theme_init');
 
 
 /***************************** Instance Classes */
-
+$cyn_register = new cyn_register();
