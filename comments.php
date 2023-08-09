@@ -8,7 +8,7 @@ if(post_password_required()){
             'logged_in_as' => null,
             'title_reply' => "شماهم توی این بحث شرکت کنید",
             'title_reply_to' => "ارسال پاسخ به %s",
-            'comment_field' => '<div class="input-group"><i class="icon-comment"></i><textarea id="comment" name="comment" class="form-control" rows="3" maxlength="65525" placeholder="دیدگاه" required></textarea></div>',
+            'comment_field' => '<div class="input-group"><i class="icon-comment"></i><textarea id="comment" name="comment" class="form-control" rows="3" maxlength="65525" placeholder="نظرتون رو بفرمایید" required></textarea></div>',
             'id_submit' => "submit-commentform",
             'class_submit' => "btn-primary cursor-pointer",
             'name_submit' => "submit-commentform",
@@ -18,6 +18,7 @@ if(post_password_required()){
 
         )
     );
+
 
 if (have_comments()):
     ?>
