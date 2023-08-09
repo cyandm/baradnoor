@@ -1,0 +1,17 @@
+.drop-down-cat {
+  border-radius: 1rem;
+  background: $search-color;
+  padding: 0.2rem;
+  padding: 0.5rem;
+  select {
+    width: 100%;
+    background-color: $search-color;
+    outline: none;
+    border: none;
+    color: $white-color;
+    font-family: Peyda;
+    border-radius: 1rem;
+    padding-right: 1rem;
+    font-size: 1rem;
+  }
+}

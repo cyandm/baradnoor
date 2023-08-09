@@ -105,7 +105,8 @@
         border-radius: 50%;
         width: 2.5rem;
         height: 2.5rem;
-        background-color: $orange-secondary;
+        background-color: $icon-header-background;
+        backdrop-filter: blur(12px);
       }
     }
   }

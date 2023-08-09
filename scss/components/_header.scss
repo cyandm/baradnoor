@@ -272,11 +272,19 @@
         justify-content: center;
         align-items: center;
 
-        > div {
+        div {
           border-radius: 50%;
           width: 2.5rem;
           height: 2.5rem;
-          background-color: $orange-secondary;
+          background-color: $icon-header-background;
+          backdrop-filter: blur(12px);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          i {
+            color: $white-color;
+            font-size: 1.8rem;
+          }
         }
       }
     }

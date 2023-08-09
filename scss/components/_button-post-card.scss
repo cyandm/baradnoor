@@ -8,3 +8,13 @@
   background: linear-gradient(130deg, #f25c05 0%, #f21305 100%);
   color: $white-color;
 }
+
+.button-show-all-mobile {
+  width: 100%;
+  background-color: $search-color;
+  display: flex;
+  padding: 0.375rem 0rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+}

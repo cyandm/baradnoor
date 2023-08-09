@@ -113,18 +113,20 @@ $favorite_blog = new WP_Query([
         <div class="single-post-content-mobile">
             <div class="container-search-category-mobile">
                 <div class="category-blog-mobile  border-gradient">
-                    <select>
-                        <option>
-                            <?php wp_list_categories(
-                                [
-                                    'orderby' => 'id',
-                                    'hide_empty' => false,
-                                    'title_li' => "",
-                                    'current_category'    => 1
-                                ]
-                            ) ?>
-                        </option>
-                    </select>
+
+
+                    <?php wp_dropdown_categories(
+                        [
+                            'orderby' => 'id',
+                            'hide_empty' => false,
+                            'title_li' => "",
+                            'current_category'    => 1,
+                            'value_field' => 'term_id'
+
+                        ]
+                    ) ?>
+
+
                 </div>
 
                 <div class="search-in-single-post-mobile border-gradient">

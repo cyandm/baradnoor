@@ -50,9 +50,9 @@
 
 
 				<div class="social-network">
-					<div class="eitaa"></div>
-					<div class="telegram"></div>
-					<div class="instagram"></div>
+					<div class="eitaa border-gradient"><i class="icon-insta"></i></div>
+					<div class="telegram border-gradient"><i class="icon-telegram"></i></div>
+					<div class="instagram border-gradient"><i class="icon-ita"></i></div>
 				</div>
 
 			</div>

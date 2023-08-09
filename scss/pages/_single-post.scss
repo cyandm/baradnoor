@@ -384,6 +384,17 @@ main {
         .category-blog-mobile {
           border-radius: 1rem;
           background: $search-color;
+          padding: 0.2rem;
+          select {
+            width: 100%;
+            background-color: $search-color;
+            outline: none;
+            border: none;
+            color: $white-color;
+            font-family: Peyda;
+            border-radius: 1rem;
+            padding-right: 1rem;
+          }
         }
         .search-in-single-post-mobile {
           border-radius: 1rem;
