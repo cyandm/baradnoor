@@ -19,6 +19,7 @@ comment_form(
     )
 );
 
+
 if (have_comments()) :
 ?>
     <div class="comment-list" id="comment-list">
