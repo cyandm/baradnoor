@@ -12,8 +12,8 @@ if (!class_exists('cyn_register')) {
             add_action('init', [$this, 'register_inspiration_post_type']);
             add_action('init', [$this, 'cyn_add_inspiration_cat_taxonomy']);
 
-            add_action('init', [$this, 'register_fqa_post_type']);
-            add_action('init', [$this, 'cyn_add_fqa_cat_taxonomy']);
+            add_action('init', [$this, 'register_faq_post_type']);
+            add_action('init', [$this, 'cyn_add_faq_cat_taxonomy']);
         }
 
         public function register_product_post_type()
@@ -108,35 +108,35 @@ if (!class_exists('cyn_register')) {
             register_taxonomy('inspiration-cat', ['inspiration'], $args);
         }
 
-        public function register_fqa_post_type()
+        public function register_faq_post_type()
         {
-            $fqa_labels = [
+            $faq_labels = [
                 'name' => 'سوالات',
                 'singular_name' => 'سوال'
             ];
 
-            $fqa_args = [
-                'labels' => $fqa_labels,
-                'description' => 'FQA custom post type.',
+            $faq_args = [
+                'labels' => $faq_labels,
+                'description' => 'faq custom post type.',
                 'public' => true,
                 'publicly_queryable' => true,
                 'show_ui' => true,
                 'show_in_menu' => true,
                 'query_var' => true,
-                'rewrite' => array('slug' => 'fqa'),
+                'rewrite' => array('slug' => 'faq'),
                 'capability_type' => 'post',
                 'has_archive' => true,
                 'hierarchical' => false,
                 'menu_position' => 20,
                 'supports' => array('title', 'editor', 'author', 'thumbnail'),
-                'taxonomies' => array('fqa-cat', 'brand'),
+                'taxonomies' => array('faq-cat', 'brand'),
                 'show_in_rest' => true
             ];
 
-            register_post_type('fqa', $fqa_args);
+            register_post_type('faq', $faq_args);
         }
 
-        function cyn_add_fqa_cat_taxonomy()
+        function cyn_add_faq_cat_taxonomy()
         {
             $labels = [
                 'name' => 'دسته ها'
@@ -148,10 +148,10 @@ if (!class_exists('cyn_register')) {
                 'show_ui' => true,
                 'show_admin_column' => true,
                 'query_var' => true,
-                'rewrite' => ['slug' => 'fqa-cat'],
+                'rewrite' => ['slug' => 'faq-cat'],
             ];
 
-            register_taxonomy('fqa-cat', ['fqa'], $args);
+            register_taxonomy('faq-cat', ['faq'], $args);
         }
     }
 }

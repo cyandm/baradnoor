@@ -208,6 +208,7 @@ main {
                     font-weight: 400;
                     line-height: 1.5rem;
                     background-color: $search-color;
+                    resize: vertical;
 
                     &:focus-visible {
                       outline: none;
@@ -516,6 +517,7 @@ main {
                     font-weight: 400;
                     line-height: 1.5rem;
                     background-color: $search-color;
+                    resize: none;
 
                     &:focus-visible {
                       outline: none;

@@ -1,27 +1,27 @@
 <?php
-if(post_password_required()){
+if (post_password_required()) {
     return;
 }
 
-    comment_form(
-        array(
-            'logged_in_as' => null,
-            'title_reply' => "شماهم توی این بحث شرکت کنید",
-            'title_reply_to' => "ارسال پاسخ به %s",
-            'comment_field' => '<div class="input-group"><i class="icon-comment"></i><textarea id="comment" name="comment" class="form-control" rows="3" maxlength="65525" placeholder="دیدگاه" required></textarea></div>',
-            'id_submit' => "submit-commentform",
-            'class_submit' => "btn-primary cursor-pointer",
-            'name_submit' => "submit-commentform",
-            'label_submit' => "ارسال دیدگاه",
-            'submit_field' => '<div class="form-submit"><i class="icon-send"></i>%1$s %2$s</div>',
-            'comment_notes_before'=>''
+comment_form(
+    array(
+        'logged_in_as' => null,
+        'title_reply' => "شماهم توی این بحث شرکت کنید",
+        'title_reply_to' => "ارسال پاسخ به %s",
+        'comment_field' => '<div class="input-group"><i class="icon-comment"></i><textarea id="comment" name="comment" class="form-control" rows="3" maxlength="65525" placeholder="نظرتون رو بفرمایید" required></textarea></div>',
+        'id_submit' => "submit-commentform",
+        'class_submit' => "btn-primary cursor-pointer",
+        'name_submit' => "submit-commentform",
+        'label_submit' => "ارسال دیدگاه",
+        'submit_field' => '<div class="form-submit"><i class="icon-send"></i>%1$s %2$s</div>',
+        'comment_notes_before' => ''
 
-        )
-    );
+    )
+);
 
-if (have_comments()):
-    ?>
-    <div class="comment-list" id="comment-list" >
+if (have_comments()) :
+?>
+    <div class="comment-list" id="comment-list">
 
         <?php
         $list = wp_list_comments(
@@ -37,7 +37,7 @@ if (have_comments()):
                 'avatar_size'       => 32,
                 'reverse_top_level' => null,
                 'reverse_children'  => '',
-                'format'            => current_theme_supports( 'html5', 'comment-list' ) ? 'html5' : 'xhtml',
+                'format'            => current_theme_supports('html5', 'comment-list') ? 'html5' : 'xhtml',
                 'short_ping'        => true,
                 'echo'              => true,
 
@@ -45,14 +45,14 @@ if (have_comments()):
         );
         ?>
     </div>
-    <?php
-else:
-    ?>
-    <div class="comment-list" >
+<?php
+else :
+?>
+    <div class="comment-list">
 
         <p style="margin-top: 1rem;">دیدگاهی وجود ندارد.</p>
     </div>
-    <?php
+<?php
 endif;
 
 

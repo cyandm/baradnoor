@@ -1,4 +1,4 @@
-const faqButtonOpenHandler = document.querySelectorAll(".button-fqa-card");
+const faqButtonOpenHandler = document.querySelectorAll(".button-faq-card");
 
 faqButtonOpenHandler.forEach((faqButton) => {
   faqButton.addEventListener("click", () => {

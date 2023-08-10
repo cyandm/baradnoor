@@ -1,37 +1,42 @@
-.card-fqa {
+.card-faq {
   background: $search-color;
   padding: 2rem;
   border-radius: 1.625rem;
-  &.active {
-    .description-fqa-card {
-      display: block;
-    }
-  }
-
-  .title-button-fqa-card {
+  transition: 0.3s;
+  .title-button-faq-card {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    .title-fqa-card {
+    .title-faq-card {
       font-size: 1.5rem;
       font-weight: 200;
     }
-    .button-fqa-card {
+    .button-faq-card {
       background: $linear-button-orange;
       width: 3.16638rem;
       height: 3.16638rem;
       border-radius: 50%;
     }
   }
+  .description-faq-card {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
 
-  .description-fqa-card {
-    display: none;
-
+    .inner-desc {
+      overflow: hidden;
+    }
     p {
       font-size: 1rem;
       font-weight: 200;
       color: $primary-gray;
+    }
+  }
+  &.active {
+    .description-faq-card {
+      grid-template-rows: 1fr;
     }
   }
 }

@@ -22,35 +22,6 @@ main.home {
       .type-of-product-text {
         font-size: 1.5rem;
       }
-      .see-all-button {
-        font-size: 1rem;
-        position: relative;
-        isolation: isolate;
-        font-weight: 200;
-
-        &::after {
-          content: "";
-          width: 1.5rem;
-          height: 1.5rem;
-          position: absolute;
-          inset: -1px;
-          border-radius: 50%;
-          background: #4e2106;
-          z-index: -2;
-        }
-        &::before {
-          content: "";
-          width: 1.7rem;
-          height: 1.7rem;
-          position: absolute;
-          inset: -1px;
-          right: -2.5px;
-          top: -2.5px;
-          border-radius: 50%;
-          z-index: -3;
-          background: $linear-orange;
-        }
-      }
     }
     .inspiration-content {
       display: flex;
@@ -58,23 +29,6 @@ main.home {
       align-items: center;
       justify-content: center;
       gap: 0.8rem;
-      .card-inspiration {
-        flex: 1;
-        flex-basis: 49%;
-        .image-inspiration-card {
-          flex: 1 0 0;
-          opacity: 0.5;
-          transition: all 0.8s ease-in-out;
-          &:hover {
-            opacity: 1;
-          }
-          > img {
-            flex: 1 0 0;
-            align-self: stretch;
-            border-radius: 1rem;
-          }
-        }
-      }
     }
     .container-cat-product {
       display: flex;
@@ -115,22 +69,26 @@ main.home {
     }
     .image-light {
       display: flex;
-      padding: 0rem 5.625rem;
       position: relative;
       z-index: -1;
-      translate: 0 -1.5rem;
-      justify-content: center;
+      translate: 0 0rem;
+      justify-content: space-between;
       align-items: center;
+      gap: 6rem;
+      overflow-x: hidden;
       img {
         display: flex;
         justify-content: center;
         align-items: center;
       }
+      &.on-mobile-show {
+        translate: 0rem -3rem;
+      }
       &::after {
         content: "";
         position: absolute;
         width: 100%;
-        height: 10rem;
+        height: 12rem;
         top: 0rem;
         right: 0rem;
         z-index: 5;
@@ -175,11 +133,11 @@ main.home {
         }
       }
     }
-    .container-cat-fqa {
+    .container-cat-faq {
       display: flex;
       justify-content: center;
       width: 100%;
-      .category-fqa {
+      .category-faq {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -205,19 +163,44 @@ main.home {
         }
       }
     }
-    .fqa-content {
+    .faq-content {
       display: flex;
       flex-direction: column;
       gap: 1rem;
     }
-    .only-mobile {
-      @media (width<768px) {
-        display: none;
+
+    .button-exer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      > div {
+        background-color: $accent-blue;
+        width: 2rem;
+        height: 2rem;
       }
     }
-    .on-mobile-show {
-      @media (width>=768px) {
+    .div-container-exer {
+      width: 100%;
+      background-color: $accent-blue;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      > div {
         display: none;
+        &.active {
+          display: block;
+        }
+      }
+      .div1 {
+        background-color: rgb(51, 192, 235);
+      }
+      .div2 {
+        background-color: rgb(209, 40, 181);
+      }
+      .div3 {
+        background-color: rgb(226, 207, 30);
       }
     }
   }

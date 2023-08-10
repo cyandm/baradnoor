@@ -8,9 +8,14 @@
   flex-basis: 20%;
   background-color: $search-color;
   min-width: 15rem;
+  transition: all 0.5s ease-in-out;
   &:hover {
     @extend .border-gradient-orange;
     background-color: $background-brown;
+    .button-product-card-container {
+      @extend .button-hover;
+      @extend .border-gradient-orange-red;
+    }
   }
   .image-product-card {
   }

@@ -1,2 +1,3 @@
 import "./modules/header";
-import "./modules/fqa";
+import "./modules/faq";
+import "./modules/exer";

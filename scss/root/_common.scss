@@ -59,3 +59,36 @@
     background-color: inherit;
   }
 }
+
+.border-gradient-orange-red {
+  isolation: isolate;
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: $linear-button-orange;
+    z-index: -2;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    z-index: -1;
+    background-color: inherit;
+  }
+}
+
+.only-desktop {
+  @media (width < 768px) {
+    display: none !important;
+  }
+}
+
+.on-mobile-show {
+  @media (width > 768px) {
+    display: none !important;
+  }
+}
