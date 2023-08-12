@@ -15,8 +15,8 @@ $inspiration_in_home_page = new WP_Query(
         'posts_per_page' => 4, 'tax_query' => [
             [
                 'taxonomy' => 'inspiration-cat',
-                'field' => 'term_id',
-                'terms' => '21'
+                'field' => 'slug',
+                'terms' => 'جدیدترین-ها'
             ]
         ]
     ]
