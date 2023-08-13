@@ -2,42 +2,90 @@ main.inspiration {
   padding-inline: 1rem;
   display: flex;
   flex-direction: column;
+
   gap: 0.88rem;
-  section {
+  .title-inspiration-posts {
+    font-size: 2rem;
+  }
+  .inspiration-content {
     display: flex;
-    flex-direction: column;
     gap: 1rem;
-    .container-inspiration-text {
-      display: flex;
-      padding: 0rem 0.625rem;
-      justify-content: space-between;
-      align-items: center;
-      .inspiration-text {
-        font-size: 2.125rem;
-        font-weight: 200;
+    flex-wrap: wrap;
+    .card-inpiration {
+      flex: 1;
+      flex-basis: 60%;
+      .image-inspiration-card {
+        flex: 1 0 0;
+        opacity: 0.5;
+        transition: all 0.8s ease-in-out;
+        &:hover {
+          opacity: 1;
+        }
+        > img {
+          flex: 1 0 0;
+          align-self: stretch;
+          border-radius: 1rem;
+          border-radius: 1.6rem;
+        }
       }
     }
-    .inspiration-content {
+  }
+  .inspiration-cat-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    .card-inspiration-two {
+      position: relative;
       display: flex;
       flex-wrap: wrap;
+      justify-content: space-around;
       align-items: center;
-      justify-content: center;
-      gap: 0.8rem;
-      .card-inspiration {
-        flex: 1;
-        flex-basis: 49%;
-        .image-inspiration-card {
-          flex: 1 0 0;
-          opacity: 0.5;
-          transition: all 0.8s ease-in-out;
+      flex: 1;
+      transition: all 0.4s ease-in-out;
+      &:hover {
+        .btn-inspiration-see-post {
+          display: flex;
+        }
+      }
+      .image-inspiration-card {
+        width: 100%;
+        img {
+          border-radius: 1.6rem;
+          transition: all 0.4s ease-in-out;
+          opacity: 1;
           &:hover {
-            opacity: 1;
+            opacity: 0.5;
           }
-          > img {
-            flex: 1 0 0;
-            align-self: stretch;
-            border-radius: 1rem;
-          }
+        }
+      }
+    }
+    .btn-inspiration-see-post {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-weight: 200;
+      padding: 0.5rem 3.75rem;
+      justify-content: center;
+      align-items: center;
+      border-radius: 1.25rem;
+      pointer-events: none;
+      font-size: 1rem;
+      translate: -50% -50%;
+      background: linear-gradient(130deg, #f25c05 0%, #f21305 100%);
+      width: 40%;
+      a {
+        color: $white-color;
+      }
+    }
+  }
+  @media (width<830px) {
+    .inspiration-cat-group {
+      overflow-x: scroll;
+      width: 100%;
+      .card-inspiration-two {
+        .image-inspiration-card {
+          min-width: 20rem;
         }
       }
     }

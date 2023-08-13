@@ -1,0 +1,132 @@
+main.contact-us-page {
+  padding-block: 3rem;
+  position: relative;
+
+  .container {
+  }
+
+  .contact-us {
+    padding-inline: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 40rem;
+    position: relative;
+    z-index: 9;
+    .contact-us-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+      .question-text {
+        color: $primary-gray;
+        font-size: 0.8rem;
+        margin-block-end: 1rem;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+
+        .container-border {
+          border-radius: 1.25rem;
+
+          .text-area-contact-us {
+            display: flex;
+            align-items: center;
+            background: $search-color;
+            outline: none;
+            border: none;
+            border-radius: 1.25rem;
+            resize: none;
+            padding: 0.75rem 1rem 0.75rem 1.25rem;
+            width: 100%;
+            font-family: "Peyda";
+            color: $silver-primary;
+          }
+          input {
+            background-color: $search-color;
+            outline: none;
+            border: none;
+            border-radius: 1.25rem;
+            padding: 0.75rem 1rem 0.75rem 1.25rem;
+            width: 100%;
+            color: $silver-primary;
+            font-family: "Peyda";
+          }
+        }
+        .btn-contact-us {
+          padding: 0.5rem 2.5rem;
+          display: flex;
+          font-weight: 200;
+          justify-content: center;
+          align-items: center;
+          border-radius: 1.25rem;
+          background: linear-gradient(130deg, #f25c05 0%, #f21305 100%);
+          width: 30%;
+          align-self: flex-end;
+        }
+      }
+    }
+  }
+  .image-light-contact-us {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    left: 0;
+    top: 0;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 30%;
+      height: 100%;
+      top: 0rem;
+      right: 0rem;
+      z-index: 5;
+      background: $linear-contact-image;
+    }
+    > img {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+@media (width < 950px) {
+  main.contact-us-page {
+    flex-direction: column-reverse;
+    .container {
+      display: flex;
+      flex-direction: column-reverse;
+
+      .contact-us {
+        max-width: 100%;
+        .contact-us-content {
+          form {
+            .btn-contact-us {
+              width: 100%;
+            }
+          }
+        }
+      }
+      .image-light-contact-us {
+        width: 100%;
+        position: relative;
+
+        &::after {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          z-index: 5;
+          background: $linear-contact-image-mobile;
+        }
+      }
+    }
+  }
+}

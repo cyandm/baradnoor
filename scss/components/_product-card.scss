@@ -20,6 +20,10 @@
   .image-product-card {
   }
   .title-product-card {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
   }
   .code-product-card {
     display: flex;

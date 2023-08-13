@@ -20,7 +20,7 @@ $favorite_blog = new WP_Query([
 ]);
 
 ?>
-<main class="container">
+<main class="container single-post-page">
 
     <!-- desktop -->
     <div class="page-single-post">

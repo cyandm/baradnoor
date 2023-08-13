@@ -4,12 +4,12 @@
   font-style: normal;
   font-weight: 200;
   line-height: 2.125rem;
-
+  padding-inline: 2rem;
   .container-footer {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin: 3rem 3.75rem;
+    margin: 3rem 0rem;
     flex: 1 1 auto;
 
     ul {

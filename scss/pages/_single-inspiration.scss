@@ -1,0 +1,22 @@
+main.single-inspiration {
+  .page-single-inspiration {
+    padding-inline: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    .bread-crumb-single-inspiration {
+      display: flex;
+      padding: 0rem 0.625rem;
+      align-items: center;
+      gap: 0.5rem;
+      > span {
+        a {
+          color: $primary-gray;
+        }
+        &:nth-child(2) {
+          color: $primary-gray;
+        }
+      }
+    }
+  }
+}

@@ -1,11 +1,13 @@
-<?php get_header();?>
+<?php get_header(); ?>
 <main class="container page-notfound">
-    <section> 
+    <section>
         <div class="not-found-content">
-            <div class="text404">404</div>
-            <div>صفحه مورد نظر شما یافت نشد</div>
-            <img src="<?= get_stylesheet_directory_uri() ?>/imgs/404.png" alt="404">
-            <div class="button-post-card"><a href="#">بازگشت به صفحه اصلی</a></div>  
+            <div class="text-and-image-not-found">
+                <img src="<?= get_stylesheet_directory_uri() ?>/imgs/404-image.svg" alt="404">
+                <div class="text-not-found">صفحه مورد نظر شما یافت نشد</div>
+            </div>
+            <img src="<?= get_stylesheet_directory_uri() ?>/imgs/404.svg" alt="404" class="image-404">
+            <div class="button-post-card btn-404"><a href="/">بازگشت به صفحه اصلی</a></div>
         </div>
     </section>
 </main>

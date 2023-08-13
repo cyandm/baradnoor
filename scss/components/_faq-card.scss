@@ -13,7 +13,7 @@
       font-weight: 200;
     }
     .button-faq-card {
-      background: $linear-button-orange;
+      background: $gray;
       width: 3.16638rem;
       height: 3.16638rem;
       border-radius: 50%;
@@ -37,6 +37,14 @@
   &.active {
     .description-faq-card {
       grid-template-rows: 1fr;
+    }
+    .title-button-faq-card {
+      .button-faq-card {
+        background: $linear-button-orange;
+        width: 3.16638rem;
+        height: 3.16638rem;
+        border-radius: 50%;
+      }
     }
   }
 }
