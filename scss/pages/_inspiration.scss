@@ -11,51 +11,14 @@ main.inspiration {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
-    .card-inpiration {
-      flex: 1;
-      flex-basis: 60%;
-      .image-inspiration-card {
-        flex: 1 0 0;
-        opacity: 0.5;
-        transition: all 0.8s ease-in-out;
-        &:hover {
-          opacity: 1;
-        }
-        > img {
-          flex: 1 0 0;
-          align-self: stretch;
-          border-radius: 1rem;
-          border-radius: 1.6rem;
-        }
-      }
-    }
   }
   .inspiration-cat-group {
     display: flex;
-    flex-wrap: wrap;
     gap: 1rem;
     .card-inspiration-two {
-      position: relative;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      align-items: center;
-      flex: 1;
-      transition: all 0.4s ease-in-out;
       &:hover {
         .btn-inspiration-see-post {
           display: flex;
-        }
-      }
-      .image-inspiration-card {
-        width: 100%;
-        img {
-          border-radius: 1.6rem;
-          transition: all 0.4s ease-in-out;
-          opacity: 1;
-          &:hover {
-            opacity: 0.5;
-          }
         }
       }
     }
@@ -82,11 +45,21 @@ main.inspiration {
   @media (width<830px) {
     .inspiration-cat-group {
       overflow-x: scroll;
+      &::-webkit-scrollbar {
+        width: 0rem;
+      }
       width: 100%;
       .card-inspiration-two {
         .image-inspiration-card {
           min-width: 20rem;
         }
+      }
+      .btn-inspiration-see-post {
+        display: flex;
+        translate: -50% 210%;
+        background: $white-8percent;
+        backdrop-filter: blur(12px);
+        width: 100%;
       }
     }
   }

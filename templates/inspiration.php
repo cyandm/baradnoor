@@ -37,7 +37,6 @@ $inspiration_in_single = new WP_Query(
                 $inspiration_in_single->the_post();
                 get_template_part('/templates/card/card', 'inspiration', ['card_type' => '1']);
             }
-
             ?>
         </div>
 

@@ -1,6 +1,12 @@
 <?php get_header() ?>
+<?php
+
+/*Template Name: Home Page */ ?>
+
 
 <?php
+
+
 $posts_in_home_page = new WP_Query(
     [
         'post_type' => 'post',

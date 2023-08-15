@@ -44,6 +44,12 @@
           }
         }
       }
+      span {
+        display: block;
+        a {
+          color: $accent-blue;
+        }
+      }
     }
 
     .footer-col-three {

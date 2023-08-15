@@ -1,17 +1,22 @@
+<?php
+
+
+isset($args['product_id']) ? $product_id = $args['product_id'] : $product_id = get_the_ID();
+
+?>
 <div class="card-product border-gradient">
     <div class="image-product-card">
-        <?php the_post_thumbnail(); ?>
+        <a href="<?php echo get_the_permalink($product_id); ?>"><?php echo get_the_post_thumbnail($product_id); ?></a>
     </div>
     <div class="title-product-card">
-        <?php the_title(); ?>
+        <?php echo get_the_title($product_id); ?>
     </div>
     <div class="code-product-card">
         کد کالا :
-        <?php the_excerpt(); ?>
+        <?php echo get_the_excerpt($product_id); ?>
     </div>
 
     <div class="button-product-card-container button-post-card">
-        <a href="<?php the_permalink(); ?>" class="button-product-card">مشاهده محصول</a>
-        <i class=""></i>
+        <a href="<?php echo get_the_permalink($product_id); ?>" class="button-product-card">مشاهده محصول</a>
     </div>
 </div>

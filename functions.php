@@ -1,8 +1,15 @@
 <?php
 
+/***************************** ACF Register */
+define('MY_ACF_PATH', get_stylesheet_directory() . '/inc/acf/');
+define('MY_ACF_URL', get_stylesheet_directory_uri() . '/inc/acf/');
+include_once(MY_ACF_PATH . 'acf.php');
+
+
 /****************************** Required Files */
 require_once(__DIR__ . '/inc/classes/cyn-register.php');
 require_once(__DIR__ . '/inc/classes/cyn-general.php');
+require_once(__DIR__ . '/inc/classes/cyn-acf.php');
 
 /***************************** User Login / Logut */
 function cyn_logout_user()
@@ -62,3 +69,5 @@ add_action('init', 'cyn_theme_init');
 $cyn_register = new cyn_register();
 
 $cyn_general = new cyn_general();
+
+$cyn_acf = new cyn_acf();

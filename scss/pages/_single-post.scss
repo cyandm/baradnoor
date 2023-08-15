@@ -377,6 +377,10 @@ main.single-post-page {
       display: flex;
       flex-direction: column;
       gap: 2rem;
+      .bread-crumb-single-blog-mobile {
+        display: flex;
+        gap: 1rem;
+      }
       .container-search-category-mobile {
         display: flex;
 

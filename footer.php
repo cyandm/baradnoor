@@ -1,3 +1,11 @@
+<?php
+$pageID = get_option('page_on_front');
+$telephone_num = get_field('telephone_number', $pageID);
+$telephone_num_two = get_field('telephone_number_two', $pageID);
+
+?>
+
+
 <footer class="site-footer container">
     <div class="container-footer">
         <div class="footer-col-one">
@@ -5,6 +13,26 @@
         </div>
         <div class="footer-col-two">
             <?php wp_nav_menu(['theme_location' => 'footer-menu-two']) ?>
+            <?php
+            if ($telephone_num != null) : ?>
+
+                <span class="phone-numbers">
+                    <a href="tel: <?= $telephone_num ?>">
+                        <?php echo $telephone_num; ?>
+                    </a>
+                </span>
+
+            <?php endif; ?>
+            <?php
+            if ($telephone_num_two != null) : ?>
+
+                <span class="phone-numbers">
+                    <a href="tel: <?= $telephone_num_two ?>">
+                        <?php echo $telephone_num_two; ?>
+                    </a>
+                </span>
+
+            <?php endif; ?>
         </div>
         <div class="footer-col-three">
             <ul>

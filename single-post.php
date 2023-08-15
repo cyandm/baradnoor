@@ -28,7 +28,6 @@ $favorite_blog = new WP_Query([
             <span><a href="#">مقالات</a></span>
             <span> > </span>
             <span> <?php the_title() ?> </span>
-
         </div>
 
         <div class="single-post-content">
