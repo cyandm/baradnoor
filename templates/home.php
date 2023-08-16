@@ -46,6 +46,7 @@ $faq_in_home_page = new WP_Query(
 
 ?>
 <main class="container home">
+
     <?php
     if ($inspiration_in_home_page->have_posts()) : ?>
         <section>

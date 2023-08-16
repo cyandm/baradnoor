@@ -27,11 +27,13 @@ add_filter('login_errors', function () {
 
 function cyn_enqueue_files()
 {
+    wp_enqueue_style('cyn-swiper-css', get_stylesheet_directory_uri() . '/css/libs/swiper-bundle.min.css');
     wp_enqueue_style('cyn-scss-style', get_stylesheet_directory_uri() . '/css/normal.css');
     wp_enqueue_style('cyn-style', get_stylesheet_directory_uri() . '/style.css');
     wp_dequeue_style('wp-block-library');
 
 
+    wp_enqueue_script('cyn-swiper-js', get_stylesheet_directory_uri() . '/js/libs/swiper-bundle.min.js', [], false, true);
     wp_enqueue_script('cyn-js', get_stylesheet_directory_uri() . '/js/dist/scripts.bundle.min.js', [], false, true);
     wp_dequeue_script('global-styles');
 }

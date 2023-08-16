@@ -33,3 +33,15 @@ $linear-contact-image-mobile: linear-gradient(
 );
 
 $gray: #2c2c2c;
+
+/*********************************************/
+.test {
+  background-color: #c1c1c1;
+
+  .swiper-slide {
+    min-height: 10rem;
+    display: grid;
+    place-content: center;
+    background: red;
+  }
+}

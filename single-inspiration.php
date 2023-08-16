@@ -56,8 +56,6 @@ $related_products = get_field('product_object');
             </div>
         <?php endif; ?>
 
-
-
     </div>
 </main>
 <?php get_footer() ?>
