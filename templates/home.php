@@ -5,7 +5,7 @@
 
 
 <?php
-
+$i = 0;
 
 $posts_in_home_page = new WP_Query(
     [
@@ -36,14 +36,32 @@ $product_in_home_page = new WP_Query(
 );
 
 
+
 $faq_in_home_page = new WP_Query(
     [
         'post_type' => 'faq',
-        'posts_per_page' => 5
+        'posts_per_page' => 5, 'tax_query' => [
+            [
+                'taxonomy' => 'faq-cat',
+                'field' => 'slug',
+                'terms' => 'سوالات-کلی'
+            ]
+        ]
     ]
 );
 
-
+$faq_in_home_page_two = new WP_Query(
+    [
+        'post_type' => 'faq',
+        'posts_per_page' => 5, 'tax_query' => [
+            [
+                'taxonomy' => 'faq-cat',
+                'field' => 'slug',
+                'terms' => 'سوالات-فنی-تر'
+            ]
+        ]
+    ]
+);
 ?>
 <main class="container home">
 
@@ -188,17 +206,25 @@ $faq_in_home_page = new WP_Query(
                 <div class="see-all-button only-desktop "><a href="#">تماس با ما </a></div>
             </div>
             <div class="container-cat-faq only-desktop">
-                <ul class="category-faq border-gradient">
-                    <?php wp_list_categories(
-                        [
-                            'taxonomy' => 'faq-cat',
-                            'orderby' => 'id',
-                            'hide_empty' => false,
-                            'title_li' => "",
-                            'current_category'    => 1
-                        ]
-                    ) ?>
-                </ul>
+                <div class="category-faq border-gradient">
+                    <?php
+
+                    $cats = get_categories([
+                        'taxonomy' => 'faq-cat',
+                        'orderby' => 'id', 'current_category'    => 1
+
+                    ]);
+
+                    foreach ($cats as $cat) {
+                        // var_dump($cat);
+                        $i = $i + 1;
+                        echo "<div data-tab='$i' class='cat-faq ";
+                        if ($i === 1) echo 'current-cat';
+                        echo  " ' >$cat->name</div>";
+                    }
+
+                    ?>
+                </div>
             </div>
             <div class="container-cat-faq border-gradient on-mobile-show drop-down-cat">
                 <?php wp_dropdown_categories(
@@ -213,7 +239,7 @@ $faq_in_home_page = new WP_Query(
                     ]
                 ) ?>
             </div>
-            <div class="faq-content">
+            <div class="faq-content show" data-tab='1'>
                 <?php
                 while ($faq_in_home_page->have_posts()) {
 
@@ -223,7 +249,19 @@ $faq_in_home_page = new WP_Query(
 
                 ?>
             </div>
-            <div class="button-show-all-mobile on-mobile-show">
+
+            <div class="faq-content" data-tab='2'>
+                <?php
+                while ($faq_in_home_page_two->have_posts()) {
+
+                    $faq_in_home_page_two->the_post();
+                    get_template_part('/templates/card/card', 'faq');
+                }
+
+                ?>
+            </div>
+
+            <div class=" button-show-all-mobile on-mobile-show">
                 <a href="#">تماس با ما</a>
             </div>
         </section>
@@ -237,7 +275,7 @@ $faq_in_home_page = new WP_Query(
             <div data-tab="3" class="button"></div>
         </div>
         <div class="div-container-exer">
-            <div data-tab="1" class="div">div 1</div>
+            <div data-tab="1" class="div active">div 1</div>
             <div data-tab="2" class="div">div 2</div>
             <div data-tab="3" class="div">div 3</div>
         </div>

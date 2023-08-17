@@ -1,4 +1,7 @@
 .card-faq {
+  &.show {
+    display: block;
+  }
   background: $search-color;
   padding: 2rem;
   border-radius: 1.625rem;

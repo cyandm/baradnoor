@@ -145,20 +145,17 @@ main.home {
         border-radius: 1.625rem;
         background-color: $search-color;
         padding: 0.75rem 1.5rem;
-
-        li {
+        .cat-faq {
           flex: 1 1 auto;
           border-radius: 1.25rem;
           padding: 0 1rem;
           display: flex;
           justify-content: center;
+          cursor: pointer;
           &.current-cat {
             @extend .border-gradient-orange;
             background-color: $primary-brown;
             border-radius: 1.25rem;
-            a {
-              padding: 0;
-            }
           }
         }
       }
@@ -167,6 +164,11 @@ main.home {
       display: flex;
       flex-direction: column;
       gap: 1rem;
+
+      display: none;
+      &.show {
+        display: block;
+      }
     }
 
     .button-exer {

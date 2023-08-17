@@ -129,6 +129,10 @@ main.single-inspiration {
               background: $white-8percent;
               backdrop-filter: blur(12px);
               width: 100%;
+              translate: unset;
+              top: unset;
+              left: unset;
+              bottom: 0rem;
             }
           }
         }

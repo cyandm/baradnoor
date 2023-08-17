@@ -26,6 +26,7 @@ $posts_in_slider = new WP_Query(
 
 <main class="blog-page">
     <div class="blog-page-content">
+
         <div class="image-and-slider-blogs">
             <div class="image-blogs-container">
                 <img src="<?php echo get_stylesheet_directory_uri() . '/imgs/blog-image.svg'  ?>" />
@@ -35,8 +36,8 @@ $posts_in_slider = new WP_Query(
 
             <?php
             if ($posts_in_slider->have_posts()) : ?>
-                <div class="slider-blog  container border-gradient">
-                    <div class="swiper mySwiper" id="swiperSlideBlog">
+                <div class="slider-blog container">
+                    <div class="swiper border-gradient mySwiper" id="swiperSlideBlog">
                         <div class="swiper-wrapper">
                             <?php
                             while ($posts_in_slider->have_posts()) {
@@ -45,11 +46,10 @@ $posts_in_slider = new WP_Query(
                             }
                             ?>
                         </div>
-                        <div class="swiper-pagination"></div>
-
 
                     </div>
 
+                    <div class="swiper-pagination"></div>
                 </div>
             <?php
             endif;
