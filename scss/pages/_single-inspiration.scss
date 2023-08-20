@@ -39,64 +39,6 @@ main.single-inspiration {
       }
     }
 
-    .worked-examples-inspiration {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      .worked-examples-title {
-        font-size: 1.5rem;
-      }
-      .inspiration-worked-content {
-        gap: 1rem;
-        display: flex;
-        flex-wrap: wrap;
-        .card-inspiration-two {
-          position: relative;
-          display: flex;
-          flex-wrap: wrap;
-          flex: 1;
-          transition: all 0.4s ease-in-out;
-          &:hover {
-            .btn-inspiration-see-post {
-              display: flex;
-            }
-          }
-          .image-inspiration-card {
-            min-width: 17rem;
-            flex: 1;
-            img {
-              border-radius: 1.5rem;
-              transition: all 0.4s ease-in-out;
-              opacity: 1;
-              &:hover {
-                opacity: 0.5;
-              }
-            }
-          }
-
-          .btn-inspiration-see-post {
-            display: none;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            font-weight: 200;
-            padding: 0.5rem 3.75rem;
-            justify-content: center;
-            align-items: center;
-            border-radius: 1.25rem;
-            pointer-events: none;
-            font-size: 1rem;
-            translate: -50% -50%;
-            background: linear-gradient(130deg, #f25c05 0%, #f21305 100%);
-            width: 40%;
-            a {
-              color: $white-color;
-            }
-          }
-        }
-      }
-    }
-
     .related-product-for-inspiration {
       display: flex;
       flex-direction: column;
