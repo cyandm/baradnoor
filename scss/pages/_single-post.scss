@@ -12,7 +12,7 @@ main.single-post-page {
       padding: 0rem 0.625rem;
       align-items: center;
       gap: 0.5rem;
-      > span {
+      span {
         a {
           color: $primary-gray;
         }
@@ -372,15 +372,26 @@ main.single-post-page {
     @media (width > 1270px) {
       display: none;
     }
-
+    .bread-crumb-single-blog-mobile {
+      display: flex;
+      gap: 1rem;
+      padding: 0rem 0.625rem;
+      align-items: center;
+      margin-bottom: 1rem;
+      span {
+        a {
+          color: $primary-gray;
+        }
+        &:nth-child(2) {
+          color: $primary-gray;
+        }
+      }
+    }
     .single-post-content-mobile {
       display: flex;
       flex-direction: column;
       gap: 2rem;
-      .bread-crumb-single-blog-mobile {
-        display: flex;
-        gap: 1rem;
-      }
+
       .container-search-category-mobile {
         display: flex;
 

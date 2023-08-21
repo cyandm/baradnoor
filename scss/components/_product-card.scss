@@ -5,6 +5,7 @@
   padding: 1.25rem;
   gap: 0.625rem;
   flex: 1;
+  justify-content: space-between;
   flex-basis: 20%;
   background-color: $search-color;
   min-width: 15rem;
@@ -19,19 +20,23 @@
   }
   .image-product-card {
   }
-  .title-product-card {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-  }
-  .code-product-card {
+  .container-title-code-button-product {
     display: flex;
-
-    p {
-      color: $primary-gray;
+    flex-direction: column;
+    .title-product-card {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
     }
-  }
-  .button-product-card-container {
+    .code-product-card {
+      display: flex;
+
+      p {
+        color: $primary-gray;
+      }
+    }
+    .button-product-card-container {
+    }
   }
 }
