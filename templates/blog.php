@@ -7,7 +7,7 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 $posts_in_blog_page = new WP_Query(
     [
         'post_type' => 'post',
-        'posts_per_page' => 1,
+        'posts_per_page' => 18,
         'orderby' => 'id',
         'paged' => $paged
 

@@ -1,0 +1,47 @@
+main.product-page {
+  .container-title-slider-product-page {
+    h1 {
+      margin-inline: 1rem;
+      font-size: 2.125rem;
+      font-weight: 300;
+    }
+  }
+  section {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    margin-inline: 1rem;
+
+    .text-all-product {
+    }
+    .product-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .pagination-for-product {
+      display: flex;
+      background-color: $search-color;
+      border-radius: 1.6rem;
+      align-items: center;
+      flex-direction: row-reverse;
+      width: fit-content;
+      align-self: flex-end;
+      overflow: hidden;
+
+      span {
+        padding: 0.25rem 2rem;
+        &.current {
+          background-color: $background-button;
+        }
+      }
+      a {
+        &.page-numbers {
+          padding: 0.25rem 2rem;
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,5 @@
 <?php
 
-
 isset($args['product_id']) ? $product_id = $args['product_id'] : $product_id = get_the_ID();
 
 ?>

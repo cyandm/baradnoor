@@ -6,7 +6,7 @@
 
 <?php
 $i = 0;
-
+$j = 0;
 $posts_in_home_page = new WP_Query(
     [
         'post_type' => 'post',
@@ -98,19 +98,34 @@ $faq_in_home_page_two = new WP_Query(
             <div class="container-blog-and-news-button-see-all">
                 <div class="blog-text">محصولات جدید</div>
             </div>
-            <div class="container-cat-product only-desktop ">
-                <ul class="category-product border-gradient">
-                    <?php wp_list_categories(
-                        [
-                            'taxonomy' => 'product-cat',
-                            'orderby' => 'id',
-                            'hide_empty' => false,
-                            'title_li' => "",
-                            'current_category'    => 1
-                        ]
-                    ) ?>
-                </ul>
+            
+            <div class="container-cat-product only-desktop">
+                <div class="category-product border-gradient">
+                    <?php
+
+                    $cats = get_categories([
+                        'taxonomy' => 'product-cat',
+                        'orderby' => 'id', 'current_category'    => 1,
+                        'hide_empty' => false,
+
+                    ]);
+
+                    foreach ($cats as $cat) {
+                        // var_dump($cat);
+                        $j = $j + 1;
+                        echo "<div data-tab='$j' class='cat-product ";
+                        if ($j === 1) echo 'current-cat';
+                        echo  " ' >$cat->name</div>";
+                    }
+
+                    ?>
+                </div>
             </div>
+
+
+
+
+
             <div class="container-cat-product border-gradient on-mobile-show drop-down-cat">
                 <?php wp_dropdown_categories(
                     [
@@ -129,16 +144,18 @@ $faq_in_home_page_two = new WP_Query(
                 <div class="type-of-product-text">براکت ها</div>
                 <div class="see-all-button only-desktop "><a href="#">مشاهده همه </a></div>
             </div>
-            <div class="product-content">
+            
                 <?php
                 while ($product_in_home_page->have_posts()) {
-
+                    $k = 1;
+                    echo "<div data-tab='$k' class='product-content'>";
+                    $k = $k + 1;
                     $product_in_home_page->the_post();
                     get_template_part('/templates/card/card', 'product');
+                    echo '</div>';
                 }
 
                 ?>
-            </div>
             <div class="button-show-all-mobile on-mobile-show">
                 <a href="#">مشاهده همه</a>
             </div>

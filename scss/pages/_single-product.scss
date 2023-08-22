@@ -49,6 +49,8 @@ main.single-product-page {
           font-family: "Peyda";
           display: flex;
           color: $silver-primary;
+          min-width: fit-content;
+          margin-inline: 0.5rem;
         }
       }
     }

@@ -22,9 +22,12 @@ $favourite_products = get_field('product_object');
     <div class="single-product-info container">
         <div class="title-slider-container-product">
             <h2><?php the_title() ?></h2>
+<div class="slider"></div>
 
         </div>
-        <div class="technical-specifications-of-product"></div>
+        <div class="technical-specifications-of-product">
+            
+        </div>
     </div>
 
     <div class="container-icons-single-product container">
