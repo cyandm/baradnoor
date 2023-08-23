@@ -16,8 +16,10 @@ main.single-product-page {
   }
   .single-product-info {
     padding: 1rem;
+    display: flex;
+    justify-content: space-between;
     .title-slider-container-product {
-      max-width: 50%;
+      min-width: 50%;
       display: flex;
       flex-direction: column;
       h2 {
@@ -26,7 +28,46 @@ main.single-product-page {
       }
     }
     .technical-specifications-of-product {
-      max-width: 50%;
+      min-width: 50%;
+      display: flex;
+      flex-direction: column;
+      background-color: $search-color;
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      font-size: 1rem;
+      font-weight: 300;
+      .title-technical-info {
+        font-size: 1.5rem;
+        font-weight: 300;
+        margin-bottom: 1rem;
+      }
+      .container-values-properties {
+        display: flex;
+        flex-direction: column;
+        border-radius: 1.5rem;
+        overflow: hidden;
+        border: 0.5px solid rgba(247, 247, 247, 0.08);
+        .container-technical-info-and-value {
+          display: flex;
+          justify-content: space-between;
+          border-radius: 1.5rem;
+
+          .name-property {
+            border: 0.5px solid rgba(247, 247, 247, 0.08);
+            padding: 0.625rem;
+            flex: 1;
+          }
+          .value-property {
+            display: flex;
+            justify-content: flex-end;
+            border: 0.5px solid rgba(247, 247, 247, 0.08);
+            background-color: $dark-gray-color;
+            align-self: flex-end;
+            flex: 1;
+            padding: 0.625rem;
+          }
+        }
+      }
     }
   }
   .container-icons-single-product {

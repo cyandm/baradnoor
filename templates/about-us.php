@@ -27,6 +27,15 @@ $image_two_section_two = get_field('image_two_section_two');
 $image_three_section_two = get_field('image_three_section_two');
 $image_four_section_two = get_field('image_four_section_two');
 
+$name_person_one = get_field('name_person_one');
+$name_person_two = get_field('name_person_two');
+$name_person_three = get_field('name_person_three');
+$name_person_four = get_field('name_person_four');
+
+$job_title_person_one = get_field('job_title_person_one');
+$job_title_person_two = get_field('job_title_person_two');
+$job_title_person_three = get_field('job_title_person_three');
+$job_title_person_four = get_field('job_title_person_four');
 
 $image_section_three = get_field('image_section_three');
 $image_two_section_three = get_field('image_two_section_three');
@@ -94,10 +103,41 @@ $image_two_section_three = get_field('image_two_section_three');
 
             <div class="text-and-images-content-section-two">
                 <div class="container-images-section-two">
-                    <?= $image_section_two != null ? wp_get_attachment_image($image_section_two, 'full', false, ['class' => 'feature-image']) : ''; ?>
-                    <?= $image_two_section_two != null ? wp_get_attachment_image($image_two_section_two, 'full', false, ['class' => 'feature-image']) : ''; ?>
-                    <?= $image_three_section_two != null ? wp_get_attachment_image($image_three_section_two, 'full', false, ['class' => 'feature-image']) : ''; ?>
-                    <?= $image_four_section_two != null ? wp_get_attachment_image($image_four_section_two, 'full', false, ['class' => 'feature-image']) : ''; ?>
+                    <div class="container-images-name-job">
+
+                        <?= $image_section_two != null ? wp_get_attachment_image($image_section_two, 'full', false, ['class' => 'feature-image']) : ''; ?>
+                        <div class="container-name-job-title">
+                            <?php if ($name_person_one != null) echo "<div> $name_person_one </div>"; ?>
+                            <?php if ($job_title_person_one != null) echo "<div> $job_title_person_one </div>"; ?>
+
+                        </div>
+                    </div>
+                    <div class="container-images-name-job">
+                        <?= $image_two_section_two != null ? wp_get_attachment_image($image_two_section_two, 'full', false, ['class' => 'feature-image']) : ''; ?>
+                        <div class="container-name-job-title">
+                            <?php if ($name_person_two != null) echo "<div> $name_person_two </div>"; ?>
+                            <?php if ($job_title_person_two != null) echo "<div> $job_title_person_two </div>"; ?>
+
+                        </div>
+                    </div>
+                    <div class="container-images-name-job">
+
+                        <?= $image_three_section_two != null ? wp_get_attachment_image($image_three_section_two, 'full', false, ['class' => 'feature-image']) : ''; ?>
+                        <div class="container-name-job-title">
+                            <?php if ($name_person_three != null) echo "<div> $name_person_three </div>"; ?>
+                            <?php if ($job_title_person_three != null) echo "<div> $job_title_person_three </div>"; ?>
+
+                        </div>
+                    </div>
+                    <div class="container-images-name-job">
+
+                        <?= $image_four_section_two != null ? wp_get_attachment_image($image_four_section_two, 'full', false, ['class' => 'feature-image']) : ''; ?>
+                        <div class="container-name-job-title">
+                            <?php if ($name_person_two != null) echo "<div> $name_person_two </div>"; ?>
+                            <?php if ($job_title_person_four != null) echo "<div> $job_title_person_four </div>"; ?>
+
+                        </div>
+                    </div>
                 </div>
                 <?php if ($text_section_two != null) : ?>
                     <div class="text-section-two-about-us">

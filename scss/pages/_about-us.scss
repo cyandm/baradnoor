@@ -115,6 +115,7 @@ main.about-us-page {
       .container-images-section-two {
         display: flex;
         gap: 1rem;
+        justify-content: space-between;
         overflow-x: scroll;
         &::-webkit-scrollbar {
           width: 0.5rem;
@@ -135,9 +136,40 @@ main.about-us-page {
         &::-webkit-scrollbar-thumb:hover {
         }
         width: 100%;
-        > img {
-          border-radius: 1.5rem;
-          margin-block: 0.5rem;
+        .container-images-name-job {
+          display: flex;
+          position: relative;
+          flex-direction: column;
+          &:hover {
+            .container-name-job-title {
+              display: flex;
+            }
+            &::after {
+              content: "";
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              border-radius: 1.5rem;
+
+              top: 0rem;
+              z-index: 0;
+              background: $linear-card-team-us;
+            }
+          }
+
+          > img {
+            border-radius: 1.5rem;
+          }
+          .container-name-job-title {
+            display: none;
+            position: absolute;
+            flex-direction: column;
+            font-size: 1.25rem;
+            font-weight: 200;
+            margin: 0.5rem;
+            bottom: 0;
+            z-index: 5;
+          }
         }
       }
       .text-section-two-about-us {
@@ -169,6 +201,11 @@ main.about-us-page {
         flex-basis: 40%;
         > img {
           border-radius: 1.5rem;
+        }
+        .image-two-section-three {
+          > img {
+            border-radius: 1.5rem;
+          }
         }
       }
       .text-section-three-about-us {

@@ -7,6 +7,11 @@
 <?php
 $i = 0;
 $j = 0;
+
+$all_cats = get_categories([
+    'taxonomy' => 'product-cat'
+]);
+
 $posts_in_home_page = new WP_Query(
     [
         'post_type' => 'post',
@@ -62,7 +67,25 @@ $faq_in_home_page_two = new WP_Query(
         ]
     ]
 );
+
+
+$cats = get_categories([
+    'taxonomy' => 'product-cat',
+    'orderby' => 'id', 'current_category'    => 1,
+    'hide_empty' => false,
+
+]);
+
+$cats_name_group = [];
+$cats_id_group = [];
+
+foreach ($cats as $cat) {
+    array_push($cats_name_group, $cat->name);
+    array_push($cats_id_group, $cat->term_id);
+}
+
 ?>
+
 <main class="container home">
 
     <?php
@@ -98,29 +121,25 @@ $faq_in_home_page_two = new WP_Query(
             <div class="container-blog-and-news-button-see-all">
                 <div class="blog-text">محصولات جدید</div>
             </div>
-            
+
             <div class="container-cat-product only-desktop">
                 <div class="category-product border-gradient">
                     <?php
 
-                    $cats = get_categories([
-                        'taxonomy' => 'product-cat',
-                        'orderby' => 'id', 'current_category'    => 1,
-                        'hide_empty' => false,
 
-                    ]);
+                    foreach ($cats_name_group as $index => $cat_name) {
 
-                    foreach ($cats as $cat) {
-                        // var_dump($cat);
-                        $j = $j + 1;
-                        echo "<div data-tab='$j' class='cat-product ";
-                        if ($j === 1) echo 'current-cat';
-                        echo  " ' >$cat->name</div>";
+                        echo "<div data-tab='$index' class='cat-product ";
+                        if ($index === 0) echo 'current-cat';
+                        echo  " ' >$cat_name</div>";
                     }
 
                     ?>
                 </div>
             </div>
+
+
+
 
 
 
@@ -140,29 +159,65 @@ $faq_in_home_page_two = new WP_Query(
                 ) ?>
             </div>
 
-            <div class="container-blog-and-news-button-see-all">
-                <div class="type-of-product-text">براکت ها</div>
-                <div class="see-all-button only-desktop "><a href="#">مشاهده همه </a></div>
-            </div>
-            
-                <?php
-                while ($product_in_home_page->have_posts()) {
-                    $k = 1;
-                    echo "<div data-tab='$k' class='product-content'>";
-                    $k = $k + 1;
-                    $product_in_home_page->the_post();
-                    get_template_part('/templates/card/card', 'product');
-                    echo '</div>';
-                }
 
-                ?>
-            <div class="button-show-all-mobile on-mobile-show">
-                <a href="#">مشاهده همه</a>
-            </div>
+            <?php foreach ($cats_id_group as $index => $cat_id) : ?>
+
+                <div data-tab="<?= $index ?>" class="container-tab-product-group">
+                    <div class="container-blog-and-news-button-see-all">
+                        <div class="type-of-product-text"><?= get_term($cat_id)->name ?></div>
+                        <div class="see-all-button only-desktop "><a href="<?= get_term_link($cat_id) ?>">مشاهده همه </a></div>
+                    </div>
+
+
+                    <div class="container-product-home">
+
+
+                        <?php
+
+
+                        $product_query = new WP_Query([
+                            'posts_per_page' => 8,
+                            'post_type' => 'product',
+                            'tax_query' => [
+                                [
+                                    'taxonomy' => 'product-cat',
+                                    'field' => 'term_id',
+                                    'terms' => $cat_id
+                                ]
+                            ]
+                        ]);
+
+
+
+                        if ($product_query->have_posts()) {
+
+                            while ($product_query->have_posts()) {
+                                $product_query->the_post();
+                                get_template_part('templates/card/card', 'product');
+                            }
+                        }
+
+
+                        wp_reset_postdata();
+
+                        ?>
+                    </div>
+
+                </div>
+
+
+
+            <?php endforeach; ?>
+
+
+
+
         </section>
     <?php
     endif;
     ?>
+
+
     <section class="image-light-top">
         <div class="image-light on-mobile-show">
 

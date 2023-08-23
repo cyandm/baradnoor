@@ -1,8 +1,6 @@
 <?php
 
-
-isset($args['post_id']) ? $post_id = $args['post_id'] : $post_id = get_the_ID();
-
+$post_id = isset($args['post_id']) ? $args['post_id'] :  get_the_ID();
 
 
 if ($args) {

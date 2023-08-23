@@ -1,5 +1,3 @@
-<?php get_header() ?>
-
 <?php
 $author_name = get_the_author_meta('display_name', get_post_field('post_author', get_the_ID()));
 
@@ -18,8 +16,10 @@ $favorite_blog = new WP_Query([
     'category__in' => $current_post_cats_id,
     'post__not_in' => [get_the_ID()],
 ]);
-
 ?>
+
+<?php get_header() ?>
+
 <main class="container single-post-page">
 
     <!-- desktop -->
@@ -36,6 +36,7 @@ $favorite_blog = new WP_Query([
                     <div class="search-in-single-post border-gradient">
                         <input class="search-box-in-single-post" type="search" placeholder="جستجو در مقالات" />
                     </div>
+
                     <div class="category-blog">
                         <span> دنبال چی میگردی ؟</span>
                         <ul>
@@ -49,8 +50,6 @@ $favorite_blog = new WP_Query([
                             ) ?>
                         </ul>
                     </div>
-
-
                 </div>
 
                 <?php
@@ -67,12 +66,10 @@ $favorite_blog = new WP_Query([
                             }
                             ?>
                         </div>
-
-                        <?php wp_reset_postdata() ?>
                     </div>
 
                 <?php endif; ?>
-
+                <?php wp_reset_postdata() ?>
 
             </div>
             <div class="container-image-text">

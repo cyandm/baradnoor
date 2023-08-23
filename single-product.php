@@ -6,27 +6,48 @@ $worked_inspiration = get_field('inspiration_object');
 
 $favourite_products = get_field('product_object');
 
+$technical_info_property = get_field_object('technical_info_property_group');
+$technical_info_property_subfields = isset($technical_info_property['sub_fields']) ? $technical_info_property['sub_fields'] : [];
+$technical_info_property_value = isset($technical_info_property['value']) ? $technical_info_property['value'] : [];
 ?>
 
 <main class="single-product-page">
-
 
     <div class="bread-crumb-single-product container">
         <span><a href="<?= site_url() . '/محصولات/' ?>">محصولات</a></span>
         <span> > </span>
         <span> <?php the_title() ?> </span>
-
     </div>
 
 
     <div class="single-product-info container">
         <div class="title-slider-container-product">
             <h2><?php the_title() ?></h2>
-<div class="slider"></div>
+            <div class="slider"></div>
 
         </div>
-        <div class="technical-specifications-of-product">
-            
+        <div class="technical-specifications-of-product border-gradient">
+            <div class="title-technical-info">مشخصات فنی محصول</div>
+            <div class="container-values-properties">
+
+                <?php if ($technical_info_property !== false) : ?>
+
+                    <?php for ($i = 0; $i < count($technical_info_property_subfields); $i++) : ?>
+                        <?php
+                        $currentField = $technical_info_property_subfields[$i];
+                        $currentValue = $technical_info_property_value[$currentField['name']];
+                        ?>
+
+                        <?php if (isset($currentValue) && !empty($currentValue)) : ?>
+                            <div class="container-technical-info-and-value">
+                                <div class="name-property"><?= $currentField['label'] ?></div>
+                                <div class="value-property"><?= $currentValue ?></div>
+                            </div>
+                        <?php endif; ?>
+                    <?php endfor; ?>
+                <?php endif ?>
+
+            </div>
         </div>
     </div>
 
@@ -49,9 +70,6 @@ $favourite_products = get_field('product_object');
             <img src=" <?php echo get_stylesheet_directory_uri() . '/imgs/eye2.svg'  ?>" alt="iran-icon">
             <img src=" <?php echo get_stylesheet_directory_uri() . '/imgs/standard.svg'  ?>" alt="iran-icon">
             <img src=" <?php echo get_stylesheet_directory_uri() . '/imgs/iso.svg'  ?>" alt="iran-icon">
-
-
-
         </div>
     </div>
     <div class="container-call-info-product">
@@ -67,9 +85,9 @@ $favourite_products = get_field('product_object');
             <div class="worked-examples-inspiration">
                 <span class="worked-examples-title">نمونه های کار شده</span>
                 <div class="inspiration-worked-content">
-                    <?php foreach ($worked_inspiration as $index => $worked_inspiration_id) {
+                    <?php
+                    foreach ($worked_inspiration as $index => $worked_inspiration_id)
                         get_template_part('/templates/card/card', 'inspiration', ['card_type' => '2', 'post_id' => $worked_inspiration_id]);
-                    }
                     ?>
                 </div>
             </div>
@@ -81,9 +99,9 @@ $favourite_products = get_field('product_object');
             <div class="favourire-product-for-inspiration">
                 <span>شاید بپسندید</span>
                 <div class="favourire-product-for-inspiration-content">
-                    <?php foreach ($favourite_products as $index => $favourite_products_id) {
+                    <?php
+                    foreach ($favourite_products as $index => $favourite_products_id)
                         get_template_part('/templates/card/card', 'product', ['product_id' => $favourite_products_id]);
-                    }
                     ?>
                 </div>
             </div>

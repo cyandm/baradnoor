@@ -5,14 +5,102 @@ main.product-page {
       font-size: 2.125rem;
       font-weight: 300;
     }
+    .slider-product {
+      position: relative;
+      display: flex;
+      .swiper-product {
+        border-radius: 0rem;
+        .wrapper-product {
+          border-radius: 0rem;
+          .slide-product {
+            padding: 0rem;
+            background-color: $primary-black;
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            align-items: center;
+            .container-image-slider-product {
+              max-width: 50%;
+              position: relative;
+              &::after {
+                content: "";
+                position: absolute;
+                width: 30%;
+                height: 100%;
+                top: 0rem;
+                right: -3rem;
+                z-index: 3;
+                background: $linear-contact-image;
+              }
+              > img {
+              }
+            }
+
+            .container-title-expert-author-date-button {
+              display: flex;
+              z-index: 100;
+              flex-direction: column;
+              gap: 0.5rem;
+              justify-content: space-between;
+              max-width: 50%;
+              background: $search-color;
+              border-radius: 1.5rem;
+              padding: 1rem;
+              .expert-slider {
+                p {
+                  overflow: hidden;
+                  display: -webkit-box;
+                  -webkit-line-clamp: 3;
+                  -webkit-box-orient: vertical;
+                }
+              }
+              .button-slider {
+                display: flex;
+                justify-content: end;
+              }
+            }
+          }
+        }
+      }
+      .swiper-pagination-product {
+        position: absolute;
+        bottom: 0;
+        z-index: 700;
+        width: 100%;
+        span {
+          &.swiper-pagination-bullet {
+            @extend .border-gradient;
+            width: 1rem;
+            background: $search-color;
+            opacity: 1;
+            border-radius: 1rem;
+          }
+          &.swiper-pagination-bullet-active {
+            &::after {
+              content: "";
+              position: absolute;
+              inset: -1px;
+              border-radius: inherit;
+              background: $linear-button-orange;
+              z-index: -2;
+            }
+            background: $linear-button-orange;
+            width: 3rem;
+            border-radius: 1rem;
+            opacity: 1;
+          }
+        }
+      }
+    }
   }
   section {
     display: flex;
     gap: 1rem;
     flex-direction: column;
     margin-inline: 1rem;
-
     .text-all-product {
+      font-size: 1.5rem;
+      font-weight: 300;
     }
     .product-content {
       display: flex;
