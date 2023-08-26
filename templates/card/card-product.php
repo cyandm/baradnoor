@@ -1,8 +1,8 @@
 <?php
 
 isset($args['product_id']) ? $product_id = $args['product_id'] : $product_id = get_the_ID();
-
 ?>
+
 <div class="card-product border-gradient">
     <div class="image-product-card">
         <a href="<?php echo get_the_permalink($product_id); ?>"><?php echo get_the_post_thumbnail($product_id); ?></a>

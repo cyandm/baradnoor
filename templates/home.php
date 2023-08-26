@@ -90,14 +90,14 @@ foreach ($cats as $cat) {
 
     <?php
     if ($inspiration_in_home_page->have_posts()) : ?>
-        <section>
-            <div class="container-blog-and-news-button-see-all">
-                <div class="blog-text">نورپردازی</div>
-                <div class="see-all-button only-desktop "><a href="#">مشاهده همه </a></div>
+    <section>
+        <div class="container-blog-and-news-button-see-all">
+            <div class="blog-text">نورپردازی</div>
+            <div class="see-all-button only-desktop "><a href="#">مشاهده همه </a></div>
 
-            </div>
-            <div class="inspiration-content">
-                <?php
+        </div>
+        <div class="inspiration-content">
+            <?php
                 while ($inspiration_in_home_page->have_posts()) {
 
                     $inspiration_in_home_page->the_post();
@@ -105,26 +105,26 @@ foreach ($cats as $cat) {
                 }
 
                 ?>
-            </div>
+        </div>
 
-            <div class="button-show-all-mobile on-mobile-show">
-                <a href="#">مشاهده همه</a>
-            </div>
-        </section>
+        <div class="button-show-all-mobile on-mobile-show">
+            <a href="#">مشاهده همه</a>
+        </div>
+    </section>
     <?php
     endif;
     ?>
 
     <?php
     if ($product_in_home_page->have_posts()) : ?>
-        <section>
-            <div class="container-blog-and-news-button-see-all">
-                <div class="blog-text">محصولات جدید</div>
-            </div>
+    <section>
+        <div class="container-blog-and-news-button-see-all">
+            <div class="blog-text">محصولات جدید</div>
+        </div>
 
-            <div class="container-cat-product only-desktop">
-                <div class="category-product border-gradient">
-                    <?php
+        <div class="container-cat-product only-desktop">
+            <div class="category-product border-gradient">
+                <?php
 
 
                     foreach ($cats_name_group as $index => $cat_name) {
@@ -135,8 +135,8 @@ foreach ($cats as $cat) {
                     }
 
                     ?>
-                </div>
             </div>
+        </div>
 
 
 
@@ -145,8 +145,8 @@ foreach ($cats as $cat) {
 
 
 
-            <div class="container-cat-product border-gradient on-mobile-show drop-down-cat">
-                <?php wp_dropdown_categories(
+        <div class="container-cat-product border-gradient on-mobile-show drop-down-cat">
+            <?php wp_dropdown_categories(
                     [
                         'taxonomy' => 'product-cat',
                         'orderby' => 'id',
@@ -157,22 +157,22 @@ foreach ($cats as $cat) {
 
                     ]
                 ) ?>
+        </div>
+
+
+        <?php foreach ($cats_id_group as $index => $cat_id) : ?>
+
+        <div data-tab="<?= $index ?>" class="container-tab-product-group <?php if($index===0){echo"show"; } ?>">
+            <div class="container-blog-and-news-button-see-all">
+                <div class="type-of-product-text"><?= get_term($cat_id)->name ?></div>
+                <div class="see-all-button only-desktop "><a href="<?= get_term_link($cat_id) ?>">مشاهده همه </a></div>
             </div>
 
 
-            <?php foreach ($cats_id_group as $index => $cat_id) : ?>
-
-                <div data-tab="<?= $index ?>" class="container-tab-product-group">
-                    <div class="container-blog-and-news-button-see-all">
-                        <div class="type-of-product-text"><?= get_term($cat_id)->name ?></div>
-                        <div class="see-all-button only-desktop "><a href="<?= get_term_link($cat_id) ?>">مشاهده همه </a></div>
-                    </div>
+            <div class="container-product-home">
 
 
-                    <div class="container-product-home">
-
-
-                        <?php
+                <?php
 
 
                         $product_query = new WP_Query([
@@ -188,31 +188,35 @@ foreach ($cats as $cat) {
                         ]);
 
 
-
                         if ($product_query->have_posts()) {
-
                             while ($product_query->have_posts()) {
+                                
+
                                 $product_query->the_post();
                                 get_template_part('templates/card/card', 'product');
+                                
+
                             }
+                           
+                           
                         }
 
 
-                        wp_reset_postdata();
+                wp_reset_postdata();
 
-                        ?>
-                    </div>
+                ?>
+            </div>
 
-                </div>
-
-
-
-            <?php endforeach; ?>
+        </div>
 
 
 
+        <?php endforeach; ?>
 
-        </section>
+
+
+
+    </section>
     <?php
     endif;
     ?>
@@ -247,13 +251,13 @@ foreach ($cats as $cat) {
 
     <?php
     if ($posts_in_home_page->have_posts()) : ?>
-        <section>
-            <div class="container-blog-and-news-button-see-all">
-                <div class="blog-text">اخبار و مقالات</div>
-                <div class="see-all-button only-desktop "><a href="#">مشاهده همه </a></div>
-            </div>
-            <div class="posts-content">
-                <?php
+    <section>
+        <div class="container-blog-and-news-button-see-all">
+            <div class="blog-text">اخبار و مقالات</div>
+            <div class="see-all-button only-desktop "><a href="#">مشاهده همه </a></div>
+        </div>
+        <div class="posts-content">
+            <?php
                 while ($posts_in_home_page->have_posts()) {
 
                     $posts_in_home_page->the_post();
@@ -261,29 +265,30 @@ foreach ($cats as $cat) {
                 }
 
                 ?>
-            </div>
-            <div class="button-show-all-mobile on-mobile-show">
-                <a href="#">مشاهده همه</a>
-            </div>
-        </section>
+        </div>
+        <div class="button-show-all-mobile on-mobile-show">
+            <a href="#">مشاهده همه</a>
+        </div>
+    </section>
     <?php
     endif;
 
     ?>
     <?php
-    if ($faq_in_home_page->have_posts()) : ?>
-        <section>
-            <div class="container-blog-and-news-button-see-all">
-                <div class="blog-text">سوالات متداول</div>
-                <div class="see-all-button only-desktop "><a href="#">تماس با ما </a></div>
-            </div>
-            <div class="container-cat-faq only-desktop">
-                <div class="category-faq border-gradient">
-                    <?php
+    if ($faq_in_home_page->have_posts() || $faq_in_home_page_two->have_posts()) : ?>
+    <section>
+        <div class="container-blog-and-news-button-see-all">
+            <div class="blog-text">سوالات متداول</div>
+            <div class="see-all-button only-desktop "><a href="#">تماس با ما </a></div>
+        </div>
+        <div class="container-cat-faq only-desktop">
+            <div class="category-faq border-gradient">
+                <?php
 
                     $cats = get_categories([
                         'taxonomy' => 'faq-cat',
-                        'orderby' => 'id', 'current_category'    => 1
+                        'orderby' => 'id', 'current_category'    => 1,
+                        'hide_empty' => false,
 
                     ]);
 
@@ -296,10 +301,10 @@ foreach ($cats as $cat) {
                     }
 
                     ?>
-                </div>
             </div>
-            <div class="container-cat-faq border-gradient on-mobile-show drop-down-cat">
-                <?php wp_dropdown_categories(
+        </div>
+        <div class="container-cat-faq border-gradient on-mobile-show drop-down-cat">
+            <?php wp_dropdown_categories(
                     [
                         'taxonomy' => 'faq-cat',
                         'orderby' => 'id',
@@ -310,33 +315,41 @@ foreach ($cats as $cat) {
 
                     ]
                 ) ?>
-            </div>
-            <div class="faq-content show" data-tab='1'>
-                <?php
-                while ($faq_in_home_page->have_posts()) {
+        </div>
 
-                    $faq_in_home_page->the_post();
-                    get_template_part('/templates/card/card', 'faq');
-                }
+        <div class="faq-content show" data-tab='1'>
+            <?php if($faq_in_home_page->have_posts()){ ?>
+            <?php
+                        while ($faq_in_home_page->have_posts()) {
+
+                            $faq_in_home_page->the_post();
+                            get_template_part('/templates/card/card', 'faq');
+                        }
+
+                        ?>
+
+            <?php  }else{ echo "سوالی موجود نیست";
+            }?>
+        </div>
+        <div class="faq-content" data-tab='2'>
+            <?php if($faq_in_home_page_two->have_posts()){ ?>
+            <?php
+                    while ($faq_in_home_page_two->have_posts()) {
+
+                        $faq_in_home_page_two->the_post();
+                        get_template_part('/templates/card/card', 'faq');
+                    }
 
                 ?>
-            </div>
 
-            <div class="faq-content" data-tab='2'>
-                <?php
-                while ($faq_in_home_page_two->have_posts()) {
+            <?php  }else{ echo "سوالی موجود نیست";
+            }?>
+        </div>
 
-                    $faq_in_home_page_two->the_post();
-                    get_template_part('/templates/card/card', 'faq');
-                }
-
-                ?>
-            </div>
-
-            <div class=" button-show-all-mobile on-mobile-show">
-                <a href="#">تماس با ما</a>
-            </div>
-        </section>
+        <div class=" button-show-all-mobile on-mobile-show">
+            <a href="#">تماس با ما</a>
+        </div>
+    </section>
     <?php
     endif;
     ?>

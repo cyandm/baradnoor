@@ -45,6 +45,7 @@ main.home {
           border-radius: 1.25rem;
           padding: 0 1rem;
           display: flex;
+          cursor: pointer;
           justify-content: center;
           &.current-cat {
             @extend .border-gradient-orange;
