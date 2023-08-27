@@ -9,10 +9,27 @@ $favourite_products = get_field('product_object');
 $technical_info_property = get_field_object('technical_info_property_group');
 $technical_info_property_subfields = isset($technical_info_property['sub_fields']) ? $technical_info_property['sub_fields'] : [];
 $technical_info_property_value = isset($technical_info_property['value']) ? $technical_info_property['value'] : [];
+
+$product_id = get_queried_object_id();
+$images_slider = get_field('images_slider_group', $product_id);
+
+$group = acf_get_fields('images_slider_group');
+
+
+function swiper_slider($images_slider)
+{
+    if (is_array($images_slider)) :
+        foreach ($images_slider as $slider_image) :
+            if (($slider_image != null) && !empty($slider_image)) : ?>
+                <div class="swiper-slide">
+                    <?= wp_get_attachment_image($slider_image, 'full', false, ['class' => 'feature-image']) ?>
+                </div>
+<?php endif;
+        endforeach;
+    endif;
+}
 ?>
-
 <main class="single-product-page">
-
     <div class="bread-crumb-single-product container">
         <span><a href="<?= site_url() . '/محصولات/' ?>">محصولات</a></span>
         <span> > </span>
@@ -23,7 +40,33 @@ $technical_info_property_value = isset($technical_info_property['value']) ? $tec
     <div class="single-product-info container">
         <div class="title-slider-container-product">
             <h2><?php the_title() ?></h2>
-            <div class="slider"></div>
+            <div class="slider">
+                <div class="border-gradient-orange container-border">
+                    <div class="swiper swiper2-single-product">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <?= wp_get_attachment_image(get_post_thumbnail_id(), 'full', false, ['class' => 'feature-image']) ?>
+                            </div>
+
+                            <?php swiper_slider($images_slider); ?>
+                        </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                </div>
+                <div>
+                    <div thumbsSlider="" class="swiper swiper1-single-product">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <?= wp_get_attachment_image(get_post_thumbnail_id(), 'full', false, ['class' => 'feature-image']) ?>
+                            </div>
+                            <?php swiper_slider($images_slider); ?>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
 
         </div>
         <div class="technical-specifications-of-product border-gradient">

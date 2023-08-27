@@ -56,7 +56,10 @@ main.inspiration {
       }
       .btn-inspiration-see-post {
         display: flex;
-        translate: -50% 210%;
+        top: unset;
+        translate: 0 0;
+        bottom: 0rem;
+        left: 0;
         background: $white-8percent;
         backdrop-filter: blur(12px);
         width: 100%;

@@ -28,6 +28,7 @@
             &::marker,
             a {
               color: $orange-secondary;
+              transition: all 0.5s ease-in-out;
             }
           }
         }
@@ -40,6 +41,7 @@
             &::marker,
             a {
               color: $orange-secondary;
+              transition: all 0.5s ease-in-out;
             }
           }
         }
@@ -58,6 +60,7 @@
       ul {
         li {
           a {
+            transition: all 0.5s ease-in-out;
             &:hover {
               color: $orange-secondary;
               cursor: pointer;

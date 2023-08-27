@@ -25,7 +25,7 @@ $favorite_blog = new WP_Query([
     <!-- desktop -->
     <div class="page-single-post">
         <div class="bread-crumb-single-blog">
-            <span><a href="#">مقالات</a></span>
+            <span><a href="<?= site_url() . '/بلاگ/' ?>">مقالات</a></span>
             <span> > </span>
             <span> <?php the_title() ?> </span>
         </div>
