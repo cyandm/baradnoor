@@ -131,6 +131,9 @@ main.single-product-page {
     }
     @media (width < 1050px) {
       flex-direction: column;
+      .technical-specifications-of-product {
+        min-width: 100%;
+      }
     }
   }
   .container-icons-single-product {
@@ -161,6 +164,48 @@ main.single-product-page {
     .icons-left {
       display: flex;
       gap: 1rem;
+    }
+    @media (width<700px) {
+      flex-direction: column;
+      height: auto;
+      gap: 0.5rem;
+      .icons-right {
+        width: 100%;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        .icon-container {
+          padding: 1rem;
+          border-radius: 1.5rem;
+          background-color: $search-color;
+          flex-direction: column;
+          flex: 1;
+          gap: 0.7rem;
+          > img {
+            width: 2.125rem;
+            height: 2.125rem;
+          }
+          > p {
+            font-size: 0.75rem;
+          }
+        }
+      }
+      .icons-left {
+        width: 100%;
+        justify-content: space-between;
+        > div {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 1rem;
+          border-radius: 1.5rem;
+          background-color: $search-color;
+          flex: 1;
+          img {
+            width: 2.125rem;
+            height: 2.125rem;
+          }
+        }
+      }
     }
   }
   .container-call-info-product {

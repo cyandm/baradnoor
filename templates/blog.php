@@ -76,6 +76,7 @@ $posts_in_slider = new WP_Query(
                 </div>
             </div>
             <div class="search-wrapper border-gradient">
+                <i class="icon-search"></i>
                 <input class="search" type="search" placeholder="جستجو در مقالات" />
             </div>
         </div>
@@ -96,6 +97,7 @@ $posts_in_slider = new WP_Query(
                 </div>
             </div>
             <div class="search-wrapper-mobile border-gradient">
+                <i class="icon-search"></i>
                 <input class="search" type="search" placeholder="جستجو در مقالات" />
             </div>
         </div>

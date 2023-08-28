@@ -8,6 +8,8 @@
 $i = 0;
 $j = 0;
 
+$telephone_num = get_field('telephone_number');
+
 $all_cats = get_categories([
     'taxonomy' => 'product-cat'
 ]);
@@ -84,16 +86,49 @@ foreach ($cats as $cat) {
     array_push($cats_id_group, $cat->term_id);
 }
 
+$inspiration_link_template = [
+    'post_type' => 'page',
+    'fields' => 'ids',
+    'nopaging' => true,
+    'meta_key' => '_wp_page_template',
+    'meta_value' => 'templates/inspiration.php'
+];
+$page_inspiration = get_posts($inspiration_link_template);
+
+
+$product_link_template = [
+    'post_type' => 'page',
+    'fields' => 'ids',
+    'nopaging' => true,
+    'meta_key' => '_wp_page_template',
+    'meta_value' => 'templates/product.php'
+];
+$page_product = get_posts($product_link_template);
+
+
+$blog_link_template = [
+    'post_type' => 'page',
+    'fields' => 'ids',
+    'nopaging' => true,
+    'meta_key' => '_wp_page_template',
+    'meta_value' => 'templates/blog.php'
+];
+$page_blog = get_posts($blog_link_template);
+
+
+
 ?>
 
 <main class="container home">
-
+    <section>
+        <div class="show-all-product-home-page on-mobile-show border-gradient-orange"><a href="<?php echo get_permalink($page_product[0]); ?>"><i class="icon-arrow1"></i>مشاهده محصولات</a></div>
+    </section>
     <?php
     if ($inspiration_in_home_page->have_posts()) : ?>
         <section>
             <div class="container-blog-and-news-button-see-all">
                 <div class="blog-text">نورپردازی</div>
-                <div class="see-all-button only-desktop "><a href="#">مشاهده همه </a></div>
+                <div class="see-all-button only-desktop "><a href="<?php echo get_permalink($page_inspiration[0]); ?>">مشاهده همه </a></div>
 
             </div>
             <div class="inspiration-content">
@@ -108,7 +143,7 @@ foreach ($cats as $cat) {
             </div>
 
             <div class="button-show-all-mobile on-mobile-show">
-                <a href="#">مشاهده همه</a>
+                <a href="<?php echo get_permalink($page_inspiration[0]); ?>">مشاهده همه</a>
             </div>
         </section>
     <?php
@@ -167,7 +202,7 @@ foreach ($cats as $cat) {
                                                                                     } ?>">
                     <div class="container-blog-and-news-button-see-all">
                         <div class="type-of-product-text"><?= get_term($cat_id)->name ?></div>
-                        <div class="see-all-button only-desktop "><a href="<?= get_term_link($cat_id) ?>">مشاهده همه </a></div>
+                        <div class="see-all-button only-desktop "><a href="<?php echo get_permalink($page_product[0]); ?>">مشاهده همه </a></div>
                     </div>
 
 
@@ -190,14 +225,19 @@ foreach ($cats as $cat) {
                         ]);
 
 
-                        if ($product_query->have_posts()) {
+                        if ($product_query->have_posts()) :
                             while ($product_query->have_posts()) {
 
 
                                 $product_query->the_post();
                                 get_template_part('templates/card/card', 'product');
                             }
-                        }
+                        else : ?>
+                            <div class="not-found-category-product-in-home">
+                                <div>این دسته بندی فعلا خالی می باشد</div>
+                                <img src="<?php echo get_stylesheet_directory_uri() . '/imgs/not found category.svg' ?>">
+                            </div>
+                        <?php endif;
 
 
                         wp_reset_postdata();
@@ -211,7 +251,9 @@ foreach ($cats as $cat) {
 
             <?php endforeach; ?>
 
-
+            <div class="button-show-all-mobile on-mobile-show">
+                <a href="<?php echo get_permalink($page_product[0]); ?>">مشاهده همه</a>
+            </div>
 
 
         </section>
@@ -252,7 +294,7 @@ foreach ($cats as $cat) {
         <section>
             <div class="container-blog-and-news-button-see-all">
                 <div class="blog-text">اخبار و مقالات</div>
-                <div class="see-all-button only-desktop "><a href="#">مشاهده همه </a></div>
+                <div class="see-all-button only-desktop "><a href="<?php echo get_permalink($page_blog[0]); ?>">مشاهده همه </a></div>
             </div>
             <div class="posts-content">
                 <?php
@@ -265,7 +307,7 @@ foreach ($cats as $cat) {
                 ?>
             </div>
             <div class="button-show-all-mobile on-mobile-show">
-                <a href="#">مشاهده همه</a>
+                <a href="<?php echo get_permalink($page_blog[0]); ?>">مشاهده همه</a>
             </div>
         </section>
     <?php
@@ -277,7 +319,7 @@ foreach ($cats as $cat) {
         <section>
             <div class="container-blog-and-news-button-see-all">
                 <div class="blog-text">سوالات متداول</div>
-                <div class="see-all-button only-desktop "><a href="#">تماس با ما </a></div>
+                <div class="see-all-button only-desktop "><a href="tel: <?= $telephone_num ?>">تماس با ما </a></div>
             </div>
             <div class="container-cat-faq only-desktop">
                 <div class="category-faq border-gradient">
@@ -331,41 +373,30 @@ foreach ($cats as $cat) {
                 } ?>
             </div>
             <div class="faq-content" data-tab='2'>
-                <?php if ($faq_in_home_page_two->have_posts()) { ?>
-                    <?php
+                <?php if ($faq_in_home_page_two->have_posts()) :
+
                     while ($faq_in_home_page_two->have_posts()) {
 
                         $faq_in_home_page_two->the_post();
                         get_template_part('/templates/card/card', 'faq');
                     }
 
-                    ?>
 
-                <?php  } else {
-                    echo "سوالی موجود نیست";
-                } ?>
+                else : ?>
+                    <div class="not-found-category-product-in-home">
+                        <div> در این دسته بندی فعلا سوالی وجود ندارد</div>
+                        <img src="<?php echo get_stylesheet_directory_uri() . '/imgs/not found category.svg' ?>">
+                    </div> <?php endif; ?>
             </div>
 
             <div class=" button-show-all-mobile on-mobile-show">
-                <a href="#">تماس با ما</a>
+                <a href="tel: <?= $telephone_num ?>">تماس با ما</a>
             </div>
         </section>
     <?php
     endif;
     ?>
-    <section>
-        <div class="button-exer">
-            <div data-tab="1" class="button"></div>
-            <div data-tab="2" class="button"></div>
-            <div data-tab="3" class="button"></div>
-        </div>
-        <div class="div-container-exer">
-            <div data-tab="1" class="div active">div 1</div>
-            <div data-tab="2" class="div">div 2</div>
-            <div data-tab="3" class="div">div 3</div>
-        </div>
 
-    </section>
 
 </main>
 

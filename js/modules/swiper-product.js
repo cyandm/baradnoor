@@ -5,7 +5,7 @@ const swiperProduct = new Swiper("#swiperProduct", {
   },
 });
 
-const headerProduct = document.querySelector(".desktop-header");
+/* const headerProduct = document.querySelector(".desktop-header");
 const sliderProduct = document.querySelector(".slider-product");
 const mainProductPage = document.querySelector("main.product-page");
 
@@ -16,4 +16,4 @@ if (mainProductPage) {
 
   setMarginRight();
   window.addEventListener("resize", () => setMarginRight());
-}
+} */

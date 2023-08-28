@@ -16,10 +16,21 @@
       font-weight: 200;
     }
     .button-faq-card {
+      cursor: pointer;
       background: $gray;
       width: 3.16638rem;
       height: 3.16638rem;
       border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      > i {
+        transition: all 0.3s ease-in-out;
+        color: $white-color;
+        font-size: 1.8rem;
+        rotate: 90deg;
+        translate: -3px 0;
+      }
     }
   }
   .description-faq-card {
@@ -47,6 +58,12 @@
         width: 3.16638rem;
         height: 3.16638rem;
         border-radius: 50%;
+        > i {
+          transition: all 0.3s ease-in-out;
+          rotate: 0deg;
+
+          translate: -1px 3px;
+        }
       }
     }
   }

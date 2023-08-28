@@ -3,6 +3,10 @@ $pageID = get_option('page_on_front');
 $telephone_num = get_field('telephone_number', $pageID);
 $telephone_num_two = get_field('telephone_number_two', $pageID);
 
+$url_instagram = get_field('url_instagram', $pageID);
+$url_telegram = get_field('url_telegram', $pageID);
+$url_ita = get_field('url_ita', $pageID);
+
 ?>
 
 
@@ -49,9 +53,9 @@ $telephone_num_two = get_field('telephone_number_two', $pageID);
                 <img src="<?php echo get_stylesheet_directory_uri() . '/imgs/light better.png'  ?>" alt="light">
             </div>
             <div class="social-network-footer">
-                <div class="eitaa border-gradient"></div>
-                <div class="telegram border-gradient"></div>
-                <div class="instagram border-gradient"></div>
+                <div class="eitaa border-gradient"><a href="<?php echo $url_ita ?>"><i class="icon-ita"></i></a></div>
+                <div class="telegram border-gradient"><a href="<?php echo $url_telegram ?>"><i class="icon-telegram"></i></a></div>
+                <div class="instagram border-gradient"><a href="<?php echo $url_instagram ?>"><i class="icon-insta"></i></a></div>
             </div>
         </div>
     </div>

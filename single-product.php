@@ -110,9 +110,15 @@ function swiper_slider($images_slider)
             </div>
         </div>
         <div class="icons-left">
-            <img src=" <?php echo get_stylesheet_directory_uri() . '/imgs/eye2.svg'  ?>" alt="iran-icon">
-            <img src=" <?php echo get_stylesheet_directory_uri() . '/imgs/standard.svg'  ?>" alt="iran-icon">
-            <img src=" <?php echo get_stylesheet_directory_uri() . '/imgs/iso.svg'  ?>" alt="iran-icon">
+            <div>
+                <img src=" <?php echo get_stylesheet_directory_uri() . '/imgs/eye2.svg'  ?>" alt="iran-icon">
+            </div>
+            <div>
+                <img src=" <?php echo get_stylesheet_directory_uri() . '/imgs/standard.svg'  ?>" alt="iran-icon">
+            </div>
+            <div>
+                <img src=" <?php echo get_stylesheet_directory_uri() . '/imgs/iso.svg'  ?>" alt="iran-icon">
+            </div>
         </div>
     </div>
     <div class="container-call-info-product">

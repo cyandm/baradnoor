@@ -7,6 +7,33 @@ main.home {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    .show-all-product-home-page {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      align-items: center;
+      background: $search-color;
+      border-radius: 1rem;
+      padding: 0.5rem 1rem;
+      &.border-gradient-orange {
+        &::after {
+          background: $linear-orange-secondary;
+        }
+      }
+      a {
+        width: 100%;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+        i {
+          font-size: 1.5rem;
+          rotate: 90deg;
+          color: $orange-secondary;
+        }
+      }
+    }
+
     .container-blog-and-news-button-see-all {
       display: flex;
       padding: 0rem 0.625rem;
@@ -74,6 +101,21 @@ main.home {
         display: flex;
         gap: 1rem;
         flex-wrap: wrap;
+        .not-found-category-product-in-home {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 2rem;
+          padding-inline: 1rem;
+          > div {
+            align-self: flex-start;
+          }
+          img {
+            width: 50%;
+          }
+        }
       }
     }
     .image-light {
@@ -179,40 +221,20 @@ main.home {
       &.show {
         display: block;
       }
-    }
-
-    .button-exer {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 2rem;
-      > div {
-        background-color: $accent-blue;
-        width: 2rem;
-        height: 2rem;
-      }
-    }
-    .div-container-exer {
-      width: 100%;
-      background-color: $accent-blue;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      > div {
-        display: none;
-        &.active {
-          display: block;
+      .not-found-category-product-in-home {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        padding-inline: 1rem;
+        > div {
+          align-self: flex-start;
         }
-      }
-      .div1 {
-        background-color: rgb(51, 192, 235);
-      }
-      .div2 {
-        background-color: rgb(209, 40, 181);
-      }
-      .div3 {
-        background-color: rgb(226, 207, 30);
+        img {
+          width: 50%;
+        }
       }
     }
   }

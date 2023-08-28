@@ -11,6 +11,9 @@ main.product-page {
         font-weight: 300;
         margin-bottom: 0.5rem;
       }
+      @media (width < 900px) {
+        display: none;
+      }
     }
 
     .slider-product {
@@ -21,59 +24,120 @@ main.product-page {
         .wrapper-product {
           border-radius: 0rem;
           .slide-product {
+            position: relative;
+            padding: 0;
+            > div {
+              width: 100%;
+              display: flex;
+              flex-direction: row-reverse;
+              gap: 1rem;
+              align-items: center;
+              isolation: isolate;
+
+              > div {
+                width: 50%;
+              }
+
+              .container {
+                z-index: 5;
+                .content-of-silder-info {
+                  width: 100%;
+                  .container-title-expert-author-date-button {
+                    display: flex;
+                    z-index: 100;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                    justify-content: space-between;
+                    background: $search-color;
+                    border-radius: 1.5rem;
+                    padding: 1rem;
+
+                    .expert-slider {
+                      p {
+                        overflow: hidden;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 3;
+                        -webkit-box-orient: vertical;
+                      }
+                    }
+                    .button-slider {
+                      display: flex;
+                      justify-content: end;
+                    }
+                  }
+                }
+              }
+
+              .container-image-slider-product {
+                margin-right: -9rem;
+              }
+            }
+            /*
             padding: 0rem;
             background-color: $primary-black;
             display: flex;
             flex-direction: row-reverse;
             justify-content: space-between;
             align-items: center;
-            .container-image-slider-product {
-              max-width: 50%;
+            .container-slider-image {
               position: relative;
-              &::after {
-                content: "";
-                position: absolute;
-                width: 30%;
-                height: 100%;
-                top: 0rem;
-                right: -3rem;
-                z-index: 3;
-                background: $linear-contact-image;
-              }
-              > img {
-              }
-            }
-
-            .container-title-expert-author-date-button {
               display: flex;
-              z-index: 100;
-              flex-direction: column;
-              gap: 0.5rem;
-              justify-content: space-between;
-              max-width: 50%;
-              background: $search-color;
-              border-radius: 1.5rem;
-              padding: 1rem;
-              .expert-slider {
-                p {
-                  overflow: hidden;
-                  display: -webkit-box;
-                  -webkit-line-clamp: 3;
-                  -webkit-box-orient: vertical;
+              flex-direction: row-reverse;
+              justify-content: flex-start;
+              .container-image-slider-product {
+                max-width: 50%;
+                top: 0;
+                left: 0;
+                position: absolute;
+                &::after {
+                  content: "";
+                  position: absolute;
+                  width: 30%;
+                  height: 100%;
+                  top: 0rem;
+                  right: -3rem;
+                  z-index: 3;
+                  background: $linear-contact-image;
                 }
               }
-              .button-slider {
-                display: flex;
-                justify-content: end;
+              .container {
+                .content-of-silder-info {
+                  width: 100%;
+                  .container-title-expert-author-date-button {
+                    display: flex;
+                    z-index: 100;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                    justify-content: space-between;
+                    max-width: 50%;
+                    background: $search-color;
+                    border-radius: 1.5rem;
+                    padding: 1rem;
+
+                    .expert-slider {
+                      p {
+                        overflow: hidden;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 3;
+                        -webkit-box-orient: vertical;
+                      }
+                    }
+                    .button-slider {
+                      display: flex;
+                      justify-content: end;
+                    }
+                  }
+                }
               }
             }
+            */
           }
         }
       }
       .swiper-pagination-product {
         position: absolute;
         bottom: 0;
-        z-index: 700;
+        z-index: 1;
         width: 100%;
         span {
           &.swiper-pagination-bullet {
@@ -109,6 +173,7 @@ main.product-page {
     .text-all-product {
       font-size: 1.5rem;
       font-weight: 300;
+      margin-top: 1.5rem;
     }
     .product-content {
       display: flex;
@@ -150,9 +215,27 @@ main.product-page {
               flex-direction: column;
               .container-image-slider-product {
                 max-width: 100%;
+                &::after {
+                  content: "";
+                  position: absolute;
+                  width: 100%;
+                  height: 100%;
+                  left: 0;
+                  right: 0;
+                  bottom: 0;
+                  z-index: 5;
+                  background: linear-gradient(
+                    180deg,
+                    rgb(7, 7, 7),
+                    transparent 60%,
+                    rgb(7, 7, 7)
+                  );
+                }
               }
               .container-title-expert-author-date-button {
-                max-width: 100%;
+                max-width: 95%;
+
+                margin-top: -4vw;
               }
             }
           }

@@ -42,11 +42,12 @@ $posts_in_slider = new WP_Query(
                             get_template_part('/templates/card/slider');
                         }
                         ?>
+
                     </div>
 
+                    <div class="swiper-pagination-product"></div>
                 </div>
 
-                <div class="swiper-pagination-product"></div>
             </div>
         <?php
         endif;

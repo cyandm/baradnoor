@@ -13,15 +13,18 @@
                 <div class="question-text">چه چیزی هست که میخوای با ما در میون بذاری ؟</div>
                 <form>
                     <div class="container-border border-gradient">
+                        <i class="icon-comment"></i>
                         <textarea rows="5" class="text-area-contact-us " placeholder="اینجا بنویس"></textarea>
                     </div>
                     <div class="container-border border-gradient">
+                        <i class="icon-user"></i>
                         <input type="text" placeholder="نام شما" class="border-gradient" />
                     </div>
                     <div class="container-border border-gradient">
+                        <i class="icon-email"></i>
                         <input type="email" placeholder="ایمیل شما" />
                     </div>
-                    <div class="btn-contact-us"><a href="#">ارسال درخواست</a></div>
+                    <div class="btn-contact-us"><i class="icon-send"></i><a href="#">ارسال درخواست</a></div>
                 </form>
             </div>
         </div>

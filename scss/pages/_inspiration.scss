@@ -45,6 +45,7 @@ main.inspiration {
   @media (width<830px) {
     .inspiration-cat-group {
       overflow-x: scroll;
+      overflow-y: hidden;
       &::-webkit-scrollbar {
         width: 0rem;
       }

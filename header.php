@@ -7,6 +7,12 @@
 	<?php wp_head() ?>
 
 </head>
+<?php
+$pageID = get_option('page_on_front');
+$url_instagram = get_field('url_instagram', $pageID);
+$url_telegram = get_field('url_telegram', $pageID);
+$url_ita = get_field('url_ita', $pageID);
+?>
 
 <body>
 
@@ -19,6 +25,7 @@
 
 				<div class="container-logo-search">
 					<div class="search-wrapper border-gradient">
+						<i class="icon-search"></i>
 						<input class="search" type="search" placeholder="جستجو" value="<?php the_search_query(); ?>" name="s" id="search" />
 					</div>
 					<div class="logo">
@@ -41,7 +48,7 @@
 				<div class="container-search-logo-mobile">
 					<div class="logo-search-mobile"><?php the_custom_logo() ?></div>
 
-					<div class="close-button-search"></div>
+					<div class="close-button-search"><i class="icon-close"></i></div>
 				</div>
 
 				<div class="actived-menu">
@@ -50,25 +57,22 @@
 
 
 				<div class="social-network">
-					<div class="eitaa border-gradient"><i class="icon-insta"></i></div>
-					<div class="telegram border-gradient"><i class="icon-telegram"></i></div>
-					<div class="instagram border-gradient"><i class="icon-ita"></i></div>
+					<div class="eitaa border-gradient"><a href="<?php echo $url_ita ?>"><i class="icon-ita"></i></a></div>
+					<div class="telegram border-gradient"><a href="<?php echo $url_telegram ?>"><i class="icon-telegram"></i></a></div>
+					<div class="instagram border-gradient"><a href="<?php echo $url_instagram ?>"><i class="icon-insta"></i></a></div>
 				</div>
 
 			</div>
 			<div class="mobile-container">
-
 				<div class="hamburger-menu">
+					<i class="icon-hamburger-menu"></i>
 					<?php wp_nav_menu(['menu' => 'Header']) ?>
 				</div>
-
 				<div class="mobile-logo">
 					<?php the_custom_logo() ?>
 				</div>
-
-
 				<div class="mobile-search">
-
+					<i class="icon-search"></i>
 				</div>
 			</div>
 

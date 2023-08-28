@@ -106,18 +106,28 @@ main.blog-page {
         }
       }
       .search-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         position: relative;
         isolation: isolate;
+        gap: 0.2rem;
         border-radius: 1.25rem;
-
+        cursor: text;
+        background-color: $gray;
+        padding: 0.5rem 1rem 0.5rem 1.25rem;
+        border-radius: 1.25rem;
+        > i {
+          font-size: 1.5rem;
+        }
         input[type="search"] {
           position: relative;
           cursor: text;
           background-color: $gray;
-          padding: 0.75rem 1rem 0.75rem 1.25rem;
-          border-radius: 1.25rem;
           outline: none;
           border: none;
+          font-family: "Peyda";
+          color: $silver-primary;
         }
       }
     }
@@ -155,19 +165,27 @@ main.blog-page {
       }
       .search-wrapper-mobile {
         position: relative;
+        display: flex;
         isolation: isolate;
         border-radius: 1.25rem;
         width: 100%;
+        position: relative;
+        cursor: text;
+        gap: 0.2rem;
+        background-color: $search-color;
+        padding: 0.5rem 1rem 0.5rem 1.25rem;
+        border-radius: 1.25rem;
+        > i {
+          font-size: 1.5rem;
+        }
         input[type="search"] {
           position: relative;
           cursor: text;
-          width: 100%;
-
           background-color: $search-color;
-          padding: 0.75rem 1rem 0.75rem 1.25rem;
-          border-radius: 1.25rem;
           outline: none;
           border: none;
+          width: 100%;
+          font-family: "Peyda";
         }
       }
     }
