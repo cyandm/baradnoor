@@ -27,37 +27,35 @@ $posts_in_slider = new WP_Query(
 <main class="blog-page">
     <div class="blog-page-content">
 
-        <div class="image-and-slider-blogs">
-            <div class="image-blogs-container">
-                <img src="<?php echo get_stylesheet_directory_uri() . '/imgs/blog-image.svg'  ?>" />
-            </div>
 
 
 
+
+
+        <div class="slider-blogs">
             <?php
             if ($posts_in_slider->have_posts()) : ?>
-                <div class="slider-blog container">
-                    <div class="swiper border-gradient mySwiper" id="swiperSlideBlog">
-                        <div class="swiper-wrapper">
-                            <?php
+            <div class="slider-blog container">
+                <div class="swiper mySwiper" id="swiperSlideBlog">
+                    <div class="swiper-wrapper">
+                        <?php
                             while ($posts_in_slider->have_posts()) {
                                 $posts_in_slider->the_post();
                                 get_template_part('/templates/card/slider', 'component');
                             }
                             ?>
-                        </div>
-
                     </div>
 
                     <div class="swiper-pagination"></div>
                 </div>
+
+            </div>
             <?php
             endif;
             ?>
-
-
-
         </div>
+
+
         <div class="title-category-search-container not-in-mobile-show">
             <div class="title-and-category-container">
                 <div class="category-title">دنبال چی میگردی ؟</div>
@@ -104,11 +102,11 @@ $posts_in_slider = new WP_Query(
 
         <?php
         if ($posts_in_blog_page->have_posts()) : ?>
-            <div class="container blog-group-content">
-                <h2>همه مقالات</h2>
-                <div class="container-blog-card-group">
-                    <div class="posts-content">
-                        <?php
+        <div class="container blog-group-content">
+            <h2>همه مقالات</h2>
+            <div class="container-blog-card-group">
+                <div class="posts-content">
+                    <?php
                         while ($posts_in_blog_page->have_posts()) {
 
                             $posts_in_blog_page->the_post();
@@ -116,8 +114,8 @@ $posts_in_slider = new WP_Query(
                         }
 
                         ?>
-                    </div>
-                    <?php
+                </div>
+                <?php
                     echo "<div class='pagination-for-blog border-gradient'>" . paginate_links(
                         array(
                             'total' => $posts_in_blog_page->max_num_pages,
@@ -128,8 +126,8 @@ $posts_in_slider = new WP_Query(
                     ) . "</div>";
                     ?>
 
-                </div>
             </div>
+        </div>
         <?php
         endif;
 

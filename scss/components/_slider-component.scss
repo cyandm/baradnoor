@@ -1,46 +1,65 @@
 .swiper {
-  border-radius: 1.6rem;
-
   .swiper-wrapper {
-    border-radius: 1.6rem;
-
     .swiper-slide {
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      flex-direction: row-reverse;
       gap: 1rem;
-      border-radius: 1.6rem;
-
-      background: $search-color;
-      padding: 1rem;
-
-      .title-slider {
-        font-size: 1.5rem;
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
-      }
-      .expert-slider {
-        p {
-          color: $primary-gray;
-          font-size: 1rem;
-          overflow: hidden;
-          display: -webkit-box;
-          -webkit-line-clamp: 5;
-          -webkit-box-orient: vertical;
+      background: $primary-black;
+      position: relative;
+      img {
+        width: 50%;
+        position: relative;
+        &::after {
+          content: "";
+          position: absolute;
+          width: 30%;
+          height: 100%;
+          top: 0rem;
+          right: -3rem;
+          z-index: 3;
+          background: $linear-contact-image;
         }
       }
-
-      .author-date-button-slider {
+      .content-of-slider {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        translate: 0% -50%;
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        .author-date-container-slider {
-          display: flex;
-          font-size: 0.75rem;
-          color: $primary-gray;
-          gap: 1.5rem;
+        .container-slider-info {
+          background-color: $search-color;
+          padding: 1rem;
+          border-radius: 1.5rem;
+          width: 100%;
+          .title-slider {
+            font-size: 1.5rem;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+          }
+          .expert-slider {
+            p {
+              color: $primary-gray;
+              font-size: 1rem;
+              overflow: hidden;
+              display: -webkit-box;
+              -webkit-line-clamp: 5;
+              -webkit-box-orient: vertical;
+            }
+          }
+
+          .author-date-button-slider {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .author-date-container-slider {
+              display: flex;
+              font-size: 0.75rem;
+              color: $primary-gray;
+              gap: 1.5rem;
+            }
+          }
         }
       }
     }

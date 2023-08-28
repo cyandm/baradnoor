@@ -38,7 +38,7 @@ main.blog-page {
         flex-wrap: wrap;
         width: 40%;
         border-radius: 1.6rem;
-        margin-inline: 1rem;
+        margin: unset;
         gap: 1rem;
         .swiper-pagination {
           position: static;
