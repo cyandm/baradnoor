@@ -51,6 +51,7 @@ main.single-product-page {
             margin: unset;
             .swiper-wrapper {
               .swiper-slide {
+                border-radius: 1.5rem;
                 background-color: $background-brown;
                 height: 100%;
                 > img {
@@ -77,6 +78,9 @@ main.single-product-page {
           margin: unset;
           .swiper-wrapper {
             .swiper-slide {
+              border-radius: 1.5rem;
+              padding: 1rem;
+              background-color: $search-color;
               > img {
                 height: 8rem;
                 object-fit: cover;
@@ -88,7 +92,8 @@ main.single-product-page {
       }
     }
     .technical-specifications-of-product {
-      min-width: 50%;
+      min-width: 47%;
+      margin-inline: 1rem;
       display: flex;
       flex-direction: column;
       background-color: $search-color;
@@ -133,6 +138,7 @@ main.single-product-page {
       flex-direction: column;
       .technical-specifications-of-product {
         min-width: 100%;
+        margin-inline: unset;
       }
     }
   }
@@ -146,12 +152,11 @@ main.single-product-page {
     .icons-right {
       display: flex;
       align-items: center;
-
-      gap: 1.25rem;
+      gap: 0.25rem;
       .icon-container {
         display: flex;
         align-items: center;
-
+        min-width: fit-content;
         p {
           font-family: "Peyda";
           display: flex;
@@ -163,7 +168,7 @@ main.single-product-page {
     }
     .icons-left {
       display: flex;
-      gap: 1rem;
+      gap: 0.25rem;
     }
     @media (width<700px) {
       flex-direction: column;
@@ -175,6 +180,7 @@ main.single-product-page {
         justify-content: space-between;
         .icon-container {
           padding: 1rem;
+          min-width: fit-content;
           border-radius: 1.5rem;
           background-color: $search-color;
           flex-direction: column;

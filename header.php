@@ -39,15 +39,18 @@ $url_ita = get_field('url_ita', $pageID);
 
 		<div class="mobile-header">
 			<div class="background-do-search">
-				<div class="do-search">
-					<input type="search" placeholder="جستجو" class="do-search-mobile" value="<?php the_search_query(); ?>">
+				<div class="do-search border-gradient-solid-white">
+					<div class="container-search-box-icon-search">
+						<i class="icon-search"></i>
+						<input type="search" placeholder="جستجو" class="do-search-mobile" value="<?php the_search_query(); ?>">
+					</div>
+					<i class="icon-close button-close-search-header"></i>
 				</div>
 			</div>
 
 			<div class="menu-mobile">
 				<div class="container-search-logo-mobile">
 					<div class="logo-search-mobile"><?php the_custom_logo() ?></div>
-
 					<div class="close-button-search"><i class="icon-close"></i></div>
 				</div>
 

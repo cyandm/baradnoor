@@ -1,21 +1,8 @@
-<?php get_header() ?>
-
-
-
 <?php
+global $wp_query;
 
-/*Template Name: Blog Page */
 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
-$posts_in_blog_page = new WP_Query(
-    [
-        'post_type' => 'post',
-        'posts_per_page' => 18,
-        'orderby' => 'id',
-        'paged' => $paged
-
-    ]
-);
 $posts_in_slider = new WP_Query(
     [
         'post_type' => 'post',
@@ -24,8 +11,47 @@ $posts_in_slider = new WP_Query(
     ]
 );
 
-
 ?>
+
+
+<?php
+
+class Walker_custom_CategoryDropdown extends Walker_CategoryDropdown
+{
+
+    public function start_el(&$output, $category, $depth = 0, $args = array(), $id = 0)
+    {
+        $pad = str_repeat('&nbsp;', $depth * 3);
+
+        /** This filter is documented in wp-includes/category-template.php */
+        $cat_name = apply_filters('list_cats', $category->name, $category);
+
+        if (isset($args['value_field']) && isset($category->{$args['value_field']})) {
+            $value_field = $args['value_field'];
+        } else {
+            $value_field = 'term_id';
+        }
+
+        $output .= "\t<option class=\"level-$depth\" value=\"" . esc_attr($category->{$value_field}) . "\"";
+
+        // Type-juggling causes false matches, so we force everything to a string.
+        if ((string) $category->{$value_field} === (string) $args['selected'])
+            $output .= ' selected="selected"';
+
+        $output .= ' data-uri="' . get_term_link($category) . '" '; /* Custom */
+
+        $output .= '>';
+        $output .= $pad . $cat_name;
+        if ($args['show_count'])
+            $output .= '&nbsp;&nbsp;(' . number_format_i18n($category->count) . ')';
+        $output .= "</option>\n";
+    }
+}
+?>
+
+
+<?php get_header() ?>
+
 <main class="blog-page">
     <div class="blog-page-content">
 
@@ -63,11 +89,10 @@ $posts_in_slider = new WP_Query(
                                 'orderby' => 'id',
                                 'hide_empty' => false,
                                 'title_li' => "",
-                                'current_category'    => 1
+                                'current_category' => 0
 
                             ]
                         ) ?>
-
                     </ul>
                 </div>
             </div>
@@ -86,11 +111,12 @@ $posts_in_slider = new WP_Query(
                             'orderby' => 'id',
                             'hide_empty' => false,
                             'title_li' => "",
-                            'current_category' => 0,
+                            'current_category'    => 1,
+                            'value_field' => 'term_id',
+                            'walker' => new Walker_custom_CategoryDropdown
+
                         ]
-                    ); ?>
-
-
+                    ) ?>
                 </div>
             </div>
             <div class="search-wrapper-mobile border-gradient">
@@ -100,15 +126,15 @@ $posts_in_slider = new WP_Query(
         </div>
 
         <?php
-        if ($posts_in_blog_page->have_posts()) : ?>
+        if ($wp_query->have_posts()) : ?>
             <div class="container blog-group-content">
                 <h2>همه مقالات</h2>
                 <div class="container-blog-card-group">
                     <div class="posts-content">
                         <?php
-                        while ($posts_in_blog_page->have_posts()) {
+                        while ($wp_query->have_posts()) {
 
-                            $posts_in_blog_page->the_post();
+                            $wp_query->the_post();
                             get_template_part('/templates/card/card', 'blog');
                         }
 
@@ -117,7 +143,7 @@ $posts_in_slider = new WP_Query(
                     <?php
                     echo "<div class='pagination-for-blog border-gradient'>" . paginate_links(
                         array(
-                            'total' => $posts_in_blog_page->max_num_pages,
+                            'total' => $wp_query->max_num_pages,
                             'next_text' => __('<i class="next-or-prev"></i>'),
                             'prev_text' => __('<i class="next-or-prev"></i>'),
                             'prev_next' => false
@@ -127,10 +153,15 @@ $posts_in_slider = new WP_Query(
 
                 </div>
             </div>
-        <?php
-        endif;
 
-        ?>
+        <?php else : ?>
+
+            <div class="not-found-search-archive">
+                <img src="<?php echo get_stylesheet_directory_uri() . '/imgs/not found search.svg'  ?>" alt="light">
+            </div>
+
+
+        <?php endif; ?>
 
 
     </div>

@@ -6,9 +6,12 @@
       gap: 1rem;
       background: $primary-black;
       position: relative;
-      img {
-        width: 50%;
+
+      .container-image-slider {
         position: relative;
+        display: flex;
+        flex-direction: row-reverse;
+        height: 50vh;
         &::after {
           content: "";
           position: absolute;
@@ -19,18 +22,35 @@
           z-index: 3;
           background: $linear-contact-image;
         }
+        img {
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      .title-mobile {
+        display: none;
+        @media (width < 900px) {
+          display: block;
+          margin-inline: 2rem;
+          font-weight: 300;
+          margin-top: -3rem;
+          z-index: 7;
+        }
       }
       .content-of-slider {
         position: absolute;
-        top: 50%;
-        left: 50%;
-        translate: 0% -50%;
         display: flex;
+        z-index: 5;
+        inset: auto 0;
+        height: 100%;
+        align-items: center;
+
         .container-slider-info {
           background-color: $search-color;
           padding: 1rem;
           border-radius: 1.5rem;
-          width: 100%;
+          max-width: 35rem;
+          margin-inline: 1rem;
           .title-slider {
             font-size: 1.5rem;
             overflow: hidden;
@@ -62,15 +82,96 @@
           }
         }
       }
+
+      @media (width <= 1200px) {
+        flex-direction: column;
+        .container-image-slider {
+          &::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 5;
+            background: $linear-contact-image-mobile;
+          }
+        }
+
+        .content-of-slider {
+          position: relative;
+          margin-inline: 1rem;
+          .container-slider-info {
+            max-width: 100%;
+          }
+        }
+      }
     }
-    @media (width <900px) {
+    @media (width <600px) {
       .swiper-slide {
         .author-date-button-slider {
           flex-direction: column;
           align-items: normal;
           .author-date-container-slider {
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
           }
         }
+        .button-post-card {
+          width: 100%;
+        }
+      }
+    }
+  }
+  .container-pagination {
+    display: flex;
+    justify-content: start;
+    align-items: flex-start;
+    position: relative;
+
+    .swiper-pagination {
+      display: flex;
+      position: absolute;
+      width: 100%;
+      margin-block: 1rem;
+      display: flex;
+      padding: 1rem;
+      align-self: center;
+      span {
+        &.swiper-pagination-bullet {
+          @extend .border-gradient;
+          width: 1rem;
+          background: $search-color;
+          opacity: 1;
+          border-radius: 1rem;
+        }
+        &.swiper-pagination-bullet-active {
+          &::after {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            background: $linear-button-orange;
+            z-index: -2;
+          }
+          background: $linear-button-orange;
+          width: 3rem;
+          border-radius: 1rem;
+          opacity: 1;
+        }
+      }
+    }
+    @media (width <= 1200px) {
+      .swiper-pagination {
+        display: flex;
+        justify-content: center;
+        position: static;
+        width: 100%;
+        margin-block: 1rem;
+        display: flex;
+        align-self: center;
       }
     }
   }

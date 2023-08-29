@@ -1,4 +1,3 @@
-<?php get_header() ?>
 <?php
 
 /*Template Name: Home Page */ ?>
@@ -7,6 +6,7 @@
 <?php
 $i = 0;
 $j = 0;
+
 
 $telephone_num = get_field('telephone_number');
 
@@ -18,7 +18,6 @@ $posts_in_home_page = new WP_Query(
     [
         'post_type' => 'post',
         'posts_per_page' => 4
-
     ]
 );
 
@@ -41,7 +40,6 @@ $product_in_home_page = new WP_Query(
         'posts_per_page' => 8
     ]
 );
-
 
 
 $faq_in_home_page = new WP_Query(
@@ -78,6 +76,7 @@ $cats = get_categories([
 
 ]);
 
+
 $cats_name_group = [];
 $cats_id_group = [];
 
@@ -93,6 +92,7 @@ $inspiration_link_template = [
     'meta_key' => '_wp_page_template',
     'meta_value' => 'templates/inspiration.php'
 ];
+
 $page_inspiration = get_posts($inspiration_link_template);
 
 
@@ -116,15 +116,18 @@ $blog_link_template = [
 $page_blog = get_posts($blog_link_template);
 
 
-
 ?>
 
+
+<?php get_header() ?>
+
 <main class="container home">
+
     <section>
         <div class="show-all-product-home-page on-mobile-show border-gradient-orange"><a href="<?php echo get_permalink($page_product[0]); ?>"><i class="icon-arrow1"></i>مشاهده محصولات</a></div>
     </section>
-    <?php
-    if ($inspiration_in_home_page->have_posts()) : ?>
+
+    <?php if ($inspiration_in_home_page->have_posts()) : ?>
         <section>
             <div class="container-blog-and-news-button-see-all">
                 <div class="blog-text">نورپردازی</div>
@@ -146,12 +149,9 @@ $page_blog = get_posts($blog_link_template);
                 <a href="<?php echo get_permalink($page_inspiration[0]); ?>">مشاهده همه</a>
             </div>
         </section>
-    <?php
-    endif;
-    ?>
+    <?php endif;    ?>
 
-    <?php
-    if ($product_in_home_page->have_posts()) : ?>
+    <?php if ($product_in_home_page->have_posts()) : ?>
         <section>
             <div class="container-blog-and-news-button-see-all">
                 <div class="blog-text">محصولات جدید</div>
@@ -173,13 +173,6 @@ $page_blog = get_posts($blog_link_template);
                 </div>
             </div>
 
-
-
-
-
-
-
-
             <div class="container-cat-product border-gradient on-mobile-show drop-down-cat">
                 <?php wp_dropdown_categories(
                     [
@@ -194,72 +187,70 @@ $page_blog = get_posts($blog_link_template);
                 ) ?>
             </div>
 
+            <div class="products-in-home-page">
+                <?php foreach ($cats_id_group as $index => $cat_id) : ?>
 
-            <?php foreach ($cats_id_group as $index => $cat_id) : ?>
-
-                <div data-tab="<?= $index ?>" class="container-tab-product-group <?php if ($index === 0) {
-                                                                                        echo "show";
-                                                                                    } ?>">
-                    <div class="container-blog-and-news-button-see-all">
-                        <div class="type-of-product-text"><?= get_term($cat_id)->name ?></div>
-                        <div class="see-all-button only-desktop "><a href="<?php echo get_permalink($page_product[0]); ?>">مشاهده همه </a></div>
-                    </div>
-
-
-                    <div class="container-product-home">
+                    <div data-tab="<?= $index ?>" class="container-tab-product-group <?php if ($index === 0) {
+                                                                                            echo "show";
+                                                                                        } ?>">
+                        <div class="container-blog-and-news-button-see-all">
+                            <div class="type-of-product-text"><?= get_term($cat_id)->name ?></div>
+                            <div class="see-all-button only-desktop "><a href="<?php echo get_permalink($page_product[0]); ?>">مشاهده همه </a></div>
+                        </div>
 
 
-                        <?php
+                        <div class="container-product-home">
 
 
-                        $product_query = new WP_Query([
-                            'posts_per_page' => 8,
-                            'post_type' => 'product',
-                            'tax_query' => [
-                                [
-                                    'taxonomy' => 'product-cat',
-                                    'field' => 'term_id',
-                                    'terms' => $cat_id
+                            <?php
+
+
+                            $product_query = new WP_Query([
+                                'posts_per_page' => 8,
+                                'post_type' => 'product',
+                                'tax_query' => [
+                                    [
+                                        'taxonomy' => 'product-cat',
+                                        'field' => 'term_id',
+                                        'terms' => $cat_id
+                                    ]
                                 ]
-                            ]
-                        ]);
+                            ]);
 
 
-                        if ($product_query->have_posts()) :
-                            while ($product_query->have_posts()) {
+                            if ($product_query->have_posts()) :
+                                while ($product_query->have_posts()) {
 
 
-                                $product_query->the_post();
-                                get_template_part('templates/card/card', 'product');
-                            }
-                        else : ?>
-                            <div class="not-found-category-product-in-home">
-                                <div>این دسته بندی فعلا خالی می باشد</div>
-                                <img src="<?php echo get_stylesheet_directory_uri() . '/imgs/not found category.svg' ?>">
-                            </div>
-                        <?php endif;
+                                    $product_query->the_post();
+                                    get_template_part('templates/card/card', 'product');
+                                }
+                            else : ?>
+                                <div class="not-found-category-product-in-home">
+                                    <div>این دسته بندی فعلا خالی می باشد</div>
+                                    <img src="<?php echo get_stylesheet_directory_uri() . '/imgs/not found category.svg' ?>">
+                                </div>
+                            <?php endif;
 
 
-                        wp_reset_postdata();
+                            wp_reset_postdata();
 
-                        ?>
+                            ?>
+                        </div>
+
                     </div>
 
-                </div>
 
 
+                <?php endforeach; ?>
 
-            <?php endforeach; ?>
+            </div>
 
             <div class="button-show-all-mobile on-mobile-show">
                 <a href="<?php echo get_permalink($page_product[0]); ?>">مشاهده همه</a>
             </div>
-
-
         </section>
-    <?php
-    endif;
-    ?>
+    <?php endif; ?>
 
 
     <section class="image-light-top">
@@ -288,9 +279,7 @@ $page_blog = get_posts($blog_link_template);
 
     </section>
 
-
-    <?php
-    if ($posts_in_home_page->have_posts()) : ?>
+    <?php if ($posts_in_home_page->have_posts()) : ?>
         <section>
             <div class="container-blog-and-news-button-see-all">
                 <div class="blog-text">اخبار و مقالات</div>
@@ -310,12 +299,9 @@ $page_blog = get_posts($blog_link_template);
                 <a href="<?php echo get_permalink($page_blog[0]); ?>">مشاهده همه</a>
             </div>
         </section>
-    <?php
-    endif;
+    <?php endif; ?>
 
-    ?>
-    <?php
-    if ($faq_in_home_page->have_posts() || $faq_in_home_page_two->have_posts()) : ?>
+    <?php if ($faq_in_home_page->have_posts() || $faq_in_home_page_two->have_posts()) : ?>
         <section>
             <div class="container-blog-and-news-button-see-all">
                 <div class="blog-text">سوالات متداول</div>
@@ -358,7 +344,7 @@ $page_blog = get_posts($blog_link_template);
             </div>
 
             <div class="faq-content show" data-tab='1'>
-                <?php if ($faq_in_home_page->have_posts()) { ?>
+                <?php if ($faq_in_home_page->have_posts()) : ?>
                     <?php
                     while ($faq_in_home_page->have_posts()) {
 
@@ -366,11 +352,12 @@ $page_blog = get_posts($blog_link_template);
                         get_template_part('/templates/card/card', 'faq');
                     }
 
-                    ?>
 
-                <?php  } else {
-                    echo "سوالی موجود نیست";
-                } ?>
+                else : ?>
+                    <div class="not-found-category-product-in-home">
+                        <div> در این دسته بندی فعلا سوالی وجود ندارد</div>
+                        <img src="<?php echo get_stylesheet_directory_uri() . '/imgs/not found category.svg' ?>">
+                    </div> <?php endif; ?>
             </div>
             <div class="faq-content" data-tab='2'>
                 <?php if ($faq_in_home_page_two->have_posts()) :
@@ -393,9 +380,7 @@ $page_blog = get_posts($blog_link_template);
                 <a href="tel: <?= $telephone_num ?>">تماس با ما</a>
             </div>
         </section>
-    <?php
-    endif;
-    ?>
+    <?php endif; ?>
 
 
 </main>

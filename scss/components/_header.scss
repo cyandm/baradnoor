@@ -155,15 +155,15 @@
     .mobile-container {
       display: flex;
       align-items: center;
-      width: 98%;
-      gap: 5.3125rem;
-      justify-content: space-around;
+      width: 100%;
+      justify-content: space-between;
 
       .mobile-search {
         width: 2.6875rem;
         height: 2.75rem;
         background-color: $white-8percent;
         border-radius: 1rem;
+        padding: 0.5rem;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -187,12 +187,14 @@
         justify-content: center;
         width: 2.6875rem;
         height: 2.75rem;
+        padding: 0.5rem;
         background-color: $white-8percent;
         border-radius: 1rem;
         i {
           color: $white-color;
           font-size: 1.8rem;
           rotate: 180deg;
+          translate: 1px -2px;
         }
       }
     }
@@ -347,28 +349,48 @@
       padding: 1.06rem 1rem;
 
       .do-search {
+        display: flex;
         position: relative;
         isolation: isolate;
+        align-items: center;
+        justify-content: space-between;
         width: 100%;
-        &::after {
-          content: "";
-          position: absolute;
-          inset: -1px;
-          border-radius: 1.25rem;
-          background: $white-color;
-          z-index: -1;
-        }
+        border-radius: 1.25rem;
+        background-color: $search-color;
+        padding: 0.75rem 1rem 0.75rem 1.25rem;
 
-        input[type="search"] {
-          cursor: text;
-          background-color: $search-color;
-          width: 100%;
-          padding: 0.75rem 1rem 0.75rem 1.25rem;
-          border-radius: 1.25rem;
-          outline: none;
-          border: none;
+        > i {
+          font-size: 2rem;
+          color: $orange-secondary;
+        }
+        .container-search-box-icon-search {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 0.5rem;
+          flex: 1;
+          input[type="search"] {
+            cursor: text;
+            outline: none;
+            border: none;
+            flex: 1;
+            width: 100%;
+            font-family: "Peyda";
+            color: $silver-primary;
+            background-color: $search-color;
+            &::-webkit-search-cancel-button {
+              display: none;
+            }
+          }
+          > i {
+            font-size: 1.5rem;
+          }
         }
       }
     }
   }
+}
+
+body:has(.background-do-search.active) {
+  overflow: hidden;
 }

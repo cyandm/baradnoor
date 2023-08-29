@@ -45,11 +45,12 @@ $favorite_blog = new WP_Query([
                                     'orderby' => 'id',
                                     'hide_empty' => false,
                                     'title_li' => "",
-                                    'current_category'    => 1
+                                    'current_category'    => 0
                                 ]
                             ) ?>
                         </ul>
                     </div>
+
                 </div>
 
                 <?php
@@ -102,7 +103,7 @@ $favorite_blog = new WP_Query([
     <!-- mobile -->
     <div class="page-single-post-mobile">
         <div class="bread-crumb-single-blog-mobile">
-            <span><a href="#">مقالات</a></span>
+            <span><a href="<?= site_url() . '/بلاگ/' ?>">مقالات</a></span>
             <span> > </span>
             <span> <?php the_title() ?> </span>
         </div>

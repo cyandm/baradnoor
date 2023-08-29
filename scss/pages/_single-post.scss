@@ -51,6 +51,7 @@ main.single-post-page {
               border-radius: 1.25rem;
               outline: none;
               border: none;
+              font-family: "Peyda";
             }
           }
           .category-blog {
@@ -188,7 +189,8 @@ main.single-post-page {
                 .input-group {
                   i {
                     &:before {
-                      color: $orange-secondary;
+                      color: $white-color;
+                      font-size: 1.5rem;
                     }
                   }
                   @extend .border-gradient;
@@ -225,7 +227,8 @@ main.single-post-page {
                 .input-group2 {
                   i {
                     &:before {
-                      color: $orange-secondary;
+                      color: $white-color;
+                      font-size: 1.5rem;
                     }
                   }
                   @extend .border-gradient;
@@ -329,14 +332,14 @@ main.single-post-page {
 
                     &:after {
                       visibility: visible;
-                      content: "\e915";
-                      font-family: "hirkanoush" !important;
+                      content: "\e90c";
+                      font-family: "barad-icon" !important;
                       font-style: normal;
                       font-weight: normal;
                       font-variant: normal;
                       text-transform: none;
                       font-size: 1.5rem;
-                      color: $orange-secondary;
+                      color: $white-color;
                     }
                   }
                 }
@@ -513,7 +516,8 @@ main.single-post-page {
                 .input-group {
                   i {
                     &:before {
-                      color: $orange-secondary;
+                      color: $white-color;
+                      font-size: 1.5rem;
                     }
                   }
                   @extend .border-gradient;
@@ -550,7 +554,8 @@ main.single-post-page {
                 .input-group2 {
                   i {
                     &:before {
-                      color: $orange-secondary;
+                      color: $white-color;
+                      font-size: 1.5rem;
                     }
                   }
                   @extend .border-gradient;
@@ -654,14 +659,14 @@ main.single-post-page {
 
                     &:after {
                       visibility: visible;
-                      content: "\e915";
-                      font-family: "hirkanoush" !important;
+                      content: "\e90c";
+                      font-family: "barad-icon" !important;
                       font-style: normal;
                       font-weight: normal;
                       font-variant: normal;
                       text-transform: none;
                       font-size: 1.5rem;
-                      color: $orange-secondary;
+                      color: $white-color;
                     }
                   }
                 }

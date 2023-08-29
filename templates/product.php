@@ -31,27 +31,30 @@ $posts_in_slider = new WP_Query(
         </div>
 
 
-        <?php
-        if ($posts_in_slider->have_posts()) : ?>
-            <div class="slider-product">
-                <div class="swiper swiper-product" id="swiperProduct">
-                    <div class="swiper-wrapper wrapper-product">
-                        <?php
-                        while ($posts_in_slider->have_posts()) {
-                            $posts_in_slider->the_post();
-                            get_template_part('/templates/card/slider');
-                        }
-                        ?>
+        <div class="slider-blogs">
+            <?php
+            if ($posts_in_slider->have_posts()) : ?>
+                <div class="slider-blog">
+                    <div class="swiper mySwiper" id="swiperSlideBlog">
+                        <div class="swiper-wrapper">
+                            <?php
+                            while ($posts_in_slider->have_posts()) {
+                                $posts_in_slider->the_post();
+                                get_template_part('/templates/card/slider', 'component', ['title' => 'محصولات داغ امروز']);
+                            }
+                            ?>
+                        </div>
 
+                        <div class="container container-pagination">
+                            <div class="swiper-pagination"></div>
+                        </div>
                     </div>
 
-                    <div class="swiper-pagination-product"></div>
                 </div>
-
-            </div>
-        <?php
-        endif;
-        ?>
+            <?php
+            endif;
+            ?>
+        </div>
 
 
     </div>

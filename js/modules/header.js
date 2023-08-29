@@ -15,7 +15,7 @@ const closeHandler = document.querySelector(".close-button-search");
 
 const searchHandler = document.querySelector(".mobile-search");
 
-const doSearch = document.querySelector(".do-search");
+const doSearch = document.querySelector(".button-close-search-header");
 
 const search = document.querySelector(".background-do-search");
 
