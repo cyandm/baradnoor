@@ -2,6 +2,39 @@
 
 /*Template Name: Home Page */ ?>
 
+<div class="preloader">
+    <div class="preloader_lamps">
+        <div class="preloader_lamps_item"></div>
+        <div class="preloader_lamps_item"></div>
+        <div class="preloader_lamps_item"></div>
+        <div class="preloader_lamps_item"></div>
+        <div class="preloader_lamps_item"></div>
+    </div>
+    <div class="preloader_title_group">
+        <span class="preloader_title"></span>
+        <span class="preloader_title"></span>
+    </div>
+</div>
+
+<div class="home_first_slide active" id="home_first_slide">
+
+    <div class="bg_fixer">
+
+    </div>
+
+    <div>
+        <h1>حس خوب روشنایی</h1>
+
+        <div class="scroll_down">
+            <span>برو پایین ...</span>
+            <i class=" "></i>
+        </div>
+    </div>
+
+    <span class="cursor"></span>
+</div>
+
+
 
 <?php
 $i = 0;
@@ -71,19 +104,29 @@ $faq_in_home_page_two = new WP_Query(
 
 $cats = get_categories([
     'taxonomy' => 'product-cat',
-    'orderby' => 'id', 'current_category'    => 1,
+    'orderby' => 'id',
+    'current_category'    => 1,
+    'hide_empty' => false,
+
+]);
+
+$cats_name_group = [];
+$cats_id_group = [];
+foreach ($cats as $cat) {
+    array_push($cats_name_group, $cat->name);
+    array_push($cats_id_group, $cat->term_id);
+}
+
+
+$cats_faq = get_categories([
+    'taxonomy' => 'faq-cat',
+    'orderby' => 'id',
+    'current_category'    => 1,
     'hide_empty' => false,
 
 ]);
 
 
-$cats_name_group = [];
-$cats_id_group = [];
-
-foreach ($cats as $cat) {
-    array_push($cats_name_group, $cat->name);
-    array_push($cats_id_group, $cat->term_id);
-}
 
 $inspiration_link_template = [
     'post_type' => 'page',
@@ -190,9 +233,9 @@ $page_blog = get_posts($blog_link_template);
             <div class="products-in-home-page">
                 <?php foreach ($cats_id_group as $index => $cat_id) : ?>
 
-                    <div data-tab="<?= $index ?>" class="container-tab-product-group <?php if ($index === 0) {
-                                                                                            echo "show";
-                                                                                        } ?>">
+                    <div data-tab="<?= $index ?>" data-tabid="<?= $cat_id ?>" class="container-tab-product-group <?php if ($index === 0) {
+                                                                                                                        echo "show";
+                                                                                                                    } ?>">
                         <div class="container-blog-and-news-button-see-all">
                             <div class="type-of-product-text"><?= get_term($cat_id)->name ?></div>
                             <div class="see-all-button only-desktop "><a href="<?php echo get_permalink($page_product[0]); ?>">مشاهده همه </a></div>
@@ -343,7 +386,7 @@ $page_blog = get_posts($blog_link_template);
                 ) ?>
             </div>
 
-            <div class="faq-content show" data-tab='1'>
+            <div class="faq-content show" data-tab='1' data-tabid="<?php echo $cats_faq[0]->term_id ?>">
                 <?php if ($faq_in_home_page->have_posts()) : ?>
                     <?php
                     while ($faq_in_home_page->have_posts()) {
@@ -359,7 +402,7 @@ $page_blog = get_posts($blog_link_template);
                         <img src="<?php echo get_stylesheet_directory_uri() . '/imgs/not found category.svg' ?>">
                     </div> <?php endif; ?>
             </div>
-            <div class="faq-content" data-tab='2'>
+            <div class="faq-content" data-tab='2' data-tabid="<?php echo $cats_faq[1]->term_id ?>">
                 <?php if ($faq_in_home_page_two->have_posts()) :
 
                     while ($faq_in_home_page_two->have_posts()) {

@@ -7,7 +7,7 @@ if (!class_exists('cyn_general')) {
 
             add_filter('comment_form_default_fields', [$this, 'custom_remove_comment_url']);
             add_filter('comment_form_default_fields', [$this, 'custom_remove_comment_labels']);
-            add_action('wp_enqueue_scripts', [$this, 'mytheme_enqueue_comment_reply']);
+            //add_action('wp_enqueue_scripts', [$this, 'mytheme_enqueue_comment_reply']);
         }
 
 

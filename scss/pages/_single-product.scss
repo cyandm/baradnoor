@@ -56,7 +56,7 @@ main.single-product-page {
                 height: 100%;
                 > img {
                   height: 30rem;
-                  object-fit: cover;
+                  object-fit: contain;
                   border-radius: 1.5rem;
                 }
               }
@@ -77,13 +77,14 @@ main.single-product-page {
         .swiper1-single-product {
           margin: unset;
           .swiper-wrapper {
+            width: 100%;
             .swiper-slide {
               border-radius: 1.5rem;
               padding: 1rem;
               background-color: $search-color;
               > img {
                 height: 8rem;
-                object-fit: cover;
+                object-fit: contain;
                 border-radius: 1.5rem;
               }
             }

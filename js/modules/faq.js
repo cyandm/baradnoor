@@ -20,3 +20,23 @@ buttonFaqHandler.forEach((catButton) => {
     });
   });
 });
+
+const selectFaqHome = document.querySelector(".container-cat-faq select");
+const optionSelectFaqHome = document.querySelectorAll(
+  ".container-cat-faq select option"
+);
+const divContainerProduct = document.querySelectorAll(".faq-content ");
+
+if (selectFaqHome && optionSelectFaqHome) {
+  selectFaqHome.addEventListener("change", (select) => {
+    optionSelectFaqHome.forEach((option) => {
+      if (option.value === select.target.value) {
+        divContainerProduct.forEach((div) => {
+          div.classList.remove("show");
+
+          if (option.value === div.dataset.tabid) div.classList.add("show");
+        });
+      }
+    });
+  });
+}

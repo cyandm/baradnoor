@@ -23,7 +23,7 @@ isset($args['title']) ? $title_product = $args['title'] : $title_product = null;
                     <div class="author-slider"><?php the_author() ?></div>
                     <div class="date-slider"><?php the_date() ?></div>
                 </div>
-                <div class="button-post-card"><a href="<?php the_permalink() ?>">ادامه مقاله</a></div>
+                <div class="button-post-card"><a href="<?php the_permalink() ?>"><?php (isset($title_product) && !is_null($title_product)) ? print('مشاهده محصولات') : print('ادامه مقاله'); ?></a></div>
             </div>
         </div>
     </div>

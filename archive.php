@@ -128,7 +128,7 @@ class Walker_custom_CategoryDropdown extends Walker_CategoryDropdown
         <?php
         if ($wp_query->have_posts()) : ?>
             <div class="container blog-group-content">
-                <h2>همه مقالات</h2>
+                <h2><?php echo $wp_query->queried_object->name; ?></h2>
                 <div class="container-blog-card-group">
                     <div class="posts-content">
                         <?php

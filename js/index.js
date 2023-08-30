@@ -6,3 +6,4 @@ import "./modules/about-us";
 import "./modules/swiper-product";
 import "./modules/home";
 import "./modules/single-product";
+import "./modules/single-post";

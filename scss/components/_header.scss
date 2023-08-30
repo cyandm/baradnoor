@@ -1,4 +1,8 @@
 .site-header {
+  &:has(.background-do-search.active) {
+    overflow: hidden;
+  }
+
   padding-inline: 1rem;
   .header-content {
     @media (width <= 950px) {
@@ -390,7 +394,6 @@
     }
   }
 }
-
 body:has(.background-do-search.active) {
   overflow: hidden;
 }

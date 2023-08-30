@@ -11,21 +11,19 @@
 //   window.addEventListener("resize", () => setMarginRight());
 // }
 
-const selectHandler = document.querySelector(".postform");
-const optionSelect = document.querySelectorAll(".postform option");
+const selectHandler = document.querySelector(
+  ".category-blog-container-mobile select"
+);
+const optionSelect = document.querySelectorAll(
+  ".category-blog-container-mobile select option"
+);
 
-selectHandler.addEventListener("change", (e) => {
-  console.log("e :", e.target.value);
-  console.log(optionSelect);
-  optionSelect.forEach((el) => {
-    if (el.value === e.target.value) {
-      console.log("first");
-      console.log(el.dataset.uri);
-      window.location = el.dataset.uri;
-    }
+if (selectHandler && optionSelect) {
+  selectHandler.addEventListener("change", (e) => {
+    optionSelect.forEach((el) => {
+      if (el.value === e.target.value) {
+        window.location = el.dataset.uri;
+      }
+    });
   });
-
-  console.log(selectHandler);
-
-  // window.location = output.value;
-});
+}

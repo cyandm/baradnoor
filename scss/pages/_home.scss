@@ -1,3 +1,284 @@
+:root {
+  --cursorX: 50vw;
+  --cursorY: 50vh;
+}
+
+.preloader {
+  position: fixed;
+  inset: 0;
+  background-color: #000;
+  z-index: 4500;
+  isolation: isolate;
+  animation: 1s 4.5s ease forwards cyn_slide_up;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    background-image: url("../imgs/preloader_bg.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 0 -10rem;
+    animation: 0.8s ease forwards cyn_fade_in;
+    z-index: -1;
+  }
+
+  &_lamps {
+    display: flex;
+    gap: 4rem;
+    translate: 0 56vh;
+    justify-content: space-between;
+    padding: 0 4rem;
+
+    &_item {
+      aspect-ratio: 1;
+      width: 8rem;
+      border-radius: 50%;
+      background: url("../imgs/preloader_lamps_item_bg.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      position: relative;
+      opacity: 1;
+      animation: 0.3s ease-in forwards cyn_fade_in;
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 62.5%;
+        aspect-ratio: 1;
+        left: 50%;
+        top: 50%;
+        translate: -47.5% -47%;
+        border-radius: 50%;
+        transition: 0.3s;
+        opacity: 0;
+        animation: 0.3s ease-in forwards cyn_fade_in;
+      }
+
+      &:nth-child(3) {
+        translate: 0 9rem;
+      }
+
+      &:nth-child(1),
+      &:nth-child(5) {
+        translate: 0 -6rem;
+        &::before {
+          content: "";
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          translate: -50% 220%;
+          font-size: 1.75rem;
+          white-space: nowrap;
+          opacity: 0;
+          animation: 0.3s ease forwards cyn_fade_in;
+        }
+      }
+
+      &:nth-child(1) {
+        &::after {
+          animation-delay: 1s;
+          background: radial-gradient(#fff 0%, #f3f9ff 100%);
+          box-shadow: 0 0 30px 0 #fff;
+        }
+
+        &::before {
+          content: "از مهتابی";
+          animation-delay: 2.8s;
+        }
+      }
+
+      &:nth-child(2) {
+        &::after {
+          animation-delay: 1.2s;
+          background: radial-gradient(#fff 0%, #fff3d6 100%, #fff 100%);
+          box-shadow: 0 0 30px 0 #fff3d6;
+        }
+      }
+
+      &:nth-child(3) {
+        &::after {
+          animation-delay: 1.4s;
+          background: radial-gradient(#fff1ce 0%, #fff3d6 100%, #fff 100%);
+          box-shadow: 0 0 30px 0 #fff1ce;
+        }
+      }
+
+      &:nth-child(4) {
+        &::after {
+          animation-delay: 1.6s;
+          background: radial-gradient(#ffe296 0%, #fff3d6 100%);
+          box-shadow: 0 0 30px 0 #fff3d6;
+        }
+      }
+
+      &:nth-child(5) {
+        &::after {
+          animation-delay: 1.8s;
+          background: radial-gradient(#ffd979 0%, #ffefc6 100%);
+          box-shadow: 0 0 30px 0 #ffd979;
+        }
+        &::before {
+          content: "تا آفتابی";
+          animation-delay: 3s;
+        }
+      }
+    }
+  }
+}
+
+.home_first_slide {
+  --header_height: 12rem; //updated by js on change window size
+  cursor: none;
+  translate: 0 -150%;
+  user-select: none;
+  pointer-events: none;
+  transition: 1s ease-in-out;
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 3;
+  padding-block-start: var(--header_height);
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: var(--header_height);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 80%;
+    translate: 15% -5%;
+    background-image: url(../imgs/home_first_slide.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.25;
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    pointer-events: none;
+    background: radial-gradient(
+      circle 6vmax at var(--cursorX) var(--cursorY),
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.5) 80%,
+      rgba(0, 0, 0, 0.75) 100%
+    );
+    z-index: 4;
+  }
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    translate: 0 -30%;
+    position: static;
+
+    h1 {
+      font-size: 9.5rem;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &.active {
+    translate: 0;
+    user-select: auto;
+    pointer-events: all;
+    .cursor {
+      display: block;
+      width: 3rem;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background-color: #f0f0f0;
+      position: absolute;
+      translate: 0 100%;
+      top: var(--cursorY);
+      left: var(--cursorX);
+      box-shadow: 0 0 0 8px rgba(#fff, 0.3), 0 0 12px 8px rgba(#fff, 0.4);
+
+      &::after {
+        content: "";
+      }
+    }
+  }
+
+  canvas {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    width: 100vw !important;
+    height: calc(100vh - var(--header_height));
+
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .bg_fixer {
+    background-color: #070707;
+    width: 100%;
+    position: absolute;
+    height: calc(var(--header_height) - 3.2rem);
+    top: 0;
+
+    &::after {
+      content: "";
+      background: rgba(0, 0, 0, 0.75);
+      position: absolute;
+      inset: 0;
+    }
+  }
+
+  .scroll_down {
+    rotate: -90deg;
+    translate: 0 3rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+
+    i {
+      background-color: red;
+      width: 1rem;
+      height: 1rem;
+      display: block;
+      translate: 0 20%;
+      position: relative;
+
+      &::after {
+        content: "";
+        background: blue;
+        aspect-ratio: 1;
+        width: 1rem;
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        translate: -50% 50%;
+      }
+    }
+  }
+}
+
+body {
+  &:has(.home_first_slide.active) {
+    overflow: hidden;
+  }
+}
+
 main.home {
   padding-inline: 1rem;
   display: flex;
@@ -87,7 +368,8 @@ main.home {
     }
 
     .products-in-home-page {
-      min-height: min(50vw, 50rem);
+      --height: 2rem;
+      min-height: var(--height);
       position: relative;
       .container-tab-product-group {
         opacity: 0;
@@ -228,13 +510,12 @@ main.home {
       }
     }
     .faq-content {
-      display: flex;
       flex-direction: column;
       gap: 1rem;
 
       display: none;
       &.show {
-        display: block;
+        display: flex;
       }
       .not-found-category-product-in-home {
         width: 100%;
@@ -245,7 +526,7 @@ main.home {
         gap: 2rem;
         padding-inline: 1rem;
         > div {
-          align-self: flex-start;
+          font-size: 2rem;
         }
         img {
           width: 50%;

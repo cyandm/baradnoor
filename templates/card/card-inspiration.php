@@ -8,7 +8,7 @@ if ($args) {
 
 ?>
         <div class="card-inspiration">
-            <div class="image-inspiration-card">
+            <div class="image-inspiration-card for-mobile-layout">
                 <a href="<?php echo get_the_permalink($post_id); ?>"> <?= wp_get_attachment_image(get_post_thumbnail_id($post_id), 'full', false, ['class' => 'feature-image']) ?>
                 </a>
             </div>
