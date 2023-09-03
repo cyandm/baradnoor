@@ -28,7 +28,7 @@ add_filter('login_errors', function () {
 function cyn_enqueue_files()
 {
     wp_enqueue_style('cyn-swiper-css', get_stylesheet_directory_uri() . '/css/libs/swiper-bundle.min.css');
-    wp_enqueue_style('cyn-scss-style', get_stylesheet_directory_uri() . '/css/normal.css');
+    wp_enqueue_style('cyn-scss-style', get_stylesheet_directory_uri() . '/css/theme-bundle.css');
     wp_enqueue_style('cyn-style', get_stylesheet_directory_uri() . '/style.css');
     wp_dequeue_style('wp-block-library');
 
