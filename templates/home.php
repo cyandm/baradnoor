@@ -3,6 +3,7 @@
 /*Template Name: Home Page */ ?>
 
 <div class="preloader">
+    <div class="proloader-image"></div>
     <div class="preloader_lamps">
         <div class="preloader_lamps_item"></div>
         <div class="preloader_lamps_item"></div>
@@ -26,7 +27,7 @@
         <h1>حس خوب روشنایی</h1>
 
         <div class="scroll_down">
-            <span>برو پایین ...</span>
+            <span>...&nbsp&nbsp&nbsp&nbsp برو پایین</span>
             <i class=" "></i>
         </div>
     </div>

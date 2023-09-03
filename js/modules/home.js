@@ -21,6 +21,17 @@ if (firstSlide) {
   });
 }
 
+/////////////////// Image Preloader //////////////////////
+/*const preloaderImageHandler = () => {
+  const containerImagePreloader = document.querySelector(".preloader");
+  const containerImageWidth = containerImagePreloader.offsetWidth;
+  console.log(containerImagePreloader.offsetWidth);
+  const preloadeImage = document.querySelector(".proloader-image");
+  preloadeImage.style.backgroundPositionY = containerImageWidth / 20 + "px";
+};
+*/
+
+/////////////////////// Height Product Handler   //////////////////////////////
 const setHeightProductHome = () => {
   const home = document.querySelector(".home");
   if (home) {
@@ -34,8 +45,16 @@ const setHeightProductHome = () => {
     );
   }
 };
-window.addEventListener("load", () => setHeightProductHome());
-window.addEventListener("resize", () => setHeightProductHome());
+
+window.addEventListener("load", () => {
+  setHeightProductHome(); /*, preloaderImageHandler();*/
+});
+
+window.addEventListener("resize", () => {
+  setHeightProductHome();
+  /*,
+  preloaderImageHandler();*/
+});
 
 const selectProductHome = document.querySelector(
   ".container-cat-product select"

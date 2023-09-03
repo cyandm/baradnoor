@@ -11,7 +11,15 @@
   isolation: isolate;
   animation: 1s 4.5s ease forwards cyn_slide_up;
 
-  &::after {
+  .proloader-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    background-image: url("../imgs/preloader_bg.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  /*&::after {
     content: "";
     position: absolute;
     inset: 0;
@@ -22,11 +30,11 @@
     background-position: 0 -10rem;
     animation: 0.8s ease forwards cyn_fade_in;
     z-index: -1;
-  }
+  }*/
 
   &_lamps {
     display: flex;
-    gap: 4rem;
+    gap: 0;
     translate: 0 56vh;
     justify-content: space-between;
     padding: 0 4rem;
@@ -153,11 +161,12 @@
     bottom: 0;
     width: 100%;
     height: 80%;
-    translate: 15% -5%;
+    translate: 0 -5%;
     background-image: url(../imgs/home_first_slide.svg);
     background-repeat: no-repeat;
     background-size: contain;
     opacity: 0.25;
+    background-position: 50% 0;
   }
 
   &::before {
@@ -185,7 +194,7 @@
     position: static;
 
     h1 {
-      font-size: 9.5rem;
+      font-size: 10vw;
       z-index: 100;
       display: flex;
       justify-content: center;
@@ -233,6 +242,9 @@
     position: absolute;
     height: calc(var(--header_height) - 3.2rem);
     top: 0;
+    @media (width<950px) {
+      height: calc(var(--header_height) - (-0.2rem));
+    }
 
     &::after {
       content: "";
@@ -250,24 +262,55 @@
     gap: 1rem;
     justify-content: center;
     align-items: center;
-
+    z-index: 45454564584;
+    span {
+      rotate: 180deg;
+    }
     i {
-      background-color: red;
       width: 1rem;
       height: 1rem;
       display: block;
-      translate: 0 20%;
+      translate: 0 -70%;
       position: relative;
+      font-size: 1rem;
+      position: relative;
+      isolation: isolate;
+      font-weight: 200;
+      &:hover {
+        &::after,
+        &::before {
+          scale: 1.3;
+        }
+        &::before {
+          background: $orange-secondary;
+        }
+      }
 
       &::after {
         content: "";
-        background: blue;
-        aspect-ratio: 1;
-        width: 1rem;
+        width: 1.5rem;
+        height: 1.5rem;
         position: absolute;
-        inset: 0;
+        inset: -1px;
         border-radius: 50%;
-        translate: -50% 50%;
+        background: #4e2106;
+        z-index: -2;
+        translate: 20% 20%;
+        transition: all 0.3s ease-in-out;
+      }
+      &::before {
+        content: "";
+        width: 1.7rem;
+        height: 1.7rem;
+        position: absolute;
+        inset: -1px;
+        right: -2.5px;
+        top: -2.5px;
+        border-radius: 50%;
+        z-index: -3;
+        background: $linear-orange;
+        translate: 20% 20%;
+        transition: all 0.3s ease-in-out;
       }
     }
   }
