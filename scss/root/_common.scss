@@ -102,7 +102,7 @@
 }
 
 .only-desktop {
-  @media (width < 768px) {
+  @media (width <= 768px) {
     display: none !important;
   }
 }

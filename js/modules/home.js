@@ -77,6 +77,7 @@ if (selectProductHome && optionSelectProductHome) {
           if (option.value === div.dataset.tabid) div.classList.add("show");
         });
       }
+      setHeightProductHome();
     });
   });
 }

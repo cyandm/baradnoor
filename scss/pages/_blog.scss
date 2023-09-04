@@ -81,12 +81,13 @@ main.blog-page {
         }
         .category-blog-container-mobile {
           width: 100%;
-          border-radius: 1.6rem;
-
+          border-radius: 1rem;
+          background-color: $search-color;
+          padding-inline: 0.5rem;
           select {
             color: $white-color;
             width: 100%;
-            border-radius: 1.6rem;
+            border-radius: 1rem;
             font-size: 1rem;
             padding: 0.5rem 1.5rem;
             background-color: $search-color;

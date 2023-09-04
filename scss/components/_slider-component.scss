@@ -15,7 +15,7 @@
         &::after {
           content: "";
           position: absolute;
-          width: 30%;
+          width: 50%;
           height: 100%;
           top: 0rem;
           right: -3rem;
@@ -73,6 +73,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 1rem;
             .author-date-container-slider {
               display: flex;
               font-size: 0.75rem;
@@ -101,7 +102,6 @@
 
         .content-of-slider {
           position: relative;
-          margin-inline: 1rem;
           .container-slider-info {
             max-width: 100%;
           }

@@ -169,6 +169,8 @@ main.about-us-page {
 
           > img {
             border-radius: 1.5rem;
+            object-fit: cover;
+            height: 100%;
           }
           .container-name-job-title {
             opacity: 0;

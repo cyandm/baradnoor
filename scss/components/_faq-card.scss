@@ -11,9 +11,11 @@
     justify-content: space-between;
     align-items: center;
 
+    gap: 0.5rem;
     .title-faq-card {
       font-size: 1.5rem;
       font-weight: 200;
+      text-align: justify;
     }
     .button-faq-card {
       cursor: pointer;
@@ -24,6 +26,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      padding: 1rem;
       > i {
         transition: all 0.3s ease-in-out;
         color: $white-color;
@@ -51,6 +54,11 @@
   &.active {
     .description-faq-card {
       grid-template-rows: 1fr;
+      .inner-desc {
+        p {
+          font-size: 1rem;
+        }
+      }
     }
     .title-button-faq-card {
       .button-faq-card {

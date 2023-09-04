@@ -449,9 +449,15 @@ main.home {
             padding-inline: 1rem;
             > div {
               font-size: 2rem;
+              @media (width < 600px) {
+                font-size: 1rem;
+              }
             }
             img {
               width: 50%;
+              @media (width < 768px) {
+                width: 80%;
+              }
             }
           }
         }
@@ -570,9 +576,15 @@ main.home {
         padding-inline: 1rem;
         > div {
           font-size: 2rem;
+          @media (width < 600px) {
+            font-size: 1rem;
+          }
         }
         img {
           width: 50%;
+          @media (width < 768px) {
+            width: 80%;
+          }
         }
       }
     }

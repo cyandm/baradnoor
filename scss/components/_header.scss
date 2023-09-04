@@ -147,7 +147,7 @@
     font-weight: 300;
     position: relative;
     padding: 1rem;
-    z-index: 5;
+    z-index: 500;
 
     @media (width > 950px) {
       display: none;
@@ -208,13 +208,15 @@
       pointer-events: none;
       opacity: 0;
       position: absolute;
+      top: 1rem;
+      right: 0.5rem;
+      left: 0.5rem;
       border-radius: 1rem 1rem 1rem 1rem;
-      width: 93%;
       background: $white-8percent;
       backdrop-filter: blur(27px);
       z-index: 5000;
-      transition: 0.3s ease;
 
+      transition: 0.3s ease;
       &.active {
         pointer-events: all;
         opacity: 1;
@@ -333,6 +335,7 @@
             i {
               color: $white-color;
               font-size: 1.8rem;
+              translate: 1px 0px;
             }
           }
         }
@@ -343,16 +346,18 @@
       pointer-events: none;
       transition: 0.3s ease;
       z-index: 500;
-      &.active {
-        opacity: 1;
-        pointer-events: all;
-      }
-      position: fixed;
+      position: absolute;
+      inset: 0;
       border-radius: 1rem 1rem 1rem 1rem;
       width: 93%;
       backdrop-filter: blur(27px);
       padding: 1.06rem 1rem;
-
+      &.active {
+        opacity: 1;
+        pointer-events: all;
+        width: 100%;
+        height: 100%;
+      }
       .do-search {
         display: flex;
         position: relative;
@@ -395,6 +400,6 @@
     }
   }
 }
-body:has(.background-do-search.active) {
+body:has(.body-blur-bg.active) {
   overflow: hidden;
 }
