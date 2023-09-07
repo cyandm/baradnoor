@@ -5,7 +5,7 @@
     </div>
     <div class="description-faq-card">
         <div class="inner-desc">
-            <?php the_excerpt(); ?>
+            <?php the_content(); ?>
         </div>
     </div>
 </div>

@@ -68,21 +68,21 @@ class Walker_custom_CategoryDropdown extends Walker_CategoryDropdown
         <div class="slider-blogs">
             <?php
             if ($posts_in_slider->have_posts()) : ?>
-                <div class="slider-blog">
-                    <div class="swiper mySwiper" id="swiperSlideBlog">
-                        <div class="swiper-wrapper">
-                            <?php
+            <div class="slider-blog">
+                <div class="swiper mySwiper" id="swiperSlideBlog">
+                    <div class="swiper-wrapper">
+                        <?php
                             while ($posts_in_slider->have_posts()) {
                                 $posts_in_slider->the_post();
                                 get_template_part('/templates/card/slider', 'component');
                             }
                             ?>
-                        </div>
-                        <div class="container container-pagination">
-                            <div class="swiper-pagination"></div>
-                        </div>
+                    </div>
+                    <div class="container container-pagination">
+                        <div class="swiper-pagination"></div>
                     </div>
                 </div>
+            </div>
             <?php
             endif;
             ?>
@@ -138,11 +138,11 @@ class Walker_custom_CategoryDropdown extends Walker_CategoryDropdown
 
         <?php
         if ($posts_in_blog_page->have_posts()) : ?>
-            <div class="container blog-group-content">
-                <h2>همه مقالات</h2>
-                <div class="container-blog-card-group">
-                    <div class="posts-content">
-                        <?php
+        <div class="container blog-group-content">
+            <h2>همه مقالات</h2>
+            <div class="container-blog-card-group">
+                <div class="posts-content">
+                    <?php
                         while ($posts_in_blog_page->have_posts()) {
 
                             $posts_in_blog_page->the_post();
@@ -150,8 +150,8 @@ class Walker_custom_CategoryDropdown extends Walker_CategoryDropdown
                         }
 
                         ?>
-                    </div>
-                    <?php
+                </div>
+                <?php
                     echo "<div class='pagination-for-blog border-gradient'>" . paginate_links(
                         array(
                             'total' => $posts_in_blog_page->max_num_pages,
@@ -162,8 +162,8 @@ class Walker_custom_CategoryDropdown extends Walker_CategoryDropdown
                     ) . "</div>";
                     ?>
 
-                </div>
             </div>
+        </div>
         <?php
         endif;
 

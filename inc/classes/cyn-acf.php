@@ -10,7 +10,7 @@ if (!class_exists('cyn_acf')) {
                 return MY_ACF_URL;
             });
             add_filter('acf/settings/show_updates', '__return_false', 100);
-            // add_filter('acf/settings/show_admin', '__return_false');
+            add_filter('acf/settings/show_admin', '__return_false');
 
             $this->cyn_acf_actions();
         }

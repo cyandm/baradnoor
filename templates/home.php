@@ -250,7 +250,6 @@ $page_blog = get_posts($blog_link_template);
 
 
                             $product_query = new WP_Query([
-                                'posts_per_page' => 8,
                                 'post_type' => 'product',
                                 'tax_query' => [
                                     [
