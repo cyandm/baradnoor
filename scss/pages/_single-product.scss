@@ -58,6 +58,9 @@ main.single-product-page {
                   height: 30rem;
                   object-fit: contain;
                   border-radius: 1.5rem;
+                  @media (width < 500px) {
+                    height: 20rem;
+                  }
                 }
               }
             }

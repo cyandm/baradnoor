@@ -19,6 +19,10 @@
     }
   }
   .image-product-card {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     img {
       border-radius: 1.5rem;
     }
@@ -26,6 +30,7 @@
   .container-title-code-button-product {
     display: flex;
     flex-direction: column;
+    gap: 0.8rem;
     .title-product-card {
       overflow: hidden;
       display: -webkit-box;
@@ -34,12 +39,11 @@
     }
     .code-product-card {
       display: flex;
+      color: $primary-gray;
 
       p {
         color: $primary-gray;
       }
-    }
-    .button-product-card-container {
     }
   }
 }

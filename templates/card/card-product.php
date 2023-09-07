@@ -12,7 +12,6 @@ isset($args['product_id']) ? $product_id = $args['product_id'] : $product_id = g
             <?php echo get_the_title($product_id); ?>
         </div>
         <div class="code-product-card">
-            کد کالا :
             <?php echo get_the_excerpt($product_id); ?>
         </div>
 

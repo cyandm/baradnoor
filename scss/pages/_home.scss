@@ -366,9 +366,16 @@ main.home {
       .blog-text {
         font-size: 2.125rem;
         font-weight: 200;
+        min-width: fit-content;
       }
       .type-of-product-text {
         font-size: 1.5rem;
+      }
+      .see-all-button {
+        min-width: fit-content;
+        a {
+          width: 100%;
+        }
       }
     }
     .inspiration-content {
@@ -416,6 +423,7 @@ main.home {
       position: relative;
       .container-tab-product-group {
         opacity: 0;
+        pointer-events: none;
         translate: 0 4rem;
         align-items: stretch;
         justify-content: center;
@@ -429,6 +437,7 @@ main.home {
         &.show {
           translate: 0;
           opacity: 1;
+          pointer-events: all;
         }
 
         .container-blog-and-news-button-see-all {
