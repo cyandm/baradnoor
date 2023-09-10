@@ -1,0 +1,54 @@
+.card-product {
+  border-radius: 1.625rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem;
+  gap: 0.625rem;
+  flex: 1;
+  justify-content: space-between;
+  flex-basis: 20%;
+  background-color: $search-color;
+  min-width: 15rem;
+  transition: all 0.5s ease-in-out;
+
+  .button-product-card-container {
+    border: 1px solid transparent;
+  }
+
+  &:hover {
+    @extend .border-gradient-orange;
+    background-color: $background-brown;
+    .button-product-card-container {
+      @extend .button-hover;
+      @extend .border-gradient-orange-red;
+    }
+  }
+  .image-product-card {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      border-radius: 1.5rem;
+    }
+  }
+  .container-title-code-button-product {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    .title-product-card {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+    }
+    .code-product-card {
+      display: flex;
+      color: $primary-gray;
+
+      p {
+        color: $primary-gray;
+      }
+    }
+  }
+}
