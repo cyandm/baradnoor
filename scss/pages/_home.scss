@@ -1,9 +1,12 @@
 :root {
   --cursorX: 50vw;
   --cursorY: 50vh;
+
+  //--preloader-display set by js via cookie
 }
 
 .preloader {
+  display: var(--preloader-display, unset);
   position: fixed;
   inset: 0;
   background-color: #000;
@@ -15,22 +18,10 @@
     position: absolute;
     inset: 0;
     width: 100%;
-    background-image: url("../imgs/preloader_bg.svg");
+    background-image: url('../imgs/preloader_bg.svg');
     background-repeat: no-repeat;
     background-size: contain;
   }
-  /*&::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    background-image: url("../imgs/preloader_bg.svg");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: 0 -10rem;
-    animation: 0.8s ease forwards cyn_fade_in;
-    z-index: -1;
-  }*/
 
   &_lamps {
     display: flex;
@@ -43,7 +34,7 @@
       aspect-ratio: 1;
       width: 8rem;
       border-radius: 50%;
-      background: url("../imgs/preloader_lamps_item_bg.svg");
+      background: url('../imgs/preloader_lamps_item_bg.svg');
       background-size: contain;
       background-repeat: no-repeat;
       position: relative;
@@ -51,7 +42,7 @@
       animation: 0.3s ease-in forwards cyn_fade_in;
 
       &::after {
-        content: "";
+        content: '';
         position: absolute;
         width: 62.5%;
         aspect-ratio: 1;
@@ -72,7 +63,7 @@
       &:nth-child(5) {
         translate: 0 -6rem;
         &::before {
-          content: "";
+          content: '';
           position: absolute;
           left: 50%;
           top: 50%;
@@ -92,7 +83,7 @@
         }
 
         &::before {
-          content: "از مهتابی";
+          content: 'از مهتابی';
           animation-delay: 2.8s;
         }
       }
@@ -128,7 +119,7 @@
           box-shadow: 0 0 30px 0 #ffd979;
         }
         &::before {
-          content: "تا آفتابی";
+          content: 'تا آفتابی';
           animation-delay: 3s;
         }
       }
@@ -145,7 +136,7 @@
   transition: 1s ease-in-out;
   position: fixed;
   inset: 0;
-  display: flex;
+  display: var(--preloader-display, flex);
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -153,7 +144,7 @@
   padding-block-start: var(--header_height);
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     top: var(--header_height);
     left: 0;
@@ -170,7 +161,7 @@
   }
 
   &::before {
-    content: "";
+    content: '';
     display: block;
     width: 100%;
     height: 100%;
@@ -219,7 +210,7 @@
       box-shadow: 0 0 0 8px rgba(#fff, 0.3), 0 0 12px 8px rgba(#fff, 0.4);
 
       &::after {
-        content: "";
+        content: '';
       }
     }
   }
@@ -247,7 +238,7 @@
     }
 
     &::after {
-      content: "";
+      content: '';
       background: rgba(0, 0, 0, 0.75);
       position: absolute;
       inset: 0;
@@ -287,7 +278,7 @@
       }
 
       &::after {
-        content: "";
+        content: '';
         width: 1.5rem;
         height: 1.5rem;
         position: absolute;
@@ -299,7 +290,7 @@
         transition: all 0.3s ease-in-out;
       }
       &::before {
-        content: "";
+        content: '';
         width: 1.7rem;
         height: 1.7rem;
         position: absolute;
@@ -418,7 +409,7 @@ main.home {
     }
 
     .products-in-home-page {
-      --height: 2rem;
+      --height: 24rem;
       min-height: var(--height);
       position: relative;
       .container-tab-product-group {
@@ -447,6 +438,15 @@ main.home {
           display: flex;
           gap: 1rem;
           flex-wrap: wrap;
+
+          > .card-product {
+            max-width: 50%;
+
+            @media (width <= 768px) {
+              max-width: unset;
+            }
+          }
+
           .not-found-category-product-in-home {
             width: 100%;
             margin-top: 1rem;
@@ -492,7 +492,7 @@ main.home {
         translate: 0rem -3rem;
       }
       &::after {
-        content: "";
+        content: '';
         position: absolute;
         width: 100%;
         height: 12rem;
@@ -503,6 +503,10 @@ main.home {
       }
     }
     .posts-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 1rem;
       .card-post {
         @media (width >= 800px) {
           &:first-child {

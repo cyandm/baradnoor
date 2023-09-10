@@ -10,6 +10,11 @@
   background-color: $search-color;
   min-width: 15rem;
   transition: all 0.5s ease-in-out;
+
+  .button-product-card-container {
+    border: 1px solid transparent;
+  }
+
   &:hover {
     @extend .border-gradient-orange;
     background-color: $background-brown;
