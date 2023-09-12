@@ -162,7 +162,7 @@ if (homepageMainEl) {
 
   window.addEventListener('load', () => {
     if (!preloaderCookie) {
-      //setCookie('preloader', 'none', 1);
+      setCookie('preloader', 'none', 1);
     }
   });
 }
