@@ -2,42 +2,8 @@
 
 /*Template Name: Home Page */?>
 
-<?php if ( ! $_COOKIE['preloader'] ) : ?>
 
-	<div class="preloader">
-		<div class="proloader-image"></div>
-		<div class="preloader_lamps">
-			<div class="preloader_lamps_item"></div>
-			<div class="preloader_lamps_item"></div>
-			<div class="preloader_lamps_item"></div>
-			<div class="preloader_lamps_item"></div>
-			<div class="preloader_lamps_item"></div>
-		</div>
-		<div class="preloader_title_group">
-			<span class="preloader_title"></span>
-			<span class="preloader_title"></span>
-		</div>
-	</div>
 
-	<div class="home_first_slide active" id="home_first_slide">
-
-		<div class="bg_fixer">
-
-		</div>
-
-		<div>
-			<h1>حس خوب روشنایی</h1>
-
-			<div class="scroll_down">
-				<span>...&nbsp&nbsp&nbsp&nbsp برو پایین</span>
-				<i class=" "></i>
-			</div>
-		</div>
-
-		<span class="cursor"></span>
-	</div>
-
-<?php endif; ?>
 
 
 
@@ -172,6 +138,44 @@ $page_blog = get_posts( $blog_link_template );
 
 <?php get_header() ?>
 
+
+<?php if ( ! $_COOKIE['preloader'] ) : ?>
+
+	<div class="preloader">
+		<div class="preloader-image"></div>
+		<div class="preloader_lamps">
+			<div class="preloader_lamps_item"></div>
+			<div class="preloader_lamps_item"></div>
+			<div class="preloader_lamps_item"></div>
+			<div class="preloader_lamps_item"></div>
+			<div class="preloader_lamps_item"></div>
+		</div>
+		<div class="preloader_title_group">
+			<span class="preloader_title"></span>
+			<span class="preloader_title"></span>
+		</div>
+	</div>
+
+	<div class="home_first_slide active" id="home_first_slide">
+
+		<div class="bg_fixer">
+
+		</div>
+
+		<div>
+			<h1>حس خوب روشنایی</h1>
+
+			<div class="scroll_down">
+				<span>...&nbsp&nbsp&nbsp&nbsp برو پایین</span>
+				<i class=" "></i>
+			</div>
+		</div>
+
+		<span class="cursor"></span>
+	</div>
+
+<?php endif; ?>
+
 <main class="container home">
 
 	<section>
@@ -245,8 +249,7 @@ $page_blog = get_posts( $blog_link_template );
 			<div class="products-in-home-page">
 				<?php foreach ( $cats_id_group as $index => $cat_id ) : ?>
 
-					<div data-tab="<?= $index ?>" data-tabid="<?= $cat_id ?>"
-						class="container-tab-product-group <?php if ( $index === 0 ) {
+					<div data-tab="<?= $index ?>" data-tabid="<?= $cat_id ?>" class="container-tab-product-group <?php if ( $index === 0 ) {
 							echo "show";
 						} ?>">
 						<div class="container-blog-and-news-button-see-all">
@@ -447,8 +450,5 @@ $page_blog = get_posts( $blog_link_template );
 
 
 </main>
-
-
-
 
 <?php get_footer() ?>

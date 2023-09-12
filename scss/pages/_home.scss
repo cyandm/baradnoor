@@ -12,21 +12,30 @@
   background-color: #000;
   z-index: 4500;
   isolation: isolate;
+  overflow: hidden;
   animation: 1s 4.5s ease forwards cyn_slide_up;
 
-  .proloader-image {
+  .preloader-image {
     position: absolute;
     inset: 0;
     width: 100%;
     background-image: url('../imgs/preloader_bg.svg');
     background-repeat: no-repeat;
     background-size: contain;
+    background-position: 0 -6vh;
+
+    @media (width <= 1440px) {
+      background-position: 60%;
+    }
+    @media (width <= 700px) {
+      background: none;
+    }
   }
 
   &_lamps {
     display: flex;
     gap: 0;
-    translate: 0 56vh;
+    translate: 0 50vh;
     justify-content: space-between;
     padding: 0 4rem;
 
@@ -35,7 +44,7 @@
       width: 8rem;
       border-radius: 50%;
       background: url('../imgs/preloader_lamps_item_bg.svg');
-      background-size: contain;
+      background-size: cover;
       background-repeat: no-repeat;
       position: relative;
       opacity: 1;
@@ -57,11 +66,19 @@
 
       &:nth-child(3) {
         translate: 0 9rem;
+
+        @media (width <= 900px) {
+          translate: 0 3rem;
+        }
       }
 
       &:nth-child(1),
       &:nth-child(5) {
         translate: 0 -6rem;
+        @media (width <= 900px) {
+          translate: -1rem -3rem;
+        }
+
         &::before {
           content: '';
           position: absolute;
@@ -72,10 +89,18 @@
           white-space: nowrap;
           opacity: 0;
           animation: 0.3s ease forwards cyn_fade_in;
+
+          @media (width <= 700px) {
+            translate: -50% 70%;
+            font-size: 1rem;
+          }
         }
       }
 
       &:nth-child(1) {
+        @media (width <= 900px) {
+          translate: 1rem -3rem;
+        }
         &::after {
           animation-delay: 1s;
           background: radial-gradient(#fff 0%, #f3f9ff 100%);
@@ -173,7 +198,7 @@
       rgba(0, 0, 0, 0.5) 80%,
       rgba(0, 0, 0, 0.75) 100%
     );
-    z-index: 4;
+    z-index: 5;
   }
 
   > div {
@@ -183,6 +208,10 @@
     align-items: center;
     translate: 0 -30%;
     position: static;
+
+    @media (width <= 768px) {
+      translate: 0 -350%;
+    }
 
     h1 {
       font-size: 10vw;
@@ -220,8 +249,9 @@
     bottom: 0;
     left: 0;
     z-index: -1;
-    width: 100vw !important;
+    width: 100% !important;
     height: calc(100vh - var(--header_height));
+    background: transparent;
 
     cursor: default;
     pointer-events: none;
@@ -253,9 +283,17 @@
     gap: 1rem;
     justify-content: center;
     align-items: center;
-    z-index: 45454564584;
+    z-index: 45000;
+    position: relative;
+
+    @media (width <= 768px) {
+      display: none;
+    }
+
     span {
       rotate: 180deg;
+      z-index: 45000;
+      position: relative;
     }
     i {
       width: 1rem;
