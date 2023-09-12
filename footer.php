@@ -66,6 +66,7 @@ $url_ita = get_field( 'url_ita', $pageID );
 	</div>
 
 </footer>
+
 <div class="wp-footer">
 	<?php wp_footer() ?>
 	<?php if ( is_front_page() && ! $_COOKIE['preloader'] ) : ?>
@@ -85,6 +86,7 @@ $url_ita = get_field( 'url_ita', $pageID );
 				'مشاوره رایگان',
 				'کیفیت بالا',
 				'خدمات نصب',
+				'باراد نور'
 			];
 
 			class Word {
@@ -137,7 +139,7 @@ $url_ita = get_field( 'url_ita', $pageID );
 					engine.world, [ground, wallLeft, wallRight]);
 
 				setTimeout(() => {
-					for (let i = 0; i < 3; i++) {
+					for (let i = 0; i < 1; i++) {
 						for (let i = 0; i < wordsToDisplay.length; i++) {
 							words.push(new Word(random(width), -200, wordsToDisplay[i]));
 						}
