@@ -154,7 +154,7 @@ main.blog-page {
             }
           }
         }
-        .pagination-for-blog {
+        @at-root .cyn-pagination {
           display: flex;
           background-color: $search-color;
           border-radius: 1.6rem;

@@ -1,3 +1,10 @@
+<?php
+$pageID = get_option( 'page_on_front' );
+$url_instagram = get_field( 'url_instagram', $pageID );
+$url_telegram = get_field( 'url_telegram', $pageID );
+$url_ita = get_field( 'url_ita', $pageID );
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -5,14 +12,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<?php wp_head() ?>
-
 </head>
-<?php
-$pageID = get_option( 'page_on_front' );
-$url_instagram = get_field( 'url_instagram', $pageID );
-$url_telegram = get_field( 'url_telegram', $pageID );
-$url_ita = get_field( 'url_ita', $pageID );
-?>
 
 <body>
 
@@ -27,8 +27,8 @@ $url_ita = get_field( 'url_ita', $pageID );
 					<div class="search-wrapper border-gradient">
 						<i class="icon-search"></i>
 						<form action="/">
-							<input class="search" type="search" placeholder="جستجو"
-								value="<?php the_search_query(); ?>" name="s" id="search" />
+							<input class="search" type="search" placeholder="جستجو" value="<?php the_search_query(); ?>"
+								name="s" id="search" />
 						</form>
 					</div>
 					<div class="logo">

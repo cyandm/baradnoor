@@ -414,98 +414,30 @@ main.home {
       justify-content: center;
       gap: 0.8rem;
     }
-    .container-cat-product {
-      display: flex;
-      justify-content: center;
-      width: 100%;
-      .category-product {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 80%;
-        border-radius: 1.625rem;
-        background-color: $search-color;
-        padding: 0.75rem 1.5rem;
 
-        .cat-product {
-          flex: 1 1 auto;
-          border-radius: 1.25rem;
-          padding: 0 1rem;
-          display: flex;
-          cursor: pointer;
-          justify-content: center;
-          &.current-cat {
-            @extend .border-gradient-orange;
-            background-color: $primary-brown;
-            border-radius: 1.25rem;
-            a {
-              padding: 0;
-            }
-          }
-        }
+    &.archive-products-banner {
+      margin-block-start: 2rem;
+      scroll-margin-block-start: 2rem;
+
+      .blog-text {
+        font-weight: 500;
       }
-    }
 
-    .products-in-home-page {
-      --height: 24rem;
-      min-height: var(--height);
-      position: relative;
-      .container-tab-product-group {
-        opacity: 0;
-        pointer-events: none;
-        translate: 0 4rem;
-        align-items: stretch;
-        justify-content: center;
-        gap: 1rem;
-        position: absolute;
-        inset-inline: 0;
-        transition: all 0.3s ease-in-out;
+      .banners {
         display: flex;
-        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 1rem;
+        > * {
+          flex: 1;
+          flex-basis: 48%;
+          border-radius: 1rem;
 
-        &.show {
-          translate: 0;
-          opacity: 1;
-          pointer-events: all;
-        }
-
-        .container-blog-and-news-button-see-all {
-          display: flex;
-        }
-        .container-product-home {
-          display: flex;
-          gap: 1rem;
-          flex-wrap: wrap;
-
-          > .card-product {
-            max-width: 50%;
-
-            @media (width <= 768px) {
-              max-width: unset;
-            }
+          img {
+            aspect-ratio: 2 / 1;
           }
 
-          .not-found-category-product-in-home {
-            width: 100%;
-            margin-top: 1rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
-            padding-inline: 1rem;
-            > div {
-              font-size: 2rem;
-              @media (width < 600px) {
-                font-size: 1rem;
-              }
-            }
-            img {
-              width: 50%;
-              @media (width < 768px) {
-                width: 80%;
-              }
-            }
+          @media (max-width: 680px) {
+            flex-basis: 100%;
           }
         }
       }

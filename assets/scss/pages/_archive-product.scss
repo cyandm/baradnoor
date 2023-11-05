@@ -1,0 +1,16 @@
+.product-archive {
+  display: flex;
+  flex-direction: column;
+
+  .posts-loop-con {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-block-end: 2rem;
+
+    > * {
+      flex: 1;
+      flex-basis: 32%;
+    }
+  }
+}

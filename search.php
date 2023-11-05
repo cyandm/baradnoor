@@ -46,7 +46,7 @@ global $wp_query;
 	<?php else : ?>
 
 		<section class="not_found">
-			<img src=<?= get_stylesheet_directory_uri() . '/imgs/not_found_search.svg' ?> alt="">
+			<img src=<?= get_stylesheet_directory_uri() . '/assets/imgs/not_found_search.svg' ?> alt="">
 		</section>
 
 

@@ -2,29 +2,18 @@
 
 /*Template Name: Home Page */?>
 
-
-
-
-
-
 <?php
 $i = 0;
 $j = 0;
 
 
 $telephone_num = get_field( 'telephone_number' );
-
-$all_cats = get_categories( [ 
-	'taxonomy' => 'product-cat'
-] );
-
 $posts_in_home_page = new WP_Query(
 	[ 
 		'post_type' => 'post',
 		'posts_per_page' => 4
 	]
 );
-
 $inspiration_in_home_page = new WP_Query(
 	[ 
 		'post_type' => 'inspiration',
@@ -38,15 +27,6 @@ $inspiration_in_home_page = new WP_Query(
 		]
 	]
 );
-
-$product_in_home_page = new WP_Query(
-	[ 
-		'post_type' => 'product',
-		'posts_per_page' => 8
-	]
-);
-
-
 $faq_in_home_page = new WP_Query(
 	[ 
 		'post_type' => 'faq',
@@ -60,7 +40,6 @@ $faq_in_home_page = new WP_Query(
 		]
 	]
 );
-
 $faq_in_home_page_two = new WP_Query(
 	[ 
 		'post_type' => 'faq',
@@ -75,33 +54,6 @@ $faq_in_home_page_two = new WP_Query(
 	]
 );
 
-
-$cats = get_categories( [ 
-	'taxonomy' => 'product-cat',
-	'orderby' => 'id',
-	'current_category' => 1,
-	'hide_empty' => false,
-
-] );
-
-$cats_name_group = [];
-$cats_id_group = [];
-foreach ( $cats as $cat ) {
-	array_push( $cats_name_group, $cat->name );
-	array_push( $cats_id_group, $cat->term_id );
-}
-
-
-$cats_faq = get_categories( [ 
-	'taxonomy' => 'faq-cat',
-	'orderby' => 'id',
-	'current_category' => 1,
-	'hide_empty' => false,
-
-] );
-
-
-
 $inspiration_link_template = [ 
 	'post_type' => 'page',
 	'fields' => 'ids',
@@ -109,10 +61,7 @@ $inspiration_link_template = [
 	'meta_key' => '_wp_page_template',
 	'meta_value' => 'templates/inspiration.php'
 ];
-
 $page_inspiration = get_posts( $inspiration_link_template );
-
-
 $product_link_template = [ 
 	'post_type' => 'page',
 	'fields' => 'ids',
@@ -121,8 +70,6 @@ $product_link_template = [
 	'meta_value' => 'templates/product.php'
 ];
 $page_product = get_posts( $product_link_template );
-
-
 $blog_link_template = [ 
 	'post_type' => 'page',
 	'fields' => 'ids',
@@ -132,6 +79,11 @@ $blog_link_template = [
 ];
 $page_blog = get_posts( $blog_link_template );
 
+$banners = get_field( 'gallery' );
+
+// echo '<pre dir="ltr">';
+// var_export( $banners );
+// wp_die();
 
 ?>
 
@@ -139,7 +91,7 @@ $page_blog = get_posts( $blog_link_template );
 <?php get_header() ?>
 
 
-<?php if ( ! $_COOKIE['preloader'] ) : ?>
+<?php if ( ! isset( $_COOKIE['preloader'] ) ) : ?>
 
 	<div class="preloader">
 		<div class="preloader-image"></div>
@@ -179,8 +131,8 @@ $page_blog = get_posts( $blog_link_template );
 <main class="container home">
 
 	<section>
-		<div class="show-all-product-home-page on-mobile-show border-gradient-orange"><a
-				href="<?php echo get_permalink( $page_product[0] ); ?>"><i class="icon-arrow1"></i>مشاهده محصولات</a>
+		<div class="show-all-product-home-page on-mobile-show border-gradient-orange"><a href="#productsHomePage"><i
+					class="icon-arrow1"></i>مشاهده محصولات</a>
 		</div>
 	</section>
 
@@ -209,117 +161,37 @@ $page_blog = get_posts( $blog_link_template );
 		</section>
 	<?php endif; ?>
 
-	<?php if ( $product_in_home_page->have_posts() ) : ?>
-		<section>
-			<div class="container-blog-and-news-button-see-all">
-				<div class="blog-text">محصولات جدید</div>
+
+	<section class="archive-products-banner" id="productsHomePage">
+		<div class="container-blog-and-news-button-see-all">
+			<div class="blog-text">محصولات باراد نور</div>
+			<div class="see-all-button only-desktop">
+				<a href=<? get_permalink( $page_product[0] ) ?>>مشاهده همه</a>
 			</div>
+		</div>
 
-			<div class="container-cat-product only-desktop">
-				<div class="category-product border-gradient">
-					<?php
-
-
-					foreach ( $cats_name_group as $index => $cat_name ) {
-
-						echo "<div data-tab='$index' class='cat-product ";
-						if ( $index === 0 )
-							echo 'current-cat';
-						echo " ' >$cat_name</div>";
-					}
-
-					?>
-				</div>
-			</div>
-
-			<div class="container-cat-product border-gradient on-mobile-show drop-down-cat">
-				<?php wp_dropdown_categories(
-					[ 
-						'taxonomy' => 'product-cat',
-						'orderby' => 'id',
-						'hide_empty' => false,
-						'title_li' => "",
-						'current_category' => 1,
-						'value_field' => 'term_id'
-
-					]
-				) ?>
-			</div>
-
-			<div class="products-in-home-page">
-				<?php foreach ( $cats_id_group as $index => $cat_id ) : ?>
-
-					<div data-tab="<?= $index ?>" data-tabid="<?= $cat_id ?>" class="container-tab-product-group <?php if ( $index === 0 ) {
-							echo "show";
-						} ?>">
-						<div class="container-blog-and-news-button-see-all">
-							<div class="type-of-product-text">
-								<?= get_term( $cat_id )->name ?>
-							</div>
-							<div class="see-all-button only-desktop "><a
-									href="<?php echo get_permalink( $page_product[0] ); ?>">مشاهده همه </a></div>
-						</div>
-
-
-						<div class="container-product-home">
-
-
-							<?php
-
-
-							$product_query = new WP_Query( [ 
-								'post_type' => 'product',
-								'tax_query' => [ 
-									[ 
-										'taxonomy' => 'product-cat',
-										'field' => 'term_id',
-										'terms' => $cat_id
-									]
-								]
-							] );
-
-
-							if ( $product_query->have_posts() ) :
-								while ( $product_query->have_posts() ) {
-
-
-									$product_query->the_post();
-									get_template_part( 'templates/card/card', 'product' );
-								}
-							else : ?>
-								<div class="not-found-category-product-in-home">
-									<div>این دسته بندی فعلا خالی می باشد</div>
-									<img src="<?php echo get_stylesheet_directory_uri() . '/imgs/not found category.svg' ?>">
-								</div>
-							<?php endif;
-
-
-							wp_reset_postdata();
-
-							?>
-						</div>
-
+		<div class="banners">
+			<?php foreach ( $banners as $banner_item ) : ?>
+				<a href=<?= $banner_item['url'] ?>>
+					<div class="img-wrapper">
+						<?= wp_get_attachment_image( $banner_item['img'], 'full' ) ?>
 					</div>
+				</a>
+			<?php endforeach; ?>
+		</div>
 
-
-
-				<?php endforeach; ?>
-
-			</div>
-
-			<div class="button-show-all-mobile on-mobile-show">
-				<a href="<?php echo get_permalink( $page_product[0] ); ?>">مشاهده همه</a>
-			</div>
-		</section>
-	<?php endif; ?>
+		<div class="button-show-all-mobile on-mobile-show">
+			<a href="<?php echo get_permalink( $page_product[0] ); ?>">مشاهده همه</a>
+		</div>
+	</section>
 
 
 	<section class="image-light-top">
 		<div class="image-light on-mobile-show">
 
-			<img src="<?php echo get_stylesheet_directory_uri() . '/imgs/image-light-home.png' ?>" alt="light">
+			<img src="<?php echo get_stylesheet_directory_uri() . '/assets/imgs/image-light-home.png' ?>" alt="light">
 
-			<img src="<?php echo get_stylesheet_directory_uri() . '/imgs/image-light-home.png' ?>" alt="light">
+			<img src="<?php echo get_stylesheet_directory_uri() . '/assets/imgs/image-light-home.png' ?>" alt="light">
 		</div>
 
 	</section>
@@ -327,15 +199,15 @@ $page_blog = get_posts( $blog_link_template );
 	<section class="image-light-top">
 		<div class="image-light only-desktop ">
 
-			<img src="<?php echo get_stylesheet_directory_uri() . '/imgs/image-light-home.png' ?>" alt="light">
+			<img src="<?php echo get_stylesheet_directory_uri() . '/assets/imgs/image-light-home.png' ?>" alt="light">
 
-			<img src="<?php echo get_stylesheet_directory_uri() . '/imgs/image-light-home.png' ?>" alt="light">
+			<img src="<?php echo get_stylesheet_directory_uri() . '/assets/imgs/image-light-home.png' ?>" alt="light">
 
-			<img src="<?php echo get_stylesheet_directory_uri() . '/imgs/image-light-home.png' ?>" alt="light">
+			<img src="<?php echo get_stylesheet_directory_uri() . '/assets/imgs/image-light-home.png' ?>" alt="light">
 
-			<img src="<?php echo get_stylesheet_directory_uri() . '/imgs/image-light-home.png' ?>" alt="light">
+			<img src="<?php echo get_stylesheet_directory_uri() . '/assets/imgs/image-light-home.png' ?>" alt="light">
 
-			<img src="<?php echo get_stylesheet_directory_uri() . '/imgs/image-light-home.png' ?>" alt="light">
+			<img src="<?php echo get_stylesheet_directory_uri() . '/assets/imgs/image-light-home.png' ?>" alt="light">
 		</div>
 
 	</section>
@@ -420,7 +292,7 @@ $page_blog = get_posts( $blog_link_template );
 				else : ?>
 					<div class="not-found-category-product-in-home">
 						<div> در این دسته بندی فعلا سوالی وجود ندارد</div>
-						<img src="<?php echo get_stylesheet_directory_uri() . '/imgs/not found category.svg' ?>">
+						<img src="<?php echo get_stylesheet_directory_uri() . '/assets/imgs/not found category.svg' ?>">
 					</div>
 				<?php endif; ?>
 			</div>
@@ -437,7 +309,7 @@ $page_blog = get_posts( $blog_link_template );
 				else : ?>
 					<div class="not-found-category-product-in-home">
 						<div> در این دسته بندی فعلا سوالی وجود ندارد</div>
-						<img src="<?php echo get_stylesheet_directory_uri() . '/imgs/not found category.svg' ?>">
+						<img src="<?php echo get_stylesheet_directory_uri() . '/assets/imgs/not found category.svg' ?>">
 					</div>
 				<?php endif; ?>
 			</div>

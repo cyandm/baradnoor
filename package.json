@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "run-scss": "sass scss/normal.scss css/normal.css -w -s compressed",
-    "run-js": "esbuild ./js/index.js --bundle --minify  --outfile=./js/dist/scripts.bundle.min.js --target=es6,chrome58,edge18,firefox54,safari11 --watch",
+    "run-scss": "sass assets/scss/normal.scss assets/css/normal.css -w -s compressed",
+    "run-js": "esbuild ./assets/js/index.js --bundle --minify  --outfile=./assets/js/dist/scripts.bundle.min.js --target=es6,chrome58,edge18,firefox54,safari11 --watch",
     "build-css": "postcss css/normal.css -o ./css/theme-bundle.css --use autoprefixer -m",
-    "build-js": "esbuild ./js/index.js --bundle --minify --outfile=./js/dist/scripts.bundle.min.js --target=es6,chrome58,edge18,firefox54,safari11 --sourcemap"
+    "build-js": "esbuild ./assets/js/index.js --bundle --minify --outfile=./assets/js/dist/scripts.bundle.min.js --target=es6,chrome58,edge18,firefox54,safari11 --sourcemap"
   },
   "author": "",
   "license": "ISC",

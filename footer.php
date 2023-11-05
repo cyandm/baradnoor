@@ -53,7 +53,7 @@ $url_ita = get_field( 'url_ita', $pageID );
 		</div>
 		<div class="footer-col-four">
 			<div class="img-light-footer">
-				<img src="<?php echo get_stylesheet_directory_uri() . '/imgs/light better.png' ?>" alt="light">
+				<img src="<?php echo get_stylesheet_directory_uri() . '/assets/imgs/light better.png' ?>" alt="light">
 			</div>
 			<div class="social-network-footer">
 				<div class="eitaa border-gradient"><a href="<?php echo $url_ita ?>"><i class="icon-ita"></i></a></div>
@@ -69,6 +69,17 @@ $url_ita = get_field( 'url_ita', $pageID );
 
 <div class="wp-footer">
 	<?php wp_footer() ?>
+	<script>
+		//@changed
+		const firstSlide = document.querySelector('.home_first_slide');
+
+		if (firstSlide) {
+			setTimeout(() => {
+				firstSlide.classList.remove('active');
+			}, 8000)
+		}
+
+	</script>
 	<?php if ( is_front_page() && ! $_COOKIE['preloader'] ) : ?>
 		<script>
 			const Engine = Matter.Engine;
