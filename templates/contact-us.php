@@ -29,8 +29,7 @@
 			</div>
 		</div>
 		<div class="image-light-contact-us">
-			<img src="<?php echo get_stylesheet_directory_uri() . '/assets/imgs/contact-us.svg' ?>" />
-
+			<img src="<?php echo get_stylesheet_directory_uri() . '/assets/imgs/contact-us.png' ?>" />
 		</div>
 	</div>
 </main>
