@@ -46,8 +46,11 @@
           }
         }
       }
+      .phone-numbers {
+        display: flex;
+        flex-wrap: wrap;
+      }
       span {
-        display: block;
         a {
           color: $accent-blue;
         }
@@ -95,7 +98,7 @@
       top: 0rem;
       translate: 10%;
       &::after {
-        content: "";
+        content: '';
         position: absolute;
         width: 14rem;
         height: 10.60281rem;

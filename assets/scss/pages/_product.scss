@@ -27,19 +27,9 @@ main.product-page {
       margin-top: 1.5rem;
     }
     .product-content {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: stretch;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax((280px), 1fr));
       gap: 1rem;
-
-      > * {
-        max-width: 33%;
-
-        @media (width <= 768px) {
-          max-width: unset;
-        }
-      }
     }
     .pagination-for-product {
       display: flex;

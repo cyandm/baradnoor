@@ -14,6 +14,8 @@ if (!class_exists('cyn_register')) {
 
             add_action('init', [$this, 'register_faq_post_type']);
             add_action('init', [$this, 'cyn_add_faq_cat_taxonomy']);
+
+            add_action('init', [$this, 'cyn_register_contact_us_forms']);
         }
 
         public function register_product_post_type()
@@ -152,6 +154,36 @@ if (!class_exists('cyn_register')) {
             ];
 
             register_taxonomy('faq-cat', ['faq'], $args);
+        }
+        public function cyn_register_contact_us_forms()
+        {
+            $postType = "contact-us-form";
+            $GLOBALS["contact-us-form-post-type"] = $postType;
+
+            $labels = [
+                'name' => _x('فرم ارتباط با ما', 'Post type general name', 'Contact Us form'),
+                'menu_name' => _x('فرم ارتباط با ما', 'Admin Menu text', 'Contact Us form'),
+            ];
+            $args = [
+                'labels' => $labels,
+                'description' => 'Contact Us form custom post type.',
+                'public' => true,
+                'publicly_queryable' => true,
+                'show_ui' => true,
+                'show_in_menu' => true,
+                'query_var' => true,
+                'rewrite' => array('slug' => 'contact-us-form'),
+                'capability_type' => 'post',
+                'has_archive' => true,
+                'hierarchical' => false,
+                'menu_position' => 20,
+                'supports' => ['title', 'editor'],
+                'show_in_rest' => false,
+                'menu_icon' => 'dashicons-email-alt',
+
+            ];
+
+            return register_post_type($postType, $args);
         }
     }
 }

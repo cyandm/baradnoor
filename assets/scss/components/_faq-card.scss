@@ -9,19 +9,19 @@
   .title-button-faq-card {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
 
-    gap: 0.5rem;
+    gap: 1.5rem;
     .title-faq-card {
-      font-size: 1.5rem;
+      font-size: 1rem;
       font-weight: 200;
       text-align: justify;
     }
     .button-faq-card {
       cursor: pointer;
       background: $gray;
-      width: 3.16638rem;
-      height: 3.16638rem;
+      width: 2rem;
+      height: 2rem;
       border-radius: 50%;
       display: flex;
       justify-content: center;
@@ -30,9 +30,9 @@
       > i {
         transition: all 0.3s ease-in-out;
         color: $white-color;
-        font-size: 1.8rem;
+        font-size: 1rem;
         rotate: 90deg;
-        translate: -3px 0;
+        translate: -1px 0;
       }
     }
   }
@@ -63,14 +63,12 @@
     .title-button-faq-card {
       .button-faq-card {
         background: $linear-button-orange;
-        width: 3.16638rem;
-        height: 3.16638rem;
         border-radius: 50%;
         > i {
           transition: all 0.3s ease-in-out;
           rotate: 0deg;
 
-          translate: -1px 3px;
+          translate: 0px 2px;
         }
       }
     }

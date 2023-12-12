@@ -1,11 +1,15 @@
 <?php
-$pageID = get_option( 'page_on_front' );
-$telephone_num = get_field( 'telephone_number', $pageID );
-$telephone_num_two = get_field( 'telephone_number_two', $pageID );
+//@chaged whole template
 
-$url_instagram = get_field( 'url_instagram', $pageID );
-$url_telegram = get_field( 'url_telegram', $pageID );
-$url_ita = get_field( 'url_ita', $pageID );
+$pageID = get_option('page_on_front');
+$telephone_num = get_field('telephone_number', $pageID);
+$telephone_num_two = get_field('telephone_number_two', $pageID);
+$telephone_num_three = get_field('telephone_number_three', $pageID);
+$telephone_num_four = get_field('telephone_number_four', $pageID);
+
+$url_instagram = get_field('url_instagram', $pageID);
+$url_telegram = get_field('url_telegram', $pageID);
+$url_ita = get_field('url_ita', $pageID);
 
 ?>
 
@@ -13,14 +17,17 @@ $url_ita = get_field( 'url_ita', $pageID );
 <footer class="site-footer container">
 	<div class="container-footer">
 		<div class="footer-col-one">
-			<?php wp_nav_menu( [ 'theme_location' => 'footer-menu' ] ) ?>
+			<?php wp_nav_menu(['theme_location' => 'footer-menu']) ?>
 		</div>
 		<div class="footer-col-two">
-			<?php wp_nav_menu( [ 'theme_location' => 'footer-menu-two' ] ) ?>
+			<?php wp_nav_menu(['theme_location' => 'footer-menu-two']) ?>
 			<?php
-			if ( $telephone_num != null ) : ?>
+			if (isset($telephone_num)) : ?>
 
 				<span class="phone-numbers">
+					<span class="phone_label">
+						مدیریت:
+					</span>
 					<a href="tel: <?= $telephone_num ?>">
 						<?php echo $telephone_num; ?>
 					</a>
@@ -28,15 +35,40 @@ $url_ita = get_field( 'url_ita', $pageID );
 
 			<?php endif; ?>
 			<?php
-			if ( $telephone_num_two != null ) : ?>
+			if (isset($telephone_num_two) || isset($telephone_num_three)) : ?>
+				<span class="phone-numbers">
+					<span class="phone_label">
+						دفتر مرکزی:
+					</span>
+					<? if (isset($telephone_num_two)) : ?>
+
+						<a href="tel: <?= $telephone_num_two ?>">
+							<?php echo $telephone_num_two; ?>
+						</a>
+					<?php endif; ?>
+
+					<i>-</i>
+					<? if (isset($telephone_num_three)) : ?>
+						<a href="tel: <?= $telephone_num_three ?>">
+							<?php echo $telephone_num_three; ?>
+						</a>
+					<?php endif; ?>
+				</span>
+			<?php endif; ?>
+			<?php
+			if (isset($telephone_num_four)) : ?>
 
 				<span class="phone-numbers">
-					<a href="tel: <?= $telephone_num_two ?>">
-						<?php echo $telephone_num_two; ?>
+					<span class="phone_label">
+						فروش:
+					</span>
+					<a href="tel: <?= $telephone_num_four ?>">
+						<?php echo $telephone_num_four; ?>
 					</a>
 				</span>
 
 			<?php endif; ?>
+
 		</div>
 		<div class="footer-col-three">
 			<ul>
@@ -46,10 +78,7 @@ $url_ita = get_field( 'url_ita', $pageID );
 			<ul class="location-container">
 				<li>لوکیشن</li>
 			</ul>
-			<iframe class="location"
-				src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12961.851433019636!2d51.4223912!3d35.6902259!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8e018fb2a5417d%3A0xfcdcb284be05b19e!2z2b7Yp9iz2KfamCDYqNmH2KfYsQ!5e0!3m2!1sen!2s!4v1694334333706!5m2!1sen!2s"
-				style="border:0;" allowfullscreen="" loading="lazy"
-				referrerpolicy="no-referrer-when-downgrade"></iframe>
+			<iframe class="location" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12961.851433019636!2d51.4223912!3d35.6902259!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8e018fb2a5417d%3A0xfcdcb284be05b19e!2z2b7Yp9iz2KfamCDYqNmH2KfYsQ!5e0!3m2!1sen!2s!4v1694334333706!5m2!1sen!2s" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 		</div>
 		<div class="footer-col-four">
 			<div class="img-light-footer">
@@ -57,10 +86,8 @@ $url_ita = get_field( 'url_ita', $pageID );
 			</div>
 			<div class="social-network-footer">
 				<div class="eitaa border-gradient"><a href="<?php echo $url_ita ?>"><i class="icon-ita"></i></a></div>
-				<div class="telegram border-gradient"><a href="<?php echo $url_telegram ?>"><i
-							class="icon-telegram"></i></a></div>
-				<div class="instagram border-gradient"><a href="<?php echo $url_instagram ?>"><i
-							class="icon-insta"></i></a></div>
+				<div class="telegram border-gradient"><a href="<?php echo $url_telegram ?>"><i class="icon-telegram"></i></a></div>
+				<div class="instagram border-gradient"><a href="<?php echo $url_instagram ?>"><i class="icon-insta"></i></a></div>
 			</div>
 		</div>
 	</div>
@@ -78,9 +105,8 @@ $url_ita = get_field( 'url_ita', $pageID );
 				firstSlide.classList.remove('active');
 			}, 8000)
 		}
-
 	</script>
-	<?php if ( is_front_page() && ! $_COOKIE['preloader'] ) : ?>
+	<?php if (is_front_page() && !$_COOKIE['preloader']) : ?>
 		<script>
 			const Engine = Matter.Engine;
 			const World =
@@ -170,12 +196,12 @@ $url_ita = get_field( 'url_ita', $pageID );
 					if (dist(mouseX, mouseY, word.body.position.x, word.body.position.y) < 120) {
 						Body.applyForce(
 							word.body, {
-							x: word.body.position.x,
-							y: word.body.position.y
-						}, {
-							x: random(-0.2, 0.2),
-							y: random(-0.2, 0.2)
-						}
+								x: word.body.position.x,
+								y: word.body.position.y
+							}, {
+								x: random(-0.2, 0.2),
+								y: random(-0.2, 0.2)
+							}
 						);
 					}
 				}

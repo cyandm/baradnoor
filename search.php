@@ -1,33 +1,48 @@
 <?php get_header(); ?>
 
 <?php
-global $wp_query;
+
+$search_query = get_search_query();
+
+$query_args = [
+	'post_type' => array("post", "product"),
+	's' => $search_query,
+	'posts_per_page' => 18
+];
+$query_result_searched = new WP_Query($query_args);
+
+// echo '<pre dir="ltr">';
+// var_dump($query_result_searched);
+// echo '</pre>';
+
+// wp_die();
 
 ?>
 
 <main class="search container">
 
-	<?php if ( have_posts() ) : ?>
+	<?php if ($query_result_searched->have_posts()) :	?>
 
 		<h1>
-			<?= 'نتیجه جستجو برای' . ' "' . $wp_query->query_vars['s'] . '"' ?>
+			<?= 'نتیجه جستجو برای' . ' "' . get_search_query() . '"' ?>
 		</h1>
 
 		<section class="have-post">
 
 			<?php
-			while ( have_posts() ) {
-				the_post();
+			while ($query_result_searched->have_posts()) : $query_result_searched->the_post();
+
 				$postType = get_post_type();
 
-				if ( $postType === 'post' ) {
-					get_template_part( '/templates/card/card', 'blog' );
+				if ($postType === 'post') {
+					get_template_part('/templates/card/card', 'blog');
 				}
 
-				if ( $postType === 'product' ) {
-					get_template_part( '/templates/card/card', 'product' );
+				if ($postType === 'product') {
+					get_template_part('/templates/card/card', 'product');
 				}
-			}
+			endwhile;
+
 			?>
 
 		</section>
@@ -35,9 +50,9 @@ global $wp_query;
 		<?php
 		echo "<div class='pagination-for-search border-gradient'>" . paginate_links(
 			array(
-				'total' => $wp_query->max_num_pages,
-				'next_text' => __( '<i class="next-or-prev"></i>' ),
-				'prev_text' => __( '<i class="next-or-prev"></i>' ),
+				'total' => $query_result_searched->max_num_pages,
+				'next_text' => __('<i class="next-or-prev"></i>'),
+				'prev_text' => __('<i class="next-or-prev"></i>'),
 				'prev_next' => false
 			)
 		) . "</div>";
@@ -46,7 +61,7 @@ global $wp_query;
 	<?php else : ?>
 
 		<section class="not_found">
-			<img src=<?= get_stylesheet_directory_uri() . '/assets/imgs/not_found_search.svg' ?> alt="">
+			<img src=<?= get_stylesheet_directory_uri() . '/assets/imgs/not_found_search.svg' ?> alt="not found">
 		</section>
 
 

@@ -478,6 +478,7 @@ main.home {
       justify-content: flex-start;
       gap: 1rem;
       .card-post {
+        min-width: 300px;
         @media (width >= 800px) {
           &:first-child {
             display: flex;

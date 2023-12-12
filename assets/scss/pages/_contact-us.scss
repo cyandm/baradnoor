@@ -47,7 +47,7 @@ main.contact-us-page {
             border: none;
             resize: none;
             width: 100%;
-            font-family: "Peyda";
+            font-family: 'Peyda';
             color: $silver-primary;
           }
           input {
@@ -56,22 +56,43 @@ main.contact-us-page {
             border: none;
             width: 100%;
             color: $silver-primary;
-            font-family: "Peyda";
+            font-family: 'Peyda';
+
+            &:-webkit-autofill,
+            &:-webkit-autofill:hover,
+            &:-webkit-autofill:focus,
+            &:-webkit-autofill:active {
+              -webkit-text-fill-color: $white-color;
+              box-shadow: inset 0 0 20px 20px $search-color;
+            }
           }
         }
         .btn-contact-us {
-          padding: 0.5rem 2.5rem;
+          padding: 0.75rem 2.5rem 0.75rem 2.75rem;
           display: flex;
           font-weight: 200;
+          font-family: pEYDA;
           justify-content: center;
           align-items: center;
           border-radius: 1.25rem;
           gap: 0.3rem;
           background: linear-gradient(130deg, #f25c05 0%, #f21305 100%);
           width: 35%;
+          font-size: 1rem;
+          color: $white-color;
           align-self: flex-end;
+          border: none;
+
+          &.error {
+            background: linear-gradient(180deg, #ad0e0e 0%, #661818 100%);
+          }
           > i {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
+            color: $white-color;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            translate: 0 2px;
           }
         }
       }
@@ -84,7 +105,7 @@ main.contact-us-page {
     left: 0;
     top: 0;
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       width: 30%;
       height: 100%;
@@ -122,7 +143,7 @@ main.contact-us-page {
         position: relative;
 
         &::after {
-          content: "";
+          content: '';
           position: absolute;
           width: 100%;
           height: 100%;

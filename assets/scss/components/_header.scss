@@ -1,8 +1,4 @@
 .site-header {
-  &:has(.background-do-search.active) {
-    overflow: hidden;
-  }
-
   padding-inline: 1rem;
   .header-content {
     @media (width <= 950px) {
@@ -10,7 +6,7 @@
     }
 
     position: relative;
-    z-index: 4;
+    z-index: 10;
     font-style: normal;
     font-weight: 300;
     display: flex;
@@ -130,6 +126,14 @@
         border: none;
         font-family: 'Peyda';
         color: $white-color;
+
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus,
+        &:-webkit-autofill:active {
+          -webkit-text-fill-color: $white-color;
+          box-shadow: inset 0 0 20px 20px $search-color;
+        }
       }
     }
 
@@ -207,7 +211,7 @@
     .menu-mobile {
       pointer-events: none;
       opacity: 0;
-      position: absolute;
+      position: fixed;
       top: 1rem;
       right: 0.5rem;
       left: 0.5rem;
@@ -375,10 +379,13 @@
         }
         .container-search-box-icon-search {
           display: flex;
-          justify-content: center;
+          justify-content: flex-start;
           align-items: center;
           gap: 0.5rem;
           flex: 1;
+          form {
+            flex: 1;
+          }
           input[type='search'] {
             cursor: text;
             outline: none;
@@ -391,6 +398,13 @@
             &::-webkit-search-cancel-button {
               display: none;
             }
+            &:-webkit-autofill,
+            &:-webkit-autofill:hover,
+            &:-webkit-autofill:focus,
+            &:-webkit-autofill:active {
+              -webkit-text-fill-color: $white-color;
+              box-shadow: inset 0 0 20px 20px $search-color;
+            }
           }
           > i {
             font-size: 1.5rem;
@@ -400,6 +414,6 @@
     }
   }
 }
-body:has(.body-blur-bg.active) {
+html:has(.body-blur-bg.active) {
   overflow: hidden;
 }

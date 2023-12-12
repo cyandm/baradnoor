@@ -1,13 +1,21 @@
 <?php
+
+
 global $wp_query;
 
-switch ( $wp_query->posts[0]->post_type ) {
-	case 'post':
-		get_template_part( 'templates/archives/post' );
+if (isset($wp_query) && isset($wp_query->post) && isset($wp_query->post->post_type)) {
+	get_template_part('templates/archives/' . $wp_query->post->post_type);
+} else {
+	$query_array = explode(' ', $wp_query->request);
+	$query_array = array_splice($query_array, 0);
+	$post_type_needle_index = array_search('((wp_posts.post_type', $query_array);
+	$req_post_type = str_replace("'", "", $query_array[$post_type_needle_index + 2]);
 
-	case 'product':
-		get_template_part( 'templates/archives/product' );
+	if ($req_post_type) {
+		get_template_part('templates/archives/' . $req_post_type);
+	} else {
+		echo 'hi';
+	}
 }
 
 
-?>

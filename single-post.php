@@ -16,6 +16,16 @@ $favorite_blog = new WP_Query([
     'category__in' => $current_post_cats_id,
     'post__not_in' => [get_the_ID()],
 ]);
+
+$blog_link_template = [
+    'post_type' => 'page',
+    'fields' => 'ids',
+    'nopaging' => true,
+    'meta_key' => '_wp_page_template',
+    'meta_value' => 'templates/blog.php'
+];
+$page_blog = get_posts($blog_link_template);
+
 ?>
 
 <?php
@@ -59,7 +69,7 @@ class Walker_custom_CategoryDropdown extends Walker_CategoryDropdown
     <!-- desktop -->
     <div class="page-single-post">
         <div class="bread-crumb-single-blog">
-            <span><a href="<?= site_url() . '/بلاگ/' ?>">مقالات</a></span>
+            <span><a href="<?= get_permalink($page_blog[0]); ?>">مقالات</a></span>
             <span> > </span>
             <span> <?php the_title() ?> </span>
         </div>

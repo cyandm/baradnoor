@@ -3,14 +3,9 @@
   flex-direction: column;
 
   .posts-loop-con {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax((280px), 1fr));
     gap: 1rem;
-    margin-block-end: 2rem;
-
-    > * {
-      flex: 1;
-      flex-basis: 32%;
-    }
+    margin-bottom: 1rem;
   }
 }

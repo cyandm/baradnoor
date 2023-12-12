@@ -51,7 +51,7 @@ main.single-post-page {
               border-radius: 1.25rem;
               outline: none;
               border: none;
-              font-family: "Peyda";
+              font-family: 'Peyda';
             }
           }
           .category-blog {
@@ -92,9 +92,11 @@ main.single-post-page {
             }
           }
           .posts-content {
+            display: flex;
             padding: 0;
             flex-wrap: nowrap;
             flex-direction: column;
+            gap: 1rem;
             .card-post {
               min-width: unset;
             }
@@ -332,8 +334,8 @@ main.single-post-page {
 
                     &:after {
                       visibility: visible;
-                      content: "\e90c";
-                      font-family: "barad-icon" !important;
+                      content: '\e90c';
+                      font-family: 'barad-icon' !important;
                       font-style: normal;
                       font-weight: normal;
                       font-variant: normal;
@@ -659,8 +661,8 @@ main.single-post-page {
 
                     &:after {
                       visibility: visible;
-                      content: "\e90c";
-                      font-family: "barad-icon" !important;
+                      content: '\e90c';
+                      font-family: 'barad-icon' !important;
                       font-style: normal;
                       font-weight: normal;
                       font-variant: normal;
@@ -697,6 +699,14 @@ main.single-post-page {
               }
             }
           }
+        }
+      }
+      .favorite-blog {
+        .posts-content {
+          margin-top: 1rem;
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(352px, 1fr));
+          gap: 1rem;
         }
       }
     }

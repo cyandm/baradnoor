@@ -158,18 +158,8 @@ main.about-us-page {
           }
 
           &:hover {
-            cursor: pointer;
-
             &::after {
               opacity: 1;
-            }
-          }
-          @media (width > 900px) {
-            &:hover {
-              .container-name-job-title {
-                opacity: 1;
-                transition: all 0.5s ease-in-out;
-              }
             }
           }
 
@@ -189,6 +179,21 @@ main.about-us-page {
             margin: 0.5rem;
             bottom: 0;
             z-index: 5;
+          }
+          @media (width > 900px) {
+            &:hover {
+              .container-name-job-title {
+                opacity: 1;
+                transition: all 0.5s ease-in-out;
+              }
+            }
+          }
+          @media (width <= 900px) {
+            &:hover {
+              &::after {
+                display: none;
+              }
+            }
           }
         }
       }

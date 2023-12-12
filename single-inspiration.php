@@ -6,13 +6,23 @@
 $worked_inspiration = get_field('inspiration_object');
 
 $related_products = get_field('product_object');
+
+$inspiration_link_template = [
+    'post_type' => 'page',
+    'fields' => 'ids',
+    'nopaging' => true,
+    'meta_key' => '_wp_page_template',
+    'meta_value' => 'templates/inspiration.php'
+];
+$page_inspiration = get_posts($inspiration_link_template);
+
 ?>
 
 
 <main class="container single-inspiration">
     <div class="page-single-inspiration">
         <div class="bread-crumb-single-inspiration">
-            <span><a href="<?= site_url() . '/برای-ایده/' ?>">برای ایده</a></span>
+            <span><a href="<?= get_permalink($page_inspiration[0]); ?>">برای ایده</a></span>
             <span> > </span>
             <span> <?php the_title() ?> </span>
         </div>
