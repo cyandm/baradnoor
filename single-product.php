@@ -36,6 +36,9 @@ function swiper_slider($images_slider)
 		endforeach;
 	endif;
 }
+
+
+
 ?>
 <main class="single-product-page">
 	<div class="bread-crumb-single-product container">
@@ -59,15 +62,15 @@ function swiper_slider($images_slider)
 							<div class="swiper-slide">
 								<?= wp_get_attachment_image(get_post_thumbnail_id(), 'full', false, ['class' => 'feature-image']) ?>
 							</div>
-
 							<?php swiper_slider($images_slider); ?>
+
 						</div>
 						<div class="swiper-button-next"></div>
 						<div class="swiper-button-prev"></div>
 					</div>
 				</div>
 
-				<?php if (is_array($images_slider) && !empty($slider_image)) : ?>
+				<?php if (is_array($images_slider) && !empty($images_slider)) : ?>
 
 					<div>
 						<div thumbsSlider="" class="swiper swiper1-single-product">
@@ -75,8 +78,8 @@ function swiper_slider($images_slider)
 								<div class="swiper-slide">
 									<?= wp_get_attachment_image(get_post_thumbnail_id(), 'full', false, ['class' => 'feature-image']) ?>
 								</div>
-								<?php swiper_slider($images_slider); ?>
 
+								<?php swiper_slider($images_slider); ?>
 							</div>
 						</div>
 					</div>
