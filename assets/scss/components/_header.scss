@@ -24,7 +24,7 @@
         li.menu-item-has-children {
           position: relative;
           isolation: isolate;
-
+          padding: 0.5rem;
           > ul {
             position: absolute;
             top: 2rem;
@@ -43,11 +43,9 @@
             li {
               a {
                 display: block;
-                pointer-events: all;
                 padding: 0.5rem;
                 align-items: flex-start;
                 gap: 0.625rem;
-
                 border-bottom: 1px solid $white-8percent;
               }
               &::after {
@@ -72,6 +70,9 @@
             > ul {
               opacity: 1;
               color: $orange-secondary;
+              li {
+                pointer-events: all;
+              }
             }
           }
         }
